@@ -1,4 +1,4 @@
-CREATE DATABASE if not exists AMVDB;
+CREATE DATABASE if not exists AMVDB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE AMVDB;
 
@@ -17,7 +17,7 @@ create table if not exists TOOLS(
 	Tool_Name varchar(255),
 	Tool_Info varchar(255),
 	Price int,
-	Image BLOB,
+	Picture LONGBLOB,
 	PRIMARY KEY (TOOL_ID)
 	);
 
@@ -61,3 +61,5 @@ create table if not exists ADMIN(
 	PRIMARY KEY (USER_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 	);
+
+select * from TOOLS;
