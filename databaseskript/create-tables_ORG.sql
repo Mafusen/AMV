@@ -1,4 +1,4 @@
-CREATE DATABASE if not exists AMVDB;
+CREATE DATABASE if not exists AMVDB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE AMVDB;
 
