@@ -17,7 +17,7 @@ create table if not exists TOOLS(
 	Tool_Name varchar(255),
 	Tool_Info varchar(255),
 	Price int,
-	Image BLOB,
+	Picture LONGBLOB,
 	PRIMARY KEY (TOOL_ID)
 	);
 
