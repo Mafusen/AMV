@@ -1,41 +1,53 @@
 package bacit.web.bacit_web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
-@WebServlet(name = "GetUserServlet", value = "/GetUserServlet")
+@WebServlet(name = "getUserServlet", value = "/getUserServlet")
 public class GetUserServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        String uname = request.getParameter("uname");
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+
         PrintWriter out = response.getWriter();
-        try {
-            UserModel model = getUser(uname, out);
-
-            out.println(model.getFirstName());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        out.println("<html><body>");
+        out.println("<h1></h1>");
+        out.println("<h1>Finn informasjon om bruker</h1>");
+        out.println("<form method='post'>");
+        out.println("  <label for='Username'>Brukernavn:</label>");
+        out.println("  <input type='text' name='Username'/>");
+        out.println("  <input type='submit' />");
+        out.println("</form>");
+        out.println("</body></html>");
     }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
+        String username = request.getParameter("Username");
+        PrintWriter out = response.getWriter();
+
+        UserModel model = null;
+        try {
+            model = getUser(username, out);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        out.println("Brukernavn: " + model.getUserName());
+        out.println("Fornavn: " + model.getfirstName());
+        out.println("Etternavn: " + model.getLastName());
+        out.println("Telefon: " + model.getPhone());
 
     }
 
-    private UserModel getUser(String uname, PrintWriter out) throws SQLException {
+    private UserModel getUser(String Username, PrintWriter out) throws SQLException {
         Connection db = null;
         try {
             db = DBUtils.getINSTANCE().getConnection(out);
@@ -43,16 +55,22 @@ public class GetUserServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String query3 = "select * from user where User_firstName = ?";
+        String query3 = "select * from user where Username = ?";
         PreparedStatement statement = db.prepareStatement(query3);
-        statement.setString(1, uname);
+        statement.setString(1, Username);
         ResultSet rs = statement.executeQuery();
         UserModel model = null;
         while (rs.next()) {
             model =
-                new UserModel(rs.getString("User_firstName"), rs.getString("User_lastName"), rs.getString("User_Email"),
-                    rs.getString("User_password"), rs.getString("User_dob"));
+                    new UserModel(rs.getString("Fname"), rs.getString("Lname"),
+                            rs.getString("Phone"), rs.getString("Username"),
+                            rs.getString("Password"));
         }
         return model;
+    }
+
+
+
+    public void destroy() {
     }
 }

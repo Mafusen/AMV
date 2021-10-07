@@ -3,20 +3,20 @@ package bacit.web.bacit_web;
 public class UserModel {
     private String firstName;
     private String lastName;
+    private String phone;
     private String userName;
-    private String password;
-    private String dob;
+    private String passWord;
 
-    public UserModel(String firstName, String lastName, String userName, String password, String dob) {
+    public UserModel(String firstName, String lastName, String phone, String userName, String passWord) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phone = phone;
         this.userName = userName;
-        this.password = password;
-        this.dob = dob;
+        this.passWord = passWord;
 
     }
 
-    public String getFirstName() {
+    public String getfirstName() {
         return firstName;
     }
 
@@ -28,8 +28,16 @@ public class UserModel {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setlastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getUserName() {
@@ -40,19 +48,12 @@ public class UserModel {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword(){
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord){
+        this.passWord = passWord;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
 }

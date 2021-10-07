@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>JSP - Første Side</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Første side (indikert i index.jsp" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="getUserServlet">Get Info From User</a>
 </body>
 </html>
