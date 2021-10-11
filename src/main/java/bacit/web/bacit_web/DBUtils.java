@@ -33,9 +33,9 @@ public class DBUtils {
         Class.forName("org.mariadb.jdbc.Driver");
         try {
             toReturn = (connection != null)
-                ? connection
-                : DriverManager.getConnection(
-                    "jdbc:mariadb://172.17.0.1:3308/MytestDB",
+                    ? connection
+                    : DriverManager.getConnection(
+                    "jdbc:mariadb://172.17.0.1:3308/AMVDB",
                     "root",
                     "12345");
         } catch (SQLException e) {
@@ -45,4 +45,3 @@ public class DBUtils {
         return toReturn;
     }
 }
-
