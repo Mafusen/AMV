@@ -1,4 +1,4 @@
-insert into TOOLS(
+insert into TOOL(
     Tool_Name,
     Tool_Info,
     Price
