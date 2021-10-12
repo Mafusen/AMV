@@ -13,7 +13,7 @@ import javax.servlet.annotation.*;
 @WebServlet (name = "AddToolServlet", value = "/AddToolServlet")
 public class AddToolServlet extends HttpServlet{
 
-        @Override
+/*        @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
                 response.setContentType("text/html");
@@ -21,26 +21,22 @@ public class AddToolServlet extends HttpServlet{
 
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Registrer ny bruker</title>");
+                out.println("<title>Registrer nytt verktøy</title>");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h2>Registrer ny bruker</h2>");
+                out.println("<h2>Registrer nytt verktøy</h2>");
                 out.println("<form method='post'>");
-                out.println("  <label for='Firstname'>Fornavn:</label>");
-                out.println("  <input type='text' name='Firstname'/>");
-                out.println("  <label for='Lastname'>Etternavn:</label>");
-                out.println("  <input type='text' name='Lastname'/>");
-                out.println("  <label for='Phone'>Telefon:</label>");
-                out.println("  <input type='text' name='Phone'/>");
-                out.println("  <label for='Username'>Brukernavn:</label>");
-                out.println("  <input type='text' name='Username'/>");
-                out.println("  <label for='Password'>Passord:</label>");
-                out.println("  <input type='text' name='Password'/>");
+                out.println("  <label for='toolName'>Verktøynavn:</label>");
+                out.println("  <input type='text' name='toolName'/>");
+                out.println("  <label for='toolInfo'>Verktøyinfo::</label>");
+                out.println("  <input type='number' name='toolPrice'/>");
                 out.println("  <input type='submit' />");
+                out.println("   <input type='reset' value='Tilbakestill felter'/>");
+                out.println("   <input type='submit' value='Registrer'/>");
                 out.println("</form>");
                 out.println("</body>");
                 out.println("</html>");
-        }
+        }*/
 
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,25 +45,25 @@ public class AddToolServlet extends HttpServlet{
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
 
-                String toolName = request.getParameter("toolName");
-                String toolInfo = request.getParameter("toolName");
-                String price = request.getParameter("Pris");
+                String toolname = request.getParameter("toolName");
+                String toolinfo = request.getParameter("toolName");
+                int toolprice = Integer.parseInt(request.getParameter("toolPrice"));
                 ToolModel model = null;
                 try {
-                        model = createTool(toolName, toolInfo, price);
+                        model = createTool(toolname, toolinfo, toolprice, out);
                 } catch (SQLException e) {
                         e.printStackTrace();
                 }
 
                 out.println("Verktøy registrert: ");
-                out.println("   Verktøynavn: " + toolName);
-                out.println("   Verktøyinfo: " + toolInfo);
-                out.println("   Pris: " + price);
+                out.println("   Verktøynavn: " + toolname);
+                out.println("   Verktøyinfo: " + toolinfo);
+                out.println("   Pris: " + toolprice);
 
 
         }
 
-        private ToolModel createTool(String toolName, String toolInfo, PrintWriter out) throws SQLException{
+        private ToolModel createTool(String Tool_Name, String Tool_Info, int Price, PrintWriter out) throws SQLException{
 
                 Connection db = null;
                 try {
@@ -80,7 +76,7 @@ public class AddToolServlet extends HttpServlet{
                 PreparedStatement statement = db.prepareStatement(query);
                 statement.setString(1, Tool_Name);
                 statement.setString(2, Tool_Info);
-                statement.setString(3, Price);
+                statement.setInt(3, Price);
                 ResultSet rs = statement.executeQuery();
                 ToolModel model = null;
                 while (rs.next()) {
