@@ -1,4 +1,4 @@
-insert into TOOLS(
+insert into TOOL(
     Tool_Name,
     Tool_Info,
     Price
@@ -146,7 +146,7 @@ Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV 
 );
 
 
-insert into TOOLS(
+insert into TOOL(
     Tool_Name,
     Tool_Info,
     Price,

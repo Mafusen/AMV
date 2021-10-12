@@ -32,7 +32,7 @@ create table if not exists BOOKING(
 	TOOL_ID int,
 	PRIMARY KEY (BOOKING_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID),
-	FOREIGN KEY (TOOL_ID) REFERENCES TOOLS(TOOL_ID)
+	FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
 	);
 
 create table if not exists COURSE(
@@ -62,4 +62,4 @@ create table if not exists ADMIN(
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 	);
 
-select * from TOOLS;
+select * from TOOL;
