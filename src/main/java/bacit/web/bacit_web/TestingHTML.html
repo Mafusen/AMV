@@ -3,37 +3,94 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-  <title>Test</title>
+  <title>TESTING</title>
 
   <style>
-    form {width:100px; margin: auto}
-    h2 {font-family: "Helvetica" ; padding:10px; text-align: center}
+    * {
+      box-sizing: border-box;
+    }
+
+    input[type=text], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+    input[type=submit] {
+      background-color: #4e6bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    input[type=submit]:hover {
+      background-color: #405ffc;
+    }
+
+    input[type=reset] {
+      background-color: #4e6bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    input[type=reset]:hover {
+      background-color: #405ffc;
+    }
+
+    form {width:500px; margin: auto; display: flex;
+      justify-content: center; align-content: center}
+    h2 {font-family: "Helvetica"}
     tr {font-family: "Helvetica"}
-    fieldset {border-radius: 25px; padding: 20px}
+
+    .fs {width: 400px; border-radius: 10px; background-color: #cccc00; padding: 20px}
+
+    .col-25 {float: left; width: 25%; margin-top: 6px}
+
+    .col-75 {float: left; width: 75%; margin-top: 6px;}
+
+    .row:after {content: ""; display: table; clear: both;}
+
   </style>
+</head>
+
 
 <body>
 <form action="AddToolServlet" method="post">
-  <fieldset style="width:20%; background-color:#cccc00">
-    <h2> Legg til nytt verktøy</h2><hr>
+  <div class="fs">
+    <h2> Legg til nytt verktøy</h2>
+      <hr>
     <table>
       <tr>
         <td>Vektøynavn:</td>
-        <td><input type="text" name="toolName" required /></td>
+        <td><input type="text" name="toolName" placeholder="Navnet på verktøyet..." required /></td>
       </tr>
       <tr>
         <td>Verktøyinfo:</td>
-        <td><input type="text" name="toolInfo" required /></td>
+        <td><input type="text" name="toolInfo" placeholder="Info om verktøyet..." style="height:80px" required /></td>
       </tr>
       <tr>
         <td>Pris:</td>
-        <td><input type="text" name="toolPrice" required /></td>
+        <td><input type="text" name="toolPrice" placeholder="Prisen på verktøyet fra dag 2..." required /></td>
       </tr>
       <td><input type="reset" value="Tilbakestill felter"/></td>
       <td><input type="submit" value="Registrer"/></td>
       </tr>
     </table>
-  </fieldset>
+  </div>
 </form>
 </body>
 </html>
