@@ -54,7 +54,7 @@ public class AddToolServlet extends HttpServlet{
                 String price = request.getParameter("Pris");
                 ToolModel model = null;
                 try {
-                        model = createUser(toolName, toolInfo, price);
+                        model = createTool(toolName, toolInfo, price);
                 } catch (SQLException e) {
                         e.printStackTrace();
                 }
@@ -67,7 +67,7 @@ public class AddToolServlet extends HttpServlet{
 
         }
 
-        private UserModel createUser(String Fname, String Lname, String Phone, String Username, String Password, PrintWriter out) throws SQLException{
+        private ToolModel createTool(String toolName, String toolInfo, PrintWriter out) throws SQLException{
 
                 Connection db = null;
                 try {
@@ -76,25 +76,20 @@ public class AddToolServlet extends HttpServlet{
                         e.printStackTrace();
                 }
 
-                String query = "insert into USER (Fname, Lname, Phone, Username, Password) values (?, ?, ?, ?, ?)";
+                String query = "insert into TOOL (Tool_Name, Tool_Info, Price) values (?, ?, ?)";
                 PreparedStatement statement = db.prepareStatement(query);
-                statement.setString(1, Fname);
-                statement.setString(2, Lname);
-                statement.setString(3, Phone);
-                statement.setString(4, Username);
-                statement.setString(5, Password);
+                statement.setString(1, Tool_Name);
+                statement.setString(2, Tool_Info);
+                statement.setString(3, Price);
                 ResultSet rs = statement.executeQuery();
-                UserModel model = null;
+                ToolModel model = null;
                 while (rs.next()) {
                         model =
-                                new UserModel(rs.getString("Fname"), rs.getString("Lname"),
-                                        rs.getString("Phone"), rs.getString("Username"),
-                                        rs.getString("Password"));
+                                new ToolModel(rs.getString("Tool_Name"), rs.getString("Tool_Info"),
+                                        rs.getInt("Price"));
                 }
                 return model;
 
 
         }
-}
-
 }
