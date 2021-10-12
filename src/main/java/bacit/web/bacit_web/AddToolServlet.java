@@ -1,52 +1,100 @@
 package bacit.web.bacit_web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.DriverManager;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.*;
-import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
-public class AddToolServlet extends HttpServlet {
-        public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebServlet (name = "AddToolServlet", value = "/AddToolServlet")
+public class AddToolServlet extends HttpServlet{
+
+        @Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Registrer ny bruker</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h2>Registrer ny bruker</h2>");
+                out.println("<form method='post'>");
+                out.println("  <label for='Firstname'>Fornavn:</label>");
+                out.println("  <input type='text' name='Firstname'/>");
+                out.println("  <label for='Lastname'>Etternavn:</label>");
+                out.println("  <input type='text' name='Lastname'/>");
+                out.println("  <label for='Phone'>Telefon:</label>");
+                out.println("  <input type='text' name='Phone'/>");
+                out.println("  <label for='Username'>Brukernavn:</label>");
+                out.println("  <input type='text' name='Username'/>");
+                out.println("  <label for='Password'>Passord:</label>");
+                out.println("  <input type='text' name='Password'/>");
+                out.println("  <input type='submit' />");
+                out.println("</form>");
+                out.println("</body>");
+                out.println("</html>");
+        }
+
+        @Override
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException {
+
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
 
                 String toolName = request.getParameter("toolName");
-                String toolInfo = request.getParameter("toolInfo");
-                int price = Integer.parseInt(request.getParameter("price"));
+                String toolInfo = request.getParameter("toolName");
+                String price = request.getParameter("Pris");
+                ToolModel model = null;
                 try {
-
-                        //load the driver
-                        Class.forName("org.mariadb.jdbc.Driver");
-                        //create connection object
-                        Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:8081/AMVDB?user=root&password=12345");
-                        // create the prepared statement object
-                        PreparedStatement ps = con.prepareStatement("insert into TOOL values(?,?,?)");
-
-                        ps.setString(1, toolName);
-                        ps.setString(2, toolInfo);
-                        ps.setInt(3, price);
-
-                        int i = ps.executeUpdate();
-                        if (i > 0)
-                                out.print("Nytt verktøy er lagt til.");
-
-                } catch (Exception ex) {
-                        ex.printStackTrace();
+                        model = createUser(toolName, toolInfo, price);
+                } catch (SQLException e) {
+                        e.printStackTrace();
                 }
-                out.close();
+
+                out.println("Verktøy registrert: ");
+                out.println("   Verktøynavn: " + toolName);
+                out.println("   Verktøyinfo: " + toolInfo);
+                out.println("   Pris: " + price);
+
+
         }
+
+        private UserModel createUser(String Fname, String Lname, String Phone, String Username, String Password, PrintWriter out) throws SQLException{
+
+                Connection db = null;
+                try {
+                        db = DBUtils.getINSTANCE().getConnection(out);
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                }
+
+                String query = "insert into USER (Fname, Lname, Phone, Username, Password) values (?, ?, ?, ?, ?)";
+                PreparedStatement statement = db.prepareStatement(query);
+                statement.setString(1, Fname);
+                statement.setString(2, Lname);
+                statement.setString(3, Phone);
+                statement.setString(4, Username);
+                statement.setString(5, Password);
+                ResultSet rs = statement.executeQuery();
+                UserModel model = null;
+                while (rs.next()) {
+                        model =
+                                new UserModel(rs.getString("Fname"), rs.getString("Lname"),
+                                        rs.getString("Phone"), rs.getString("Username"),
+                                        rs.getString("Password"));
+                }
+                return model;
+
+
+        }
+}
+
 }
