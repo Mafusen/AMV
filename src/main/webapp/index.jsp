@@ -5,9 +5,9 @@
     <title>JSP - Første Side</title>
 </head>
 <body>
-<h1><%= "Første side (indikert i index.jsp" %>
+<h1><%= "Første side (indikert i index.jsp)" %>
 </h1>
 <br/>
-<a href="getUserServlet">Get Info From User</a>
+<a href="registerUserServlet">Register User</a>
 </body>
 </html>

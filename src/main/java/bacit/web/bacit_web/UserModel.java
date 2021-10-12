@@ -16,7 +16,11 @@ public class UserModel {
 
     }
 
-    public String getfirstName() {
+    public UserModel() {
+
+    }
+
+    public String getFirstName() {
         return firstName;
     }
 
@@ -28,7 +32,7 @@ public class UserModel {
         return lastName;
     }
 
-    public void setlastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 

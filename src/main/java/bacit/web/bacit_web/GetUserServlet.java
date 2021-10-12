@@ -41,7 +41,7 @@ public class GetUserServlet extends HttpServlet {
         }
 
         out.println("Brukernavn: " + model.getUserName());
-        out.println("Fornavn: " + model.getfirstName());
+        out.println("Fornavn: " + model.getFirstName());
         out.println("Etternavn: " + model.getLastName());
         out.println("Telefon: " + model.getPhone());
 
