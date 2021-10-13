@@ -53,10 +53,10 @@
 
         form {width:500px; margin: auto; display: flex;
             justify-content: center; align-content: center;}
-        h2 {font-family: "Helvetica"; padding:10px; text-align: center;}
-        tr {font-family: "Helvetica"}
-        td {font-family: "Helvetica"}
-        textarea {font-family: "Helvetica"}
+        h2 {font-family: "Segoe UI"; padding:10px; text-align: center;}
+        tr {font-family: "Segoe UI"}
+        td {font-family: "Segoe UI"}
+        textarea {font-family: "Segoe UI"}
         /*fieldset {border-radius: 10px; padding: 20px;}*/
 
         .fs {width: 450px; border-radius: 10px; background-color: #cccc00; padding: 20px}
@@ -67,7 +67,7 @@
 </head>
 <body>
 <div class="center">
-<form action="AddToolServlet" method="text/html">
+<form action="AddToolServlet" method="post">
     <div class="fs">
         <h2> Legg til nytt verktøy</h2>
         <hr>
@@ -84,11 +84,11 @@
                 <td>Pris:</td>
                 <td><input type="text" name="toolPrice" placeholder="Prisen på verktøyet fra dag 2..." required> </td>
             </tr>
-<%--            <tr>
+<%--        <tr>
                 <td>Bilde:</td>
                 <td><input type="file" name="Picture" placeholder="Last opp bilde..." size="20" /></td>
-            </tr>
---%>
+            </tr> --%>
+            <tr>
             <td><input type="reset" value="Tilbakestill felter"/></td>
             <td><input type="submit" value="Registrer"/></td>
             </tr>
