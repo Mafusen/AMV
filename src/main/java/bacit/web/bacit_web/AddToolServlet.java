@@ -5,8 +5,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -97,7 +97,7 @@ public class AddToolServlet extends HttpServlet {
         while (rs.next()) {
             model =
                     new ToolModel(rs.getString("Tool_Name"), rs.getString("Tool_Info"),
-                            rs.getInt("Price"));
+                            rs.getInt("Price"), (InputStream) rs.getBlob("Picture"));
         }
         return model;
 
