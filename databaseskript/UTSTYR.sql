@@ -145,17 +145,3 @@ Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV 
     '50'
 );
 
-
-insert into TOOL(
-    Tool_Name,
-    Tool_Info,
-    Price,
-    Picture
-)
-
-values (
-    'Eksentersliper 230VAC',
-    '+ papir',
-    '20'
-    LOAD_FILE('/Users/mariussorensen/Documents/AMV/database/AMVDB/Hammer_and_sickle.jpg')
-);

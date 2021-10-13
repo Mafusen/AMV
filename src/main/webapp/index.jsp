@@ -67,7 +67,7 @@
 </head>
 <body>
 <div class="center">
-<form action="NewToolServlet" method="multipart/form-data">
+<form action="NewToolServlet" method="text/html">
     <div class="fs">
         <h2> Legg til nytt verktøy</h2>
         <hr>
