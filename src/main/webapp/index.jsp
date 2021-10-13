@@ -67,7 +67,7 @@
 </head>
 <body>
 <div class="center">
-<form action="NewToolServlet" method="text/html">
+<form action="AddToolServlet" method="text/html">
     <div class="fs">
         <h2> Legg til nytt verktøy</h2>
         <hr>
@@ -84,10 +84,11 @@
                 <td>Pris:</td>
                 <td><input type="text" name="toolPrice" placeholder="Prisen på verktøyet fra dag 2..." required> </td>
             </tr>
-            <tr>
+<%--            <tr>
                 <td>Bilde:</td>
                 <td><input type="file" name="Picture" placeholder="Last opp bilde..." size="20" /></td>
             </tr>
+--%>
             <td><input type="reset" value="Tilbakestill felter"/></td>
             <td><input type="submit" value="Registrer"/></td>
             </tr>

@@ -1,18 +1,18 @@
 package bacit.web.bacit_web;
 
-import java.io.InputStream;
+//import java.io.InputStream;
 
 public class ToolModel {
     private String toolName;
     private String toolInfo;
-    private int toolPrice;
-    private InputStream picture;
+    private int price;
 
-    public ToolModel(String toolName, String toolInfo, int price, InputStream Picture) {
+
+    public ToolModel(String toolName, String toolInfo, int price) {
         this.toolName = toolName;
         this.toolInfo = toolInfo;
-        this.toolPrice = toolPrice;
-        this.picture = picture;
+        this.price = price;
+
     }
 
     public String getToolName(String toolName) {
@@ -31,4 +31,11 @@ public class ToolModel {
         this.toolInfo= toolInfo;
     }
 
+    public int getPrice(int price){
+        return price;
+    }
+
+    public void setPrice(int price){
+        this.price=price;
+    }
 }

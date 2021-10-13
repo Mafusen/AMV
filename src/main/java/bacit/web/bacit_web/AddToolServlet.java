@@ -1,26 +1,22 @@
 package bacit.web.bacit_web;
 
-import java.io.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.io.InputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import javax.servlet.annotation.MultipartConfig;
+@WebServlet(name = "AddToolServlet", value = "/AddToolServlet")
+public class AddToolServlet extends HttpServlet {
 
-
-@WebServlet (name = "AddToolServlet", value = "/AddToolServlet")
-@MultipartConfig(maxFileSize = 16177215)
-public class AddToolServlet extends HttpServlet{
-
-/*        @Override
+        @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
                 response.setContentType("html/text");
                 PrintWriter out = response.getWriter();
@@ -50,70 +46,60 @@ public class AddToolServlet extends HttpServlet{
                 out.println("</body>");
                 out.println("</html>");
         }
-*/
 
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
+        String toolname = request.getParameter("toolName");
+        String toolinfo = request.getParameter("toolName");
+        int toolprice = Integer.parseInt(request.getParameter("toolPrice"));
 
-                String toolname = request.getParameter("toolName");
-                String toolinfo = request.getParameter("toolName");
-                int toolprice = Integer.parseInt(request.getParameter("toolPrice"));
-                InputStream inputstream = null;
-                String message = null;
-                Part filePart = request.getPart("toolPicture");
-                if (filePart != null) {
-                        System.out.println(filePart.getName());
-                        System.out.println(filePart.getSize());
-                        System.out.println(filePart.getContentType());
-
-                        inputstream = filePart.getInputStream();
-                }
-                ToolModel model = null;
-                try {
-                        model = createTool(toolname, toolinfo, toolprice, inputstream, out);
-                } catch (SQLException e) {
-                        e.printStackTrace();
-                }
-
-                out.println("   Verktøy registrert: ");
-                out.println("   Verktøynavn: " + toolname);
-                out.println("   Verktøyinfo: " + toolinfo);
-                out.println("   Pris: " + toolprice);
-
-
+        ToolModel model = null;
+        try {
+            model = createTool(toolname, toolinfo, toolprice, out);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-
-        private ToolModel createTool(String Tool_Name, String Tool_Info, int Price, InputStream Picture, PrintWriter out) throws SQLException{
-
-                Connection db = null;
-                try {
-                        db = DBUtils.getINSTANCE().getConnection(out);
-                } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                }
-
-                String query = "insert into TOOL (Tool_Name, Tool_Info, Price, Picture) values (?, ?, ?, ?)";
-                PreparedStatement statement = db.prepareStatement(query);
-                statement.setString(1, Tool_Name);
-                statement.setString(2, Tool_Info);
-                statement.setInt(3, Price);
-                statement.setBlob(4, Picture);
-
-                ResultSet rs = statement.executeQuery();
-                ToolModel model = null;
-                while (rs.next()) {
-                        model =
-                                new ToolModel(rs.getString("Tool_Name"), rs.getString("Tool_Info"),
-                                        rs.getInt("Price"), (InputStream) rs.getBlob("Picture"));
-                }
-                return model;
+        out.println("   Verktøy registrert: ");
+        out.println("   Verktøynavn: " + toolname);
+        out.println("   Verktøyinfo: " + toolinfo);
+        out.println("   Pris: " + toolprice);
 
 
+    }
+
+
+    private ToolModel createTool(String Tool_Name, String Tool_Info, int Price, PrintWriter out) throws SQLException{
+
+        Connection db = null;
+        try {
+            db = DBUtils.getINSTANCE().getConnection(out);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
+        String query = "insert into TOOL (Tool_Name, Tool_Info, Price) values (?, ?, ?)";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setString(1, Tool_Name);
+        statement.setString(2, Tool_Info);
+        statement.setInt(3, Price);
+
+        ResultSet rs = statement.executeQuery();
+        ToolModel model = null;
+        while (rs.next()) {
+            model =
+                    new ToolModel(rs.getString("Tool_Name"), rs.getString("Tool_Info"),
+                            rs.getInt("Price"));
+        }
+        return model;
+
+
+    }
 }
+
