@@ -61,7 +61,7 @@ public class NewToolServlet extends HttpServlet{
                 PrintWriter out = response.getWriter();
 
                 String toolname = request.getParameter("toolName");
-                String toolinfo = request.getParameter("toolName");
+                String toolinfo = request.getParameter("toolInfo");
                 int toolprice = Integer.parseInt(request.getParameter("toolPrice"));
                 InputStream inputstream = null;
                 String message = null;
@@ -84,6 +84,7 @@ public class NewToolServlet extends HttpServlet{
                 out.println("   Verktøynavn: " + toolname);
                 out.println("   Verktøyinfo: " + toolinfo);
                 out.println("   Pris: " + toolprice);
+                out.println("   Bilde: " + inputstream);
 
 
         }
