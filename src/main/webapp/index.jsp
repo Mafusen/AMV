@@ -52,27 +52,22 @@
         }
 
         form {width:500px; margin: auto; display: flex;
-            justify-content: center; align-content: center}
-        h2 {font-family: "Helvetica" ; padding:10px; text-align: center}
+            justify-content: center; align-content: center;}
+        h2 {font-family: "Helvetica"; padding:10px; text-align: center;}
         tr {font-family: "Helvetica"}
         td {font-family: "Helvetica"}
         textarea {font-family: "Helvetica"}
         /*fieldset {border-radius: 10px; padding: 20px;}*/
 
-        .fs {width: 400px; border-radius: 10px; background-color: #cccc00; padding: 20px}
-
-        .col-25 {float: left; width: 25%; margin-top: 6px}
-
-        .col-75 {float: left; width: 75%; margin-top: 6px;}
-
-        .row:after {content: ""; display: table; clear: both;}
+        .fs {width: 450px; border-radius: 10px; background-color: #cccc00; padding: 20px}
+        .center {padding: 10% 0;}
 
     </style>
+
 </head>
-
-
 <body>
-<form action="AddToolServlet" method="post">
+<div class="center">
+<form action="NewToolServlet" method="multipart/form-data">
     <div class="fs">
         <h2> Legg til nytt verktøy</h2>
         <hr>
@@ -89,11 +84,16 @@
                 <td>Pris:</td>
                 <td><input type="text" name="toolPrice" placeholder="Prisen på verktøyet fra dag 2..." required> </td>
             </tr>
+            <tr>
+                <td>Bilde:</td>
+                <td><input type="file" name="Picture" placeholder="Last opp bilde..." size="20" /></td>
+            </tr>
             <td><input type="reset" value="Tilbakestill felter"/></td>
             <td><input type="submit" value="Registrer"/></td>
             </tr>
         </table>
     </div>
 </form>
+</div>
 </body>
 </html>

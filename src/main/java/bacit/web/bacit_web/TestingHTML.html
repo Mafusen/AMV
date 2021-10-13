@@ -6,9 +6,9 @@
   <title>TESTING</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+  * {
+      box-sizing: content-box;
+    }*
 
     input[type=text], select, textarea {
       width: 100%;
@@ -51,16 +51,16 @@
       background-color: #405ffc;
     }
 
-    form {width:500px; margin: auto; display: flex;
+    form {width:600px; margin: auto; display: flex;
       justify-content: center; align-content: center}
     h2 {font-family: "Helvetica"}
     tr {font-family: "Helvetica"}
 
-    .fs {width: 400px; border-radius: 10px; background-color: #cccc00; padding: 20px}
+    .fs {width: 500px; border-radius: 10px; background-color: #cccc00; padding: 20px}
 
-    .col-25 {float: left; width: 25%; margin-top: 6px}
+    .col-25 {float: left; width: 10%; margin-top: 6px}
 
-    .col-75 {float: left; width: 75%; margin-top: 6px;}
+    .col-75 {float: left; width: 50%; margin-top: 6px; margin-left: 10px}
 
     .row:after {content: ""; display: table; clear: both;}
 
@@ -85,6 +85,10 @@
       <tr>
         <td>Pris:</td>
         <td><input type="text" name="toolPrice" placeholder="Prisen på verktøyet fra dag 2..." required /></td>
+      </tr>
+      <tr>
+        <td>Bilde:</td>
+        <td><input type="file" name="photo" size="20" /></td>
       </tr>
       <td><input type="reset" value="Tilbakestill felter"/></td>
       <td><input type="submit" value="Registrer"/></td>
