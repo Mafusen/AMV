@@ -53,10 +53,10 @@
 
         form {width:500px; margin: auto; display: flex;
             justify-content: center; align-content: center;}
-        h2 {font-family: "Segoe UI"; padding:10px; text-align: center;}
-        tr {font-family: "Segoe UI"}
-        td {font-family: "Segoe UI"}
-        textarea {font-family: "Segoe UI"}
+        h2 {font-family: "Tahoma"; padding:10px; text-align: center;}
+        tr {font-family: "Tahoma"}
+        td {font-family: "Tahoma"}
+        textarea {font-family: "Tahoma"}
         /*fieldset {border-radius: 10px; padding: 20px;}*/
 
         .fs {width: 450px; border-radius: 10px; background-color: #cccc00; padding: 20px}
