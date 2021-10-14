@@ -1,0 +1,50 @@
+INSERT INTO USER(
+    Fname,
+    Lname,
+    Phone,
+    Username,
+    Password
+)
+
+values (
+    'Marius',
+    'Sørensen',
+    '90807060',
+    'Sorma',
+    'MaSø123'
+),
+(
+    'Runa',
+    'Jensen',
+    '90708060',
+    'Jenru',
+    'RuJe123'
+),
+(
+    'Said',
+    'Yasaev',
+    '80405060',
+    'Yassa',
+    'SaYa123'
+),
+(
+    'Wares',
+    'Amiry',
+    '90302050',
+    'AmiWa',
+    'WaAm123'
+),
+(
+    'Bjørnar',
+    'Somme',
+    '90506070',
+    'SomBj',
+    'BjSo123'
+),
+(
+    'Vilde',
+    'Elvemo',
+    '9203040',
+    'ElvVi',
+    'ViEl123'
+);
