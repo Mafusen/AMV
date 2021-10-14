@@ -20,7 +20,7 @@ import javax.servlet.annotation.MultipartConfig;
 @MultipartConfig(maxFileSize = 16177215)
 public class NewToolServlet extends HttpServlet{
 
-        @Override
+       /* @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
                 response.setContentType("html/text");
                 PrintWriter out = response.getWriter();
@@ -49,7 +49,7 @@ public class NewToolServlet extends HttpServlet{
                 out.println("</form>");
                 out.println("</body>");
                 out.println("</html>");
-        }
+        }*/
 
 
 
