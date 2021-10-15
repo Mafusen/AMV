@@ -6,6 +6,7 @@ public class UserModel {
     private String phone;
     private String userName;
     private String passWord;
+    public boolean valid;
 
     public UserModel(String firstName, String lastName, String phone, String userName, String passWord) {
         this.firstName = firstName;
@@ -20,7 +21,7 @@ public class UserModel {
 
     }
 
-    public String getFirstName() {
+    public String getfirstName() {
         return firstName;
     }
 
@@ -58,6 +59,14 @@ public class UserModel {
 
     public void setPassWord(String passWord){
         this.passWord = passWord;
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean newValid) {
+        valid = newValid;
     }
 
 }
