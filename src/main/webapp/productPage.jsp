@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href = "navbar.css">
+    <link href = "navbar.css" rel="stylesheet" type = "text/css">
     <title>Title</title>
 </head>
 <body>

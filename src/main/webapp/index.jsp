@@ -1,13 +1,38 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>JSP - Første Side</title>
+    <link rel="stylesheet" href = "login.css">
+    <meta charset="UTF-8">
+    <title>AMV Innlogging</title>
+    <style>
+    </style>
 </head>
 <body>
-<h1><%= "Første side (indikert i index.jsp)" %>
-</h1>
-<br/>
-<a href="registerUserServlet">Register User</a>
+
+<br><br><br><br>
+<h2><img src="https://images.squarespace-cdn.com/content/v1/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/
+              Logo-eng-web-blue.png?format=1500w"></h2><br>
+<div class="login">
+    <form action="logInServlet">
+
+        <br><br>
+        <label><b>Brukernavn:
+        </b>
+            <br>
+        </label>
+        <label for="Username"></label><input type="text" name="Username" id="Username" placeholder="">
+        <br><br>
+        <label><b>Passord:
+        </b>
+            <br>
+        </label>
+        <input type="Password" name="Password" id="Password" placeholder="">
+        <br><br>
+        <a href="productPage.jsp"><label>
+            <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
+        </label></a>
+    </form>
+</div>
 </body>
 </html>
