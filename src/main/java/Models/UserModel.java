@@ -1,13 +1,16 @@
-package bacit.web.bacit_web;
+package Models;
 
 public class UserModel {
+    private int userID;
     private String firstName;
     private String lastName;
     private String phone;
     private String userName;
     private String passWord;
+    public boolean valid;
 
-    public UserModel(String firstName, String lastName, String phone, String userName, String passWord) {
+    public UserModel(int userID, String firstName, String lastName, String phone, String userName, String passWord) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -16,7 +19,22 @@ public class UserModel {
 
     }
 
-    public String getfirstName() {
+    public UserModel() {
+
+    }
+
+    public UserModel(String username, String password, String firstName, String lastName, String password1) {
+    }
+
+    public int getUserID(){
+        return userID;
+    }
+
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+
+    public String getFirstName() {
         return firstName;
     }
 
@@ -28,7 +46,7 @@ public class UserModel {
         return lastName;
     }
 
-    public void setlastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -54,6 +72,14 @@ public class UserModel {
 
     public void setPassWord(String passWord){
         this.passWord = passWord;
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean newValid) {
+        valid = newValid;
     }
 
 }
