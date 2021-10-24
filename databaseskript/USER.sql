@@ -31,20 +31,57 @@ values (
     'Wares',
     'Amiry',
     '90302050',
-    'AmiWa',
+    'Amiwa',
     'WaAm123'
 ),
 (
     'Bjørnar',
     'Somme',
     '90506070',
-    'SomBj',
+    'Sombj',
     'BjSo123'
 ),
 (
     'Vilde',
     'Elvemo',
     '9203040',
-    'ElvVi',
+    'Elvvi',
     'ViEl123'
+),
+
+/*    Tullenavn herfra og ned   */
+(
+   'Martin',
+   'Barken',
+   '91718060',
+   'Barma',
+   'MaBa123'
+),
+(
+   'Hilde',
+   'Elveblest',
+   '91718262',
+   'Elvhi',
+   'HiEl123'
+),
+(
+   'Hedvig',
+   'Ugla',
+   '92728262',
+   'Uglhe',
+   'HeUg123'
+),
+(
+   'Thomas',
+   'Torget',
+   '92728363',
+   'Torth',
+   'ThTo123'
+),
+(
+   'Jon',
+   'Snø',
+   '93728567',
+   'Snøjo',
+   'JoSn123'
 );
