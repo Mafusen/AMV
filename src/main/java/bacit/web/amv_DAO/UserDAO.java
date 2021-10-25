@@ -1,7 +1,7 @@
-package bacit.web.bacit_DAO;
+package bacit.web.amv_DAO;
 
-import bacit.web.bacit_utilities.DBUtils;
-import bacit.web.bacit_models.UserModel;
+import bacit.web.amv_utilities.DBUtils;
+import bacit.web.amv_models.UserModel;
 
 import java.io.PrintWriter;
 import java.util.*;

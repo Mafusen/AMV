@@ -1,4 +1,4 @@
-package bacit.web.bacit_utilities;
+package bacit.web.amv_utilities;
 
 import java.io.PrintWriter;
 import java.sql.Connection;

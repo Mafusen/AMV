@@ -1,4 +1,4 @@
-package bacit.web.bacit_models;
+package bacit.web.amv_models;
 
 public class UserModel {
     private int userID;

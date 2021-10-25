@@ -1,7 +1,7 @@
-package bacit.web.bacit_web;
+package bacit.web.amv_web;
 
-import bacit.web.bacit_DAO.UserDAO;
-import bacit.web.bacit_models.UserModel;
+import bacit.web.amv_DAO.UserDAO;
+import bacit.web.amv_models.UserModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

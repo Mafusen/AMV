@@ -1,5 +1,5 @@
-<%@page import="bacit.web.bacit_web.AllUsersServlet"%>
-<%@ page import="bacit.web.bacit_models.UserModel" %>
+<%@page import="bacit.web.amv_web.AllUsersServlet"%>
+<%@ page import="bacit.web.amv_models.UserModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
