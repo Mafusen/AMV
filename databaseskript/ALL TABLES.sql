@@ -366,6 +366,11 @@ values (
            '1'
        );
 
+INSERT INTO COURSE(Course_Title)
+
+VALUES ('Personløftersertifikat');
+
+
 INSERT INTO ADMIN(USER_ID)
 
 VALUES ('1'),('2'),('3');

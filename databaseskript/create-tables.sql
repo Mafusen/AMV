@@ -16,7 +16,7 @@ create table if not exists USER(
 create table if not exists TOOL(
 	TOOL_ID int UNIQUE auto_increment not NULL,
 	Tool_Name varchar(255) not NULL,
-	Tool_Info varchar(255) not NULL,
+	Tool_Info varchar(255),
 	Price int not NULL,
 	Picture LONGBLOB,
 	IsActive boolean,
@@ -63,23 +63,3 @@ create table if not exists ADMIN(
 	PRIMARY KEY (USER_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 	);
-
-
-INSERT INTO BOOKING(TOOL_ID, USER_ID, IsDelivered)
-VALUES (1, 1, true),
-       (2, 2, false),
-       (3, 3, true),
-       (4, 4, false);
-
-
-
-SELECT TOOL.TOOL_ID AS "Verktøy-ID", Tool_Name as "Verktøynavn", BOOKING_ID FROM TOOL
-LEFT JOIN BOOKING ON TOOL.TOOL_ID = BOOKING.TOOL_ID
-WHERE isDelivered = true OR BOOKING_ID is null;
-
-
-/*Skriver alt som er opptatt*/
-SELECT * FROM TOOL
-RIGHT JOIN BOOKING ON TOOL.TOOL_ID = BOOKING.TOOL_ID
-WHERE isDelivered = false;
-;
