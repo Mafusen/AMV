@@ -57,7 +57,7 @@ public class GetUserServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String query3 = "select * from user where Username = ?";
+        String query3 = "select * from USER where Username = ?";
         PreparedStatement statement = db.prepareStatement(query3);
         statement.setString(1, Username);
         ResultSet rs = statement.executeQuery();
