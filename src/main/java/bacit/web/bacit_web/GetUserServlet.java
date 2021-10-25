@@ -1,8 +1,8 @@
-package Servlets;
+package bacit.web.bacit_web;
 
-import DAOs.UserDAO;
-import Models.UserModel;
-import Database.DBUtils;
+import bacit.web.bacit_DAO.UserDAO;
+import bacit.web.bacit_models.UserModel;
+import bacit.web.bacit_utilities.DBUtils;
 
 import java.io.*;
 import java.sql.Connection;

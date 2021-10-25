@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
+    <link href = "navbar.css" rel="stylesheet" type = "text/css">
     <title>Title</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
         <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="index.jsp">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="login.jsp">Logg ut</a></li>
     </ul>
 </nav>
 

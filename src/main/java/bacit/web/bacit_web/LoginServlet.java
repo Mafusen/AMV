@@ -1,4 +1,4 @@
-package Servlets;
+package bacit.web.bacit_web;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 @WebServlet(name = "logInServlet", value = "/logInServlet")
@@ -19,8 +18,8 @@ public class LoginServlet extends HttpServlet {
         String html = "<html><h3>LOGIN</h3><html>";
         response.getWriter().write(html + "");
 
-        // Dispatch the request to index.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        // Dispatch the request to login.jsp
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
         dispatcher.include(request, response);
 
     }
@@ -49,7 +48,7 @@ public class LoginServlet extends HttpServlet {
             }
 
             else
-                response.sendRedirect("index.jsp"); //error page
+                response.sendRedirect("login.jsp"); //error page
         }
 
 

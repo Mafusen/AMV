@@ -1,5 +1,5 @@
-<%@page import="Servlets.AllUsersServlet"%>
-<%@ page import="Models.UserModel" %>
+<%@page import="bacit.web.bacit_web.AllUsersServlet"%>
+<%@ page import="bacit.web.bacit_models.UserModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
@@ -26,7 +26,7 @@
         <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-        <li class="nav-item"><a href="index.jsp">Logg ut</a></li>
+        <li class="nav-item"><a href="login.jsp">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>

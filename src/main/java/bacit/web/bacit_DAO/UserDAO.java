@@ -1,7 +1,7 @@
-package DAOs;
+package bacit.web.bacit_DAO;
 
-import Database.DBUtils;
-import Models.UserModel;
+import bacit.web.bacit_utilities.DBUtils;
+import bacit.web.bacit_models.UserModel;
 
 import java.io.PrintWriter;
 import java.util.*;

@@ -1,4 +1,4 @@
-package Models;
+package bacit.web.bacit_models;
 
 public class UserModel {
     private int userID;

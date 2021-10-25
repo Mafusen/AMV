@@ -1,7 +1,7 @@
-package Servlets;
+package bacit.web.bacit_web;
 
-import Models.UserModel;
-import Database.DBUtils;
+import bacit.web.bacit_models.UserModel;
+import bacit.web.bacit_utilities.DBUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

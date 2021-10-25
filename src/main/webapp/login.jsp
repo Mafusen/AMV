@@ -1,3 +1,6 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +33,19 @@
         <a href="productPage.jsp"><label>
             <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
         </label></a>
+        <a>
+            <%=
+                displayDate()
+            %>
+        </a>
     </form>
+    <%!
+        public String displayDate(){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+            Date date = Calendar.getInstance().getTime();
+            return dateFormat.format(date);
+        }
+    %>
 </div>
 </body>
 </html>
