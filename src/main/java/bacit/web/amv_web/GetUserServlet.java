@@ -1,12 +1,16 @@
-package bacit.web.amv_web;
+package bacit.web.bacit_web;
 
-import bacit.web.amv_models.UserModel;
+import bacit.web.bacit_DAO.UserDAO;
+import bacit.web.bacit_models.UserModel;
+import bacit.web.bacit_utilities.DBUtils;
 
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -15,19 +19,47 @@ import javax.servlet.annotation.*;
 @WebServlet(name = "getUserServlet", value = "/getUserServlet")
 public class GetUserServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1></h1>");
-        out.println("<h1>Finn informasjon om bruker</h1>");
-        out.println("<form method='post'>");
-        out.println("  <label for='Username'>Brukernavn:</label>");
-        out.println("  <input type='text' name='Username'/>");
-        out.println("  <input type='submit' />");
-        out.println("</form>");
-        out.println("</body></html>");
+        // Collect search string from the form
+        String searchString = request.getParameter("search");
+
+        // Call DAO layer and get all products for search criteria
+        UserDAO dao = new UserDAO();
+        List<UserModel> model = null;
+        try {
+            model = dao.searchUsers(searchString);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        request.setAttribute("model", model);
+        request.getRequestDispatcher("/adminEmployees.jsp").forward(request, response);
+
+        // Write the products' data back to the client browser
+        /*String page = getHTMLString(request.getServletContext().getRealPath("bacit/web/bacit_web/EXP.html"), model);
+        response.getWriter().write(page);*/
+    }
+
+    public String getHTMLString(String filepath, List<UserModel> users) throws IOException{
+        BufferedReader reader = new BufferedReader(new FileReader(filepath));
+        String line = "";
+        StringBuffer buffer = new StringBuffer();
+        while((line=reader.readLine())!=null){
+            buffer.append(line);
+        }
+        reader.close();
+        String page = buffer.toString();
+
+        page = MessageFormat.format(page, users.get(0).getUserID(), users.get(1).getUserID(),
+                users.get(0).getFirstName(),users.get(1).getFirstName(),
+                users.get(0).getLastName(), users.get(1).getLastName(),
+                users.get(0).getPhone(), users.get(1).getPhone(),
+                users.get(0).getUserName(), users.get(1).getUserName(),
+                users.get(0).getPhone(), users.get(1).getPhone(),
+                users.get(0).getPassword(), users.get(0).getPassword(), 0);
+        return page;
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,8 +74,9 @@ public class GetUserServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        assert model != null;
         out.println("Brukernavn: " + model.getUserName());
-        out.println("Fornavn: " + model.getfirstName());
+        out.println("Fornavn: " + model.getFirstName());
         out.println("Etternavn: " + model.getLastName());
         out.println("Telefon: " + model.getPhone());
 
@@ -64,14 +97,15 @@ public class GetUserServlet extends HttpServlet {
         UserModel model = null;
         while (rs.next()) {
             model =
-                    new UserModel(rs.getString("Fname"), rs.getString("Lname"),
-                            rs.getString("Phone"), rs.getString("Username"),
+                    new UserModel(rs.getInt("UserID"),
+                            rs.getString("Fname"),
+                            rs.getString("Lname"),
+                            rs.getString("Phone"),
+                            rs.getString("Username"),
                             rs.getString("Password"));
         }
         return model;
     }
-
-
 
     public void destroy() {
     }

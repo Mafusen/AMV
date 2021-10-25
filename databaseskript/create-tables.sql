@@ -13,7 +13,7 @@ create table if not exists USER(
     PRIMARY KEY (USER_ID)
     );
 	
-create table if not exists TOOL(
+create table if not exists TOOLS(
 	TOOL_ID int UNIQUE auto_increment,
 	Tool_Name varchar(255),
 	Tool_Info varchar(255),
