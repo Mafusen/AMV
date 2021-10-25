@@ -1,8 +1,8 @@
-package bacit.web.amv_web;
+package bacit.web.bacit_web;
 
-import bacit.web.amv_DAO.UserDAO;
-import bacit.web.amv_models.UserModel;
-import bacit.web.amv_utilities.DBUtils;
+import bacit.web.bacit_DAO.UserDAO;
+import bacit.web.bacit_models.UserModel;
+import bacit.web.bacit_utilities.DBUtils;
 
 import java.io.*;
 import java.sql.Connection;

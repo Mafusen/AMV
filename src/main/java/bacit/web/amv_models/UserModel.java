@@ -19,6 +19,7 @@ public class UserModel {
 
     }
 
+
     public UserModel() {
 
     }
@@ -33,6 +34,7 @@ public class UserModel {
     public void setUserID(int userID){
         this.userID = userID;
     }
+
 
     public String getFirstName() {
         return firstName;

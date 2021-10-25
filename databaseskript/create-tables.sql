@@ -9,6 +9,7 @@ create table if not exists USER(
 	Phone varchar(255),
 	Username varchar (255),
     Password varchar(255),
+    IsActive boolean,
     PRIMARY KEY (USER_ID)
     );
 	
@@ -18,6 +19,7 @@ create table if not exists TOOLS(
 	Tool_Info varchar(255),
 	Price int,
 	Picture LONGBLOB,
+	IsActive boolean,
 	PRIMARY KEY (TOOL_ID)
 	);
 
@@ -32,7 +34,7 @@ create table if not exists BOOKING(
 	TOOL_ID int,
 	PRIMARY KEY (BOOKING_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID),
-	FOREIGN KEY (TOOL_ID) REFERENCES TOOLS(TOOL_ID)
+	FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
 	);
 
 create table if not exists COURSE(
@@ -44,7 +46,7 @@ create table if not exists COURSE(
 create table if not exists CERTIFICATE(
 	USER_ID int,
 	COURSE_ID int,
-	Exiry_Date DATE,
+	Expiry_Date DATE,
 	PRIMARY KEY (USER_ID, COURSE_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID),
 	FOREIGN KEY (COURSE_ID) REFERENCES COURSE(COURSE_ID)
@@ -62,4 +64,4 @@ create table if not exists ADMIN(
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 	);
 
-select * from TOOLS;
+select * from TOOL;
