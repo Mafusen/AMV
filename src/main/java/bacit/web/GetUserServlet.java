@@ -1,4 +1,4 @@
-package bacit.web.bacit_web;
+package bacit.web;
 
 import java.io.*;
 import java.sql.Connection;
