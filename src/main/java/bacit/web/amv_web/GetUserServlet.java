@@ -1,4 +1,6 @@
-package bacit.web;
+package bacit.web.amv_web;
+
+import bacit.web.amv_models.UserModel;
 
 import java.io.*;
 import java.sql.Connection;

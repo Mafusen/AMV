@@ -1,4 +1,4 @@
-package bacit.web;
+package bacit.web.amv_models;
 
 public class UserModel {
     private String firstName;
