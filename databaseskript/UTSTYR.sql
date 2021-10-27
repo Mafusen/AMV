@@ -6,6 +6,18 @@ insert into TOOL(
 )
 
 values (
+    'Skruautomat',
+    NULL,
+    '20',
+    NULL
+),
+(
+    'Fein Multimaskin',
+    NULL,
+    '20',
+    NULL
+),
+(
     'Eksentersliper 230VAC',
     '+ papir',
     '20',
@@ -169,5 +181,23 @@ Nyttelast: 1090 kg',
     'Bruker avgiftsfri diesel.
 Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV nr. 0095-0069)',
     '50',
+    NULL
+),
+(
+   'Bluetooth høyttaler - SOUNDBOKS',
+   NULL,
+   '20',
+   NULL
+),
+(
+    'Leica snekkerlaser',
+    NULL,
+    '20',
+    NULL
+),
+(
+    'Leirduekaster',
+    NULL,
+    '20',
     NULL
 );
