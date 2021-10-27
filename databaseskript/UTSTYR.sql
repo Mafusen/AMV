@@ -2,69 +2,80 @@ insert into TOOL(
     Tool_Name,
     Tool_Info,
     Price,
-    Picture
+    Picture,
+    IsActive
 )
 
 values (
     'Skruautomat',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Fein Multimaskin',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Eksentersliper 230VAC',
     '+ papir',
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Båndsliper 230VAC',
     '+ papir',
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Høvel 230VAC',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Gjære-/kombisag 230VAC',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     '9’ vinkelsliper for stein og betong',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Meislemaskin, 230VAC',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Slagdrill, Batteri, Milwaukee',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Kantklipper - bensin',
     'Bruker oljeblandet bensin. Bruk kun ferdigblandet 2-takt alkylatbensin (2%)
 Dette er oljeblandet spesialbensinen med lang holdbarhet som kan kjøpes på bl.a. Felleskjøpet, Biltema og Jula.',
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Kompressor, 230VAC',
@@ -72,13 +83,15 @@ Dette er oljeblandet spesialbensinen med lang holdbarhet som kan kjøpes på bl.
 Avgitt luftmengde: 255 l/min
 Effekt: 1,5 kW.',
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Diagnoseverktøy, bil',
     NULL,
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Vibratorplate «Hoppetusse», bensin',
@@ -86,81 +99,94 @@ Effekt: 1,5 kW.',
 Bruker ren bensin minimum oktantall 95.
 Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV nr. 0095-0069)',
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Flisekutter for keramiske fliser',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Skruautomat',
     '+ skruer',
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Motorisert trillebår',
     NULL,
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Spikerpistol, stor (trykkluft)',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Spikerpistol, liten (trykkluft)',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Spikerpistol, stor (Milwaukee)',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Spikerpistol, mellom (Milwaukee)',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Spikerpistol, liten (Milwaukee)',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Vedkløyver, Bensindrevet',
     NULL,
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Fliskutter for trevirke',
     NULL,
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Tilhenger, boggi; RD 5702',
     'Kassemål LxBxH: 297x153x29cm
 Nyttelast max. 1150kg',
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Tilhenger, liten, RC 8834',
     'Kassemål LxBxH: 197x153x29cm
 Nyttelast max. 645kg',
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Tilhenger, skap, JP2591',
@@ -168,36 +194,42 @@ Nyttelast max. 645kg',
 (Dørkarm BxH: 146x190cm)
 Nyttelast: 1090 kg',
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Personløfter, arb.høyde 12m.',
     'SWL 200 kg, 230 VAC',
     '100',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Strømaggregat, 3.7 kW (Diesel)',
     'Bruker avgiftsfri diesel.
 Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV nr. 0095-0069)',
     '50',
-    NULL
+    NULL,
+    TRUE
 ),
 (
    'Bluetooth høyttaler - SOUNDBOKS',
    NULL,
    '20',
-   NULL
+   NULL,
+   TRUE
 ),
 (
     'Leica snekkerlaser',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 ),
 (
     'Leirduekaster',
     NULL,
     '20',
-    NULL
+    NULL,
+    TRUE
 );

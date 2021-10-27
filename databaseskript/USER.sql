@@ -3,7 +3,8 @@ INSERT INTO USER(
     Lname,
     Phone,
     Username,
-    Password
+    Password,
+    IsActive
 )
 
 values (
@@ -11,42 +12,48 @@ values (
     'Sørensen',
     '90807060',
     'Sorma',
-    'MaSø123'
+    'MaSø123',
+    TRUE
 ),
 (
     'Runa',
     'Jensen',
     '90708060',
     'Jenru',
-    'RuJe123'
+    'RuJe123',
+    TRUE
 ),
 (
     'Said',
     'Yasaev',
     '80405060',
     'Yassa',
-    'SaYa123'
+    'SaYa123',
+    TRUE
 ),
 (
     'Wares',
     'Amiry',
     '90302050',
     'Amiwa',
-    'WaAm123'
+    'WaAm123',
+    TRUE
 ),
 (
     'Bjørnar',
     'Somme',
     '90506070',
     'Sombj',
-    'BjSo123'
+    'BjSo123',
+    TRUE
 ),
 (
     'Vilde',
     'Elvemo',
     '9203040',
     'Elvvi',
-    'ViEl123'
+    'ViEl123',
+    TRUE
 ),
 
 /*    Tullenavn herfra og ned   */
@@ -55,33 +62,38 @@ values (
    'Barken',
    '91718060',
    'Barma',
-   'MaBa123'
+   'MaBa123',
+   TRUE
 ),
 (
    'Hilde',
    'Elveblest',
    '91718262',
    'Elvhi',
-   'HiEl123'
+   'HiEl123',
+   TRUE
 ),
 (
    'Hedvig',
    'Ugla',
    '92728262',
    'Uglhe',
-   'HeUg123'
+   'HeUg123',
+   TRUE
 ),
 (
    'Thomas',
    'Torget',
    '92728363',
    'Torth',
-   'ThTo123'
+   'ThTo123',
+   TRUE
 ),
 (
    'Jon',
    'Snø',
    '93728567',
    'Snøjo',
-   'JoSn123'
+   'JoSn123',
+   TRUE
 );

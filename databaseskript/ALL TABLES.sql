@@ -3,145 +3,180 @@ INSERT INTO USER(
     Lname,
     Phone,
     Username,
-    Password
+    Password,
+    IsActive
 )
 
 values (
-           'Marius',
-           'Sørensen',
-           '90807060',
-           'Sorma',
-           'MaSø123'
-       ),
-       (
-           'Runa',
-           'Jensen',
-           '90708060',
-           'Jenru',
-           'RuJe123'
-       ),
-       (
-           'Said',
-           'Yasaev',
-           '80405060',
-           'Yassa',
-           'SaYa123'
-       ),
-       (
-           'Wares',
-           'Amiry',
-           '90302050',
-           'Amiwa',
-           'WaAm123'
-       ),
-       (
-           'Bjørnar',
-           'Somme',
-           '90506070',
-           'Sombj',
-           'BjSo123'
-       ),
-       (
-           'Vilde',
-           'Elvemo',
-           '9203040',
-           'Elvvi',
-           'ViEl123'
-       ),
+   'Marius',
+   'Sørensen',
+   '90807060',
+   'Sorma',
+   'MaSø123',
+   TRUE
+),
+(
+   'Runa',
+   'Jensen',
+   '90708060',
+   'Jenru',
+   'RuJe123',
+   TRUE
+),
+(
+   'Said',
+   'Yasaev',
+   '80405060',
+   'Yassa',
+   'SaYa123',
+   TRUE
+),
+(
+   'Wares',
+   'Amiry',
+   '90302050',
+   'Amiwa',
+   'WaAm123',
+   TRUE
+),
+(
+   'Bjørnar',
+   'Somme',
+   '90506070',
+   'Sombj',
+   'BjSo123',
+   TRUE
+),
+(
+   'Vilde',
+   'Elvemo',
+   '9203040',
+   'Elvvi',
+   'ViEl123',
+   TRUE
+),
 
-/*    Tullenavn herfra og ned   */
-       (
-           'Martin',
-           'Barken',
-           '91718060',
-           'Barma',
-           'MaBa123'
-       ),
-       (
-           'Hilde',
-           'Elveblest',
-           '91718262',
-           'Elvhi',
-           'HiEl123'
-       ),
-       (
-           'Hedvig',
-           'Ugla',
-           '92728262',
-           'Uglhe',
-           'HeUg123'
-       ),
-       (
-           'Thomas',
-           'Torget',
-           '92728363',
-           'Torth',
-           'ThTo123'
-       ),
-       (
-           'Jon',
-           'Snø',
-           '93728567',
-           'Snøjo',
-           'JoSn123'
-       );
+
+(
+   'Martin',
+   'Barken',
+   '91718060',
+   'Barma',
+   'MaBa123',
+   TRUE
+),
+(
+   'Hilde',
+   'Elveblest',
+   '91718262',
+   'Elvhi',
+   'HiEl123',
+   TRUE
+),
+(
+   'Hedvig',
+   'Ugla',
+   '92728262',
+   'Uglhe',
+   'HeUg123',
+   TRUE
+),
+(
+   'Thomas',
+   'Torget',
+   '92728363',
+   'Torth',
+   'ThTo123',
+   TRUE
+),
+(
+   'Jon',
+   'Snø',
+   '93728567',
+   'Snøjo',
+   'JoSn123',
+   TRUE
+);
 
 
 insert into TOOL(
     Tool_Name,
     Tool_Info,
     Price,
-    Picture
+    Picture,
+    IsActive
 )
 
 values (
+           'Skruautomat',
+           NULL,
+           '20',
+           NULL,
+           TRUE
+       ),
+       (
+           'Fein Multimaskin',
+           NULL,
+           '20',
+           NULL,
+           TRUE
+       ),
+       (
            'Eksentersliper 230VAC',
            '+ papir',
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Båndsliper 230VAC',
            '+ papir',
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Høvel 230VAC',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Gjære-/kombisag 230VAC',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            '9’ vinkelsliper for stein og betong',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Meislemaskin, 230VAC',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Slagdrill, Batteri, Milwaukee',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Kantklipper - bensin',
            'Bruker oljeblandet bensin. Bruk kun ferdigblandet 2-takt alkylatbensin (2%)
        Dette er oljeblandet spesialbensinen med lang holdbarhet som kan kjøpes på bl.a. Felleskjøpet, Biltema og Jula.',
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Kompressor, 230VAC',
@@ -149,13 +184,15 @@ values (
        Avgitt luftmengde: 255 l/min
        Effekt: 1,5 kW.',
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Diagnoseverktøy, bil',
            NULL,
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Vibratorplate «Hoppetusse», bensin',
@@ -163,81 +200,94 @@ values (
        Bruker ren bensin minimum oktantall 95.
        Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV nr. 0095-0069)',
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Flisekutter for keramiske fliser',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Skruautomat',
            '+ skruer',
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Motorisert trillebår',
            NULL,
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Spikerpistol, stor (trykkluft)',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Spikerpistol, liten (trykkluft)',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Spikerpistol, stor (Milwaukee)',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Spikerpistol, mellom (Milwaukee)',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Spikerpistol, liten (Milwaukee)',
            NULL,
            '20',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Vedkløyver, Bensindrevet',
            NULL,
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Fliskutter for trevirke',
            NULL,
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Tilhenger, boggi; RD 5702',
            'Kassemål LxBxH: 297x153x29cm
        Nyttelast max. 1150kg',
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Tilhenger, liten, RC 8834',
            'Kassemål LxBxH: 197x153x29cm
        Nyttelast max. 645kg',
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Tilhenger, skap, JP2591',
@@ -245,20 +295,44 @@ values (
        (Dørkarm BxH: 146x190cm)
        Nyttelast: 1090 kg',
            '50',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Personløfter, arb.høyde 12m.',
            'SWL 200 kg, 230 VAC',
            '100',
-           NULL
+           NULL,
+           TRUE
        ),
        (
            'Strømaggregat, 3.7 kW (Diesel)',
            'Bruker avgiftsfri diesel.
        Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV nr. 0095-0069)',
            '50',
-           NULL
+           NULL,
+           TRUE
+       ),
+       (
+           'Bluetooth høyttaler - SOUNDBOKS',
+           NULL,
+           '20',
+           NULL,
+           TRUE
+       ),
+       (
+           'Leica snekkerlaser',
+           NULL,
+           '20',
+           NULL,
+           TRUE
+       ),
+       (
+           'Leirduekaster',
+           NULL,
+           '20',
+           NULL,
+           TRUE
        );
 
 
