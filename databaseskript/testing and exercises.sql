@@ -29,7 +29,6 @@ ORDER BY EndDate DESC;
 
 
 /* Admin view */
-
 CREATE VIEW Admins AS(
 SELECT USER.USER_ID AS Bruker_ID, USER.Fname AS Fornavn, USER.Lname AS Etternavn
 FROM USER
