@@ -13,9 +13,11 @@ create table if not exists USER(
     PRIMARY KEY (USER_ID)
     );
 	
-create table if not exists TOOL(
-	TOOL_ID int UNIQUE auto_increment not NULL,
-	Tool_Name varchar(255) not NULL,
+
+create table if not exists TOOLS(
+	TOOL_ID int UNIQUE auto_increment,
+	Tool_Name varchar(255),
+
 	Tool_Info varchar(255),
 	Price int not NULL,
 	Picture LONGBLOB,
@@ -34,7 +36,7 @@ create table if not exists BOOKING(
 	TOOL_ID int not NULL,
 	PRIMARY KEY (BOOKING_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID),
-	FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
+	FOREIGN KEY (TOOL_ID) REFERENCES TOOLS(TOOL_ID)
 	);
 
 create table if not exists COURSE(

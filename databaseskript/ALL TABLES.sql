@@ -87,7 +87,7 @@ values (
        );
 
 
-insert into TOOL(
+insert into TOOLS(
     Tool_Name,
     Tool_Info,
     Price,
