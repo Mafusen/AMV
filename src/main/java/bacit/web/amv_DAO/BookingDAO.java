@@ -26,7 +26,7 @@ public class BookingDAO {
         try{
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
-            String query ="select * from Booking where USER_ID = ? and TOOL_ID = ?";
+            String query ="select * from BOOKING where USER_ID = ? and TOOL_ID = ?";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setString(1, userID);
             statement.setString(2, toolID);
@@ -61,7 +61,7 @@ public class BookingDAO {
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
-            String query = "select * from Booking where USER_ID = ?";
+            String query = "select * from BOOKING where USER_ID = ?";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);
             ResultSet rs = statement.executeQuery();
