@@ -10,10 +10,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 
 @WebServlet(name = "logInServlet", value = "/logInServlet")
@@ -27,13 +24,15 @@ public class LoginServlet extends HttpServlet {
 
         try
         {
-
+            // Create new instance of UserModel and set fields to parameter from request
             UserModel user = new UserModel();
             user.setUserName(request.getParameter("Username"));
             user.setPassWord(request.getParameter("Password"));
 
+            // Log in user with method login in UserDAO
             UserDAO.login(user);
 
+            // Check if user is a valid user
             if (user.isValid())
             {
                 String username = request.getParameter("Username");
@@ -44,10 +43,19 @@ public class LoginServlet extends HttpServlet {
                 model = dao.getUser(username);
                 int userID = model.getUserID();
 
+                // Create cookie with name and value to store logged-in user's username
+                // and add cookie object to response
+                Cookie cookie = new Cookie ("Username", username);
+                cookie.setMaxAge(60);
+                response.addCookie(cookie);
+
+                // Set userID as attribute to request and forward to productPage
                 request.setAttribute("userID", userID);
-                response.sendRedirect("productPage.jsp"); //logged-in page
+                request.getRequestDispatcher("productPage.jsp").forward(request, response);
+
             }
 
+            // Send client back to login-page if not valid
             else
                 response.sendRedirect("login.jsp"); //error page
         }
@@ -59,8 +67,8 @@ public class LoginServlet extends HttpServlet {
         }
 
         // Dispatch the request to login.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-        dispatcher.include(request, response);
+        // RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+        // dispatcher.include(request, response);
 
     }
 }

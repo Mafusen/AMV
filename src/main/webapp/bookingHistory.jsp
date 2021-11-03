@@ -3,6 +3,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="bacit.web.amv_models.ToolModel" %>
+<%@ page import="bacit.web.amv_models.ToolBookingModel" %>
+<%@ page import="javax.tools.Tool" %>
 <%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
@@ -42,29 +44,37 @@
 </nav>
 <div class="main">
     <br><br><h1>Min Leiehistorikk</h1>
+    <form action = "bookingHistoryServlet" method = "get">
+        <label>
+            <input type = "text" placeholder="produktnavn..." name = "search">
+        </label>
+        <button type = "submit">SØK</button>
+    </form>
 
+    <table>
 <%
+    List<ToolBookingModel> toolBookings = (ArrayList<ToolBookingModel>) request.getAttribute("toolBookings");
 
-    List<BookingModel> bookings = (ArrayList<BookingModel>)request.getAttribute("bookings");
-    List<ToolModel> tools = (List<ToolModel>) request.getAttribute("tools");
-    for (BookingModel booking : bookings)
-    {
-
+    for(ToolBookingModel toolBooking : toolBookings){
 %>
-     <%
-         for (ToolModel tool : tools)
-         {
-     %>
-     <a>Produktnavn: <%=tool.getToolName()%></a>
-     <a>Leieperiode: <%=booking.getStartDate() + " ---> " + booking.getEndDate()%></a>
-<br><br>
+        <tr>
+            <td>BILDE GÅR HER</td>
+            <td>Produkt: <%=toolBooking.getToolName()%></td>
+            <td>Leieperiode: <%=toolBooking.getStartDate() + " ---> " + toolBooking.getEndDate()%></td>
+            <td><button type = submit>Se Produkt</button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <a></a>
+        <a></a>
+        <br><br>
     <%
         }
 %>
-    <%
-        }
-    %>
-
+    </table>
 </div>
 
 </body>

@@ -29,7 +29,7 @@
 
   <ul class="nav-links">
 
-    <li class="nav-item"><a href="bookingHistory.jsp">LeieHistorikk</a></li>
+    <li class="nav-item"><a href="bookingHistoryServlet">LeieHistorikk</a></li>
     <li class="nav-item"><a href="adminTools.jsp">Aktive Bookinger</a></li>
     <li class="nav-item"><a href="adminReports.jsp">Fremtidige Bookinger</a></li>
   </ul>
