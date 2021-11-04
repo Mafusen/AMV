@@ -13,9 +13,11 @@ create table if not exists USER(
     PRIMARY KEY (USER_ID)
     );
 	
+
 create table if not exists TOOL(
-	TOOL_ID int UNIQUE auto_increment not NULL,
-	Tool_Name varchar(255) not NULL,
+	TOOL_ID int UNIQUE auto_increment,
+	Tool_Name varchar(255),
+
 	Tool_Info varchar(255),
 	Price int not NULL,
 	Picture LONGBLOB,
