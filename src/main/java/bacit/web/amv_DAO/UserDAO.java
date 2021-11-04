@@ -22,7 +22,7 @@ public class UserDAO
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
-            String query = "select * from User where Username = ?";
+            String query = "select * from USER where Username = ?";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setString(1, searchString);
             ResultSet rs = statement.executeQuery();
@@ -50,7 +50,7 @@ public class UserDAO
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
-            String query = "select * from User where Username = ?";
+            String query = "select * from USER where Username = ?";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setString(1, Username);
             ResultSet rs = statement.executeQuery();
