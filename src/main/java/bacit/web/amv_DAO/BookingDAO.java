@@ -95,7 +95,7 @@ public class BookingDAO {
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
-            String query = "select * from Booking where BOOKING_ID = ?";
+            String query = "select * from BOOKING where BOOKING_ID = ?";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, bookingID);
             ResultSet rs = statement.executeQuery();

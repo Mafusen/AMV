@@ -24,7 +24,7 @@ public class ToolDAO {
             exception.printStackTrace();
         }
 
-            String query = "select * from Tool where TOOL_ID = ?";
+            String query = "select * from TOOL where TOOL_ID = ?";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, toolID);
             ResultSet rs = statement.executeQuery();
