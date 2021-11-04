@@ -1,0 +1,99 @@
+.main {
+    padding-top: 75px;
+}
+.content {
+    padding-top: 20px;
+    display: block;
+    background-color: rgba(255, 255, 255, 0);
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.usercontainer {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px 40px;
+
+}
+.username {
+    display: flex;
+    gap: 20px 20px;
+}
+
+.info {
+    display: flex;
+    float: left;
+    flex-direction: row;
+    gap: 20px 20px;
+    min-width: 400px;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+.icon {
+    width: 20%;
+    height: auto;
+}
+
+.icon img {
+    max-width: 100%;
+    min-width: 200px;
+    height: auto;
+    border-radius: 15px;
+}
+.user {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.email {
+    display: flex;
+    float: bottom;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
+    padding: 20px;
+}
+.phone {
+    display: flex;
+    float: bottom;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
+    padding: 20px;
+
+}
+.course {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    justify-content: center;
+    font-size:30px;
+    font-weight: bold;
+}
+
+.certificate {
+    font-size: 20px;
+    display: flex;
+    float: bottom;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
+    font-weight: normal;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+.course img {
+    width: 40px;
+    height: auto;
+    padding: 0;
+}
+.course span {
+    font-weight: normal;
+}

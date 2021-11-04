@@ -120,4 +120,52 @@ public class BookingDAO {
 
     }
 
+    public void registerBooking(BookingModel model) {
+
+        try {
+
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  insertion query
+            String query = "insert into BOOKING (StartDate, EndDate, Cmnt, TotalPrice, USER_ID, TOOL_ID) values (?, ?, ?, ?, ?, ?)";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getStartDate());
+            statement.setString(2, model.getEndDate());
+            statement.setString(3, model.getComment());
+            statement.setInt(4, model.getTotalPrice());
+            statement.setInt(5, model.getUserID());
+            statement.setInt(6, model.getToolID());
+
+            // Execute the statement
+            ResultSet rs = statement.executeQuery();
+
+        } catch (SQLException | ClassNotFoundException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void leverBooking(BookingModel model) {
+
+        try {
+
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  insertion query
+            String query = "UPDATE BOOKING set IsDelivered = 1, Cmnt = ? where BOOKING_ID = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getComment());
+            statement.setInt(2, model.getBookingID());
+
+            // Execute the statement
+            ResultSet rs = statement.executeQuery();
+
+        } catch (SQLException | ClassNotFoundException exception) {
+            exception.printStackTrace();
+        }
+    }
+
 }

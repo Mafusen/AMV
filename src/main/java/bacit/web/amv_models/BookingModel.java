@@ -15,6 +15,15 @@ public class BookingModel {
 
     }
 
+    public BookingModel(String startDate, String endDate, String comment, int totalPrice, int userID, int toolID) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.comment = comment;
+        this.totalPrice = totalPrice;
+        this.userID = userID;
+        this.toolID = toolID;
+    }
+
 
     public int getBookingID() {
         return bookingID;

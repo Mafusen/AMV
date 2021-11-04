@@ -1,0 +1,135 @@
+.notcollapsible {
+    background-color: #ffb300;
+    color: #11165a;
+    cursor: auto;
+    padding: 18px;
+    width: 90%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.collapsible {
+    background-color: #ffb300;
+    color: #11165a;
+    cursor: pointer;
+    padding: 18px;
+    width: 90%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.collapsible:hover {
+    background-color: #e79d00;
+}
+.collapsible:after {
+    content: "▼";
+    font-size: 16px;
+    color: #11165a;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    transform: rotate(180deg);
+}
+
+.main {
+    padding-top: 75px;
+}
+
+.content {
+    padding: 0 18px;
+    display: block;
+    background-color: rgba(255, 255, 255, 0);
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px 40px;
+
+}
+
+.products {
+    display: flex;
+    width: 45%;
+    float: left;
+    flex-direction: row;
+    gap: 20px 20px;
+    min-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 5px 7px 15px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+
+}
+.products:hover {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.31), 9px 11px 19px 0 rgba(0, 0, 0, 0.31);
+    border-radius: 15px;
+}
+.products img {
+    /*max-width: 45%;*/
+    width: 30%;
+    min-width: 200px;
+    height: auto;
+    border-radius: 15px;
+}
+.product {
+    display: flex;
+    float: left;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px 10px;
+    margin-top: 30px;
+}
+
+
+.productname {
+    font-size: 20px;
+    display: flex;
+    float: bottom;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+}
+.productinfo {
+    font-size: 18px;
+    display: flex;
+    float: bottom;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
+}
+
+input[type=text], select, text {
+    width: 90%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}

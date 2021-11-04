@@ -26,7 +26,7 @@
         <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-        <li class="nav-item"><a href="login.jsp">Logg ut</a></li>
+        <li class="nav-item"><a href="index.jsp">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>
@@ -40,12 +40,12 @@
     </ul>
 
 </nav>
-<form>
+   <h1>Liste over brukere:</h1>
     <table>
 
 <%
-    List<UserModel> models = (ArrayList)request.getAttribute("model");
-    for (UserModel user : models) {
+    List<UserModel> users = (ArrayList)request.getAttribute("users");
+    for (UserModel user : users) {
 %>
         <tr>
             <th>BrukerID</th>
@@ -73,27 +73,5 @@
             }
 %>
 </table>
-</form>
-
-<div>
-    <br><br><h1>Liste over ansatte:</h1>
-</div>
-<br><br><br><br><br><br>
-<form action = "allUsersServlet" method = "POST">
-    <table>
-    <tr>
-        <th>Fornavn</th>
-        <th>Etternavn</th>
-        <th>Tlf</th>
-        <th>Brukernavn</th>
-        </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    </table>
-</form>
 </body>
 </html>

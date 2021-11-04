@@ -38,7 +38,6 @@ public class BookingHistoryServlet extends HttpServlet {
         UserModel user = dao.getUser(username);
         int userID = user.getUserID();
 
-        // Call DAO layer and get all bookings for specific user
         BookingDAO bDao = new BookingDAO();
 
         List<ToolBookingModel> toolBookings = createToolBookingList(bDao.getUserBookings(userID), searchString);

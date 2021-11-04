@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 
             // Send client back to login-page if not valid
             else
-                response.sendRedirect("login.jsp"); //error page
+                response.sendRedirect("index.jsp"); //error page
         }
 
 
@@ -66,8 +66,8 @@ public class LoginServlet extends HttpServlet {
             System.out.println(theException);
         }
 
-        // Dispatch the request to login.jsp
-        // RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+        // Dispatch the request to index.jsp
+        // RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         // dispatcher.include(request, response);
 
     }
@@ -96,7 +96,7 @@ public class LoginServlet extends HttpServlet {
             }
 
             else
-                response.sendRedirect("login.jsp"); //error page
+                response.sendRedirect("index.jsp"); //error page
         }
 
 

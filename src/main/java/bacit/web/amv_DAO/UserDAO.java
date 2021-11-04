@@ -73,6 +73,37 @@ public class UserDAO
 
     }
 
+    public List<UserModel> getUsers() throws SQLException {
+
+        List<UserModel> users = new ArrayList<>();
+
+        try {
+            db = DBUtils.getINSTANCE().getConnection(out);
+
+
+        String query3 = "select * from USER";
+        PreparedStatement statement = db.prepareStatement(query3);
+        ResultSet rs = statement.executeQuery();
+
+        while (rs.next()) {
+            UserModel model = new UserModel();
+            model.setUserID(rs.getInt("UserID"));
+            model.setFirstName(rs.getString("Fname"));
+            model.setLastName(rs.getString("Lname"));
+            model.setPhone(rs.getString("Phone"));
+            model.setUserName(rs.getString("Username"));
+            model.setPassWord(rs.getString("Password"));
+            users.add(model);
+        }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+
+    }
+
+
     public void registerUser(UserModel model){
 
         try{
