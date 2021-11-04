@@ -88,4 +88,36 @@ public class BookingDAO {
         return bookings;
     }
 
+    public BookingModel getBooking(int bookingID){
+
+        BookingModel model = new BookingModel();
+
+        try {
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            String query = "select * from Booking where BOOKING_ID = ?";
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, bookingID);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                model.setBookingID(rs.getInt("BOOKING_ID"));
+                model.setStartDate(rs.getString("StartDate"));
+                model.setEndDate(rs.getString("EndDate"));
+                model.setComment(rs.getString("Cmnt"));
+                model.setIsDelivered(rs.getBoolean("IsDelivered"));
+                model.setTotalPrice(rs.getInt("TotalPrice"));
+                model.setUserID(rs.getInt("USER_ID"));
+                model.setToolID(rs.getInt("TOOL_ID"));
+            }
+
+        }
+        catch(SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+
+        return model;
+
+    }
+
 }

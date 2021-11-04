@@ -2,23 +2,22 @@ package bacit.web.amv_models;
 
 public class ToolBookingModel {
 
-    // private int bookingID;
+    private int bookingID;
     private String startDate;
     private String endDate;
     private String comment;
     private boolean isDelivered;
     private int totalPrice;
-    // private int userID;
-    // private int toolID;
-    // private int toolID;
+    private int userID;
+    private int toolID;
     private String toolName;
     private String toolInfo;
     private int price;
     private boolean isActive;
 
-    // public int getToolID() { return toolID; }
+    public ToolBookingModel(){
 
-    // public void setToolID(int toolID) { this.toolID = toolID; }
+    }
 
     public String getToolName() {
         return toolName;
@@ -52,9 +51,9 @@ public class ToolBookingModel {
         isActive = active;
     }
 
-    // public int getBookingID() {return bookingID;}
+    public int getBookingID() {return bookingID;}
 
-    // public void setBookingID(int bookingID) {this.bookingID = bookingID;}
+    public void setBookingID(int bookingID) {this.bookingID = bookingID;}
 
     public String getStartDate() {
         return startDate;
@@ -96,11 +95,11 @@ public class ToolBookingModel {
         this.totalPrice = totalPrice;
     }
 
-    // public int getUserID() {return userID;}
+    public int getUserID() {return userID;}
 
-    // public void setUserID(int userID) {this.userID = userID;}
+    public void setUserID(int userID) {this.userID = userID;}
 
-    // public int getToolID() {return toolID;}
+    public int getToolID() {return toolID;}
 
-    // public void setToolID(int toolID) {this.toolID = toolID;}
+    public void setToolID(int toolID) {this.toolID = toolID;}
 }

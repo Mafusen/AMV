@@ -74,15 +74,18 @@ public class BookingHistoryServlet extends HttpServlet {
         List<ToolBookingModel> toolBookings = new ArrayList<>();
 
         for (BookingModel booking : bookings) {
+            int toolID = booking.getToolID();
+            ToolDAO tDao = new ToolDAO();
             if (searchString == null) {
-                int toolID = booking.getToolID();
-                ToolDAO tDao2 = new ToolDAO();
                 ToolModel tool;
                 ToolBookingModel model = new ToolBookingModel();
 
                 try {
-                    tool = tDao2.getTool(toolID);
+                    tool = tDao.getTool(toolID);
 
+                    model.setUserID(booking.getUserID());
+                    model.setBookingID(booking.getBookingID());
+                    model.setToolID(tool.getToolID());
                     model.setToolName(tool.getToolName());
                     model.setToolInfo(tool.getToolInfo());
                     model.setPrice(tool.getPrice());
@@ -97,14 +100,15 @@ public class BookingHistoryServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             } else {
-                int toolID = booking.getToolID();
-                ToolDAO tDao2 = new ToolDAO();
                 ToolModel tool;
                 ToolBookingModel model = new ToolBookingModel();
 
                 try {
-                    tool = tDao2.getTool(toolID);
+                    tool = tDao.getTool(toolID);
 
+                    model.setUserID(booking.getUserID());
+                    model.setBookingID(booking.getBookingID());
+                    model.setToolID(tool.getToolID());
                     model.setToolName(tool.getToolName());
                     model.setToolInfo(tool.getToolInfo());
                     model.setPrice(tool.getPrice());

@@ -61,7 +61,7 @@
             <td>BILDE GÅR HER</td>
             <td>Produkt: <%=toolBooking.getToolName()%></td>
             <td>Leieperiode: <%=toolBooking.getStartDate() + " ---> " + toolBooking.getEndDate()%></td>
-            <td><button type = submit>Se Produkt</button></td>
+            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=toolBooking.getBookingID()%>">Se Produkt</button></form></td>
         </tr>
         <tr>
             <td></td>
