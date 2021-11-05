@@ -66,3 +66,12 @@ create table if not exists ADMIN(
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 	);
 
+create table if not exists  FILE(
+    FILE_ID int UNIQUE auto_increment not NULL,
+    File_Name varchar (255) not null,
+    File_Content LONGBLOB not null,
+    ContentType varchar (255) not null,
+    TOOL_ID int not null,
+    PRIMARY KEY (FILE_ID),
+    FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
+);
