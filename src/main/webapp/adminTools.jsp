@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
@@ -38,6 +39,11 @@
 
 <div class="main">
     <br><br><h1>Side med verktoy</h1>
+    <div>
+        <a href = "newTool.jsp">
+        <button name = submit type = submit value = submit >Legg til nytt verktøy</button>
+        </a>
+</div>
 
     <p>Employee information/name/uname</p>
     <p>Some text some text some text some text..</p>
