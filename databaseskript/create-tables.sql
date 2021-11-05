@@ -65,3 +65,4 @@ create table if not exists ADMIN(
 	PRIMARY KEY (USER_ID),
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 	);
+
