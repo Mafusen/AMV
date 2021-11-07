@@ -146,7 +146,7 @@ public class BookingDAO {
         }
     }
 
-    public void leverBooking(BookingModel model) {
+    public void deliverBooking(BookingModel model) {
 
         try {
 
