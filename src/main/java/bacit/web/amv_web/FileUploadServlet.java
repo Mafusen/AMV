@@ -37,10 +37,7 @@ public class FileUploadServlet extends HttpServlet {
             InputStream fileContent = filePart.getInputStream();
             byte[] fileBytes = fileContent.readAllBytes();
 
-            FileModel fileModel = new FileModel(
-                    fileName,
-                    fileBytes,
-                    filePart.getContentType());
+            FileModel fileModel = new FileModel();
 
             FileDAO dao = new FileDAO();
             try {

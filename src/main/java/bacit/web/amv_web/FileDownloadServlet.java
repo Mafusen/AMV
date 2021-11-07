@@ -1,5 +1,6 @@
 package bacit.web.amv_web;
 
+import javax.servlet.ServletOutputStream;
 import bacit.web.amv_DAO.FileDAO;
 import bacit.web.amv_models.FileModel;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +18,7 @@ public class FileDownloadServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String stringId = getQueryStringParameter(request,"id");
+        String stringId = getQueryStringParameter(request,"FILE_ID");
         int id = Integer.parseInt(stringId);
         try{
             FileModel fileModel =  getFile(id);
@@ -36,14 +37,14 @@ public class FileDownloadServlet extends HttpServlet {
 
     protected String getQueryStringParameter(HttpServletRequest request, String parameter)
     {
-        return request.getParameter("id");
+        return request.getParameter("FILE_ID");
     }
 
     protected void writeFileResult(HttpServletResponse response, FileModel model) throws IOException
     {
         response.setContentType(model.getContentType());
         response.setHeader("Content-Disposition", "attachment; filename="+model.getName());
-        OutputStream outStream = response.getOutputStream();
+        ServletOutputStream outStream = response.getOutputStream();
         outStream.write(model.getContents());
     }
 }

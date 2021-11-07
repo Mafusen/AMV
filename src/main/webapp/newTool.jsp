@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="fileUpload.jsp"%>
 <html>
 <head>
     <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
@@ -19,40 +18,49 @@
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
+        <li class="nav-item"><a href="getToolsServlet">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookingHistoryServlet">Bookinger</a></li>
         <li class="nav-item"><a style="padding-right: 30px" href="logInServlet">Logg ut</a></li>
     </ul>
 </nav>
-<br><br>
+<br><br><br><br>
 <nav class="adminTabs">
 
     <ul class="nav-links">
 
         <li class="nav-item"><a href="getUserServlet">Ansatte</a></li>
-        <li class="nav-item"><a href="adminTools.jsp">Verktoy</a></li>
+        <li class="nav-item"><a href="getToolsServlet">Verktoy</a></li>
         <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
     </ul>
 
 </nav>
-<form action = # method = #>
+<form action = "registerToolServlet" method = "post" enctype="multipart/form-data">
 <div class="main">
-    <br><br><h1>Nytt verktøy:</h1>
-    <b>Navn på verktøy: </b>
-    <label for="ToolName"></label><input type="text" name="ToolName" id="ToolName" placeholder="">
+    <br><br>
+    <h1>Nytt verktøy:</h1>
+    <hr>
+    <label for="name"><b>Navn på verktøy: </b></label>
+    <input type="text" name="name" id="name" placeholder="Skriv inn navn på verktøy">
     <br>
-    <b>Info om verktøy: </b>
-    <label for="ToolInfo"></label><input type="text" name="ToolInfo" id="ToolInfo" placeholder="">
+
+    <label for="info"><b>Info om verktøy:</b></label>
+    <input type="text" name="info" id="info" placeholder="Skriv inn info om verktøy">
     <br>
-    <b>Pris: </b>
-    <label for="Price"></label><input type="text" name="Price" id="Price" placeholder="">
+
+    <label for="price"><b>Pris: </b></label>
+    <input type="text" name="price" id="price" placeholder="Skriv inn pris på verktøy">
     <br>
-    <%@include file="fileUpload.jsp"%>
+
+
+    <label for="file"><b>Last opp bilde</b></label>
+    <input type="file" name="file" id = "file"/>
+
     <br>
-    <a>
-    <input type='submit' value='registerTool'/>
+    <a href = "getToolsServlet">
+    <button type="submit" class = "register">Registrer nytt verktøy</button>
     </a>
+
 </div>
 </form>
 </body>

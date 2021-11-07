@@ -23,7 +23,7 @@
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
+        <li class="nav-item"><a href="getToolsServlet">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
         <li class="nav-item"><a href="index.jsp">Logg ut</a></li>
@@ -35,7 +35,7 @@
     <ul class="nav-links">
 
         <li class="nav-item"><a href="adminEmployees.jsp">Ansatte</a></li>
-        <li class="nav-item"><a href="adminTools.jsp">Verktoy</a></li>
+        <li class="nav-item"><a href="getToolsServlet">Verktoy</a></li>
         <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
     </ul>
 

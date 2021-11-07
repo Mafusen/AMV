@@ -16,9 +16,6 @@ public class GetToolServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ToolDAO dao = new ToolDAO();
-        ToolModel model = new ToolModel();
-
     }
 
     @Override

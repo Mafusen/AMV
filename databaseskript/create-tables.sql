@@ -17,7 +17,6 @@ create table if not exists USER(
 create table if not exists TOOL(
 	TOOL_ID int UNIQUE auto_increment,
 	Tool_Name varchar(255),
-
 	Tool_Info varchar(255),
 	Price int not NULL,
 	Picture LONGBLOB,
@@ -75,4 +74,6 @@ create table if not exists  FILE(
     PRIMARY KEY (FILE_ID),
     FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
 );
+
+
 
