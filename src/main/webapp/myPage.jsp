@@ -19,7 +19,7 @@
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
+        <li class="nav-item"><a href="getToolsServlet">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookingHistoryServlet">Bookinger</a></li>
         <li class="nav-item"><a style="padding-right: 30px" href="logInServlet">Logg ut</a></li>

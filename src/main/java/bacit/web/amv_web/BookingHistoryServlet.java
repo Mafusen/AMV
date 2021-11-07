@@ -47,28 +47,6 @@ public class BookingHistoryServlet extends HttpServlet {
 
     }
 
-    private List<ToolModel> getToolFromID(String username) throws SQLException, ClassNotFoundException {
-        ArrayList<Integer> iDs = new ArrayList<>();
-
-        UserDAO uDao = new UserDAO();
-        UserModel user = uDao.getUser(username);
-        int userID = user.getUserID();
-
-        BookingDAO bDao = new BookingDAO();
-        List<BookingModel> bookings = bDao.getUserBookings(userID);
-
-        List<ToolModel> tools = new ArrayList<>();
-
-        for (BookingModel booking : bookings) {
-            int iD = booking.getToolID();
-            ToolDAO tDao = new ToolDAO();
-            ToolModel tool = tDao.getTool(iD);
-            tools.add(tool);
-        }
-
-        return tools;
-    }
-
     public List<ToolBookingModel> createToolBookingList(List<BookingModel> bookings, String searchString) {
         List<ToolBookingModel> toolBookings = new ArrayList<>();
 

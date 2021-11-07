@@ -1,17 +1,11 @@
-<%@ page import="bacit.web.amv_models.FileModel" %>
-<%@ page import="bacit.web.amv_models.ToolFileModel" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.Blob" %>
-<%@ page import="java.io.OutputStream" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
-  Date: 15/10/2021
-  Time: 13:12
+  Date: 04/11/2021
+  Time: 20:50
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
@@ -41,35 +35,33 @@
     </ul>
 
 </nav>
-
+<form action = "registerToolServlet" method = "post" enctype="multipart/form-data">
 <div class="main">
-    <br><br><h1>Side med verktoy</h1>
-    <div>
-        <a href = "newTool.jsp">
-        <button name = submit type = submit value = submit >Legg til nytt verktøy</button>
-        </a>
+    <br><br>
+    <h1>Nytt verktøy:</h1>
+    <hr>
+    <label for="name"><b>Navn på verktøy: </b></label>
+    <input type="text" name="name" id="name" placeholder="Skriv inn navn på verktøy">
+    <br>
+
+    <label for="info"><b>Info om verktøy:</b></label>
+    <input type="text" name="info" id="info" placeholder="Skriv inn info om verktøy">
+    <br>
+
+    <label for="price"><b>Pris: </b></label>
+    <input type="text" name="price" id="price" placeholder="Skriv inn pris på verktøy">
+    <br>
+
+
+    <label for="file"><b>Last opp bilde</b></label>
+    <input type="file" name="file" id = "file"/>
+
+    <br>
+    <a href = "getToolsServlet">
+    <button type="submit" class = "register">Registrer nytt verktøy</button>
+    </a>
+
 </div>
-</div>
-
-<table>
-    <%
-        List<ToolFileModel> toolFiles = (ArrayList<ToolFileModel>) request.getAttribute("toolFiles");
-
-        for(ToolFileModel toolFile : toolFiles){
-            //int fileIDint = tool.getFileID();
-            //String fileID = Integer.toString(fileIDint);
-
-    %>
-
-    <tr>
-        <td><img src="fileDownloadServlet?FILE_ID=<%=toolFile.getFileID()%>" alt="<%=toolFile.getToolName()%>" style="height: 250px" width="auto"></td>
-        <td>Verktøy: <%=toolFile.getToolName()%></td>
-        <td>Informasjon <%=toolFile.getToolInfo()%></td>
-    </tr>
-    <%
-        }
-    %>
-</table>
-
+</form>
 </body>
 </html>

@@ -17,7 +17,7 @@ import javax.servlet.http.*;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession(true);
         PrintWriter out = null;
@@ -46,7 +46,6 @@ public class LoginServlet extends HttpServlet {
                 // Create cookie with name and value to store logged-in user's username
                 // and add cookie object to response
                 Cookie cookie = new Cookie ("Username", username);
-                cookie.setMaxAge(60);
                 response.addCookie(cookie);
 
                 // Set userID as attribute to request and forward to productPage

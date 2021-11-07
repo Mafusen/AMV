@@ -16,7 +16,7 @@
 <h2><img src="https://images.squarespace-cdn.com/content/v1/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/
               Logo-eng-web-blue.png?format=1500w"></h2><br>
 <div class="login">
-    <form action="logInServlet" method="get">
+    <form action="logInServlet" method="post">
         <br><br>
         <label><b>Brukernavn:
         </b>

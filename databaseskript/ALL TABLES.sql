@@ -1,3 +1,4 @@
+USE AMVDB;
 INSERT INTO USER(
     Fname,
     Lname,

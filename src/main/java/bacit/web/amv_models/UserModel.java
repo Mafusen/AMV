@@ -10,6 +10,7 @@ public class UserModel {
     public boolean valid;
 
     public UserModel(int userID, String firstName, String lastName, String phone, String userName, String passWord) {
+
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
