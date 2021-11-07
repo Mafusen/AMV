@@ -19,9 +19,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession(true);
-        PrintWriter out = null;
-
         try
         {
             // Create new instance of UserModel and set fields to parameter from request
@@ -43,10 +40,10 @@ public class LoginServlet extends HttpServlet {
                 model = dao.getUser(username);
                 int userID = model.getUserID();
 
-                // Create cookie with name and value to store logged-in user's username
-                // and add cookie object to response
-                Cookie cookie = new Cookie ("Username", username);
-                response.addCookie(cookie);
+                // Create session object with name and value to store logged-in user's username
+                // and add username as attribute in session to response
+                HttpSession session = request.getSession(true);
+                session.setAttribute("username", username);
 
                 // Set userID as attribute to request and forward to productPage
                 request.setAttribute("userID", userID);
@@ -65,41 +62,6 @@ public class LoginServlet extends HttpServlet {
             System.out.println(theException);
         }
 
-        // Dispatch the request to index.jsp
-        // RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        // dispatcher.include(request, response);
-
     }
 }
 
-
-
-/*    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, java.io.IOException {
-
-        try
-        {
-
-            UserModel user = new UserModel();
-            user.setUserName(request.getParameter("Username"));
-            user.setPassWord(request.getParameter("Password"));
-
-            user = UserDAO.login(user);
-
-            if (user.isValid())
-            {
-
-                HttpSession session = request.getSession(true);
-                session.setAttribute("currentSessionUser",user);
-                response.sendRedirect("productPage.jsp"); //logged-in page
-            }
-
-            else
-                response.sendRedirect("index.jsp"); //error page
-        }
-
-
-        catch (Throwable theException)
-        {
-            System.out.println(theException);
-        }*/
