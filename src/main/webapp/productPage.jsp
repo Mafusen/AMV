@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <head>
     <meta name="AMV - Produktside" content="width=device-width, initial-scale=1">
     <link href="styles/productPage.css" rel="stylesheet">

@@ -3,10 +3,9 @@
 <%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <link rel="stylesheet" href = "styles/login.css">
-    <meta charset="UTF-8">
     <title>AMV Innlogging</title>
     <style>
     </style>
