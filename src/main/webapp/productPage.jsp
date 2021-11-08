@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta name="AMV - Produktside" content="width=device-width, initial-scale=1">
