@@ -32,6 +32,7 @@ public class ToolDAO {
             model.setToolID(rs.getInt("TOOL_ID"));
             model.setToolName(rs.getString("Tool_Name"));
             model.setToolInfo(rs.getString("Tool_Info"));
+            model.setPrice(rs.getInt("Price"));
             model.setActive(rs.getBoolean("IsActive"));
             tools.add(model);
         }
