@@ -13,7 +13,7 @@
 </head>
 <body>
 <nav class="navbar">
-  <a class="logo" href = "frontpageAvailableServlet"
+  <a class="logo" href = "frontpageServlet">
     <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
   </a>
   <ul class="nav-links">
