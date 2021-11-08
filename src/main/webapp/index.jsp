@@ -29,15 +29,16 @@
         </label>
         <label for="Password"></label><input type="Password" name="Password" id="Password" placeholder="">
         <br><br>
-        <a href="productPage.jsp"><label>
+        <label>
             <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
-        </label></a>
+        </label>
+    </form>
         <a>
             <%=
                 displayDate()
             %>
         </a>
-    </form>
+
     <%!
         public String displayDate(){
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");

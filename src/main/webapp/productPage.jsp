@@ -17,7 +17,7 @@
 
 <body>
 <nav class="navbar">
-    <a class="logo" href = productPage.jsp>
+    <a class="logo" href = "frontpageAvailableServlet">
         <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng" alt="AMV">
     </a>
     <ul class="nav-links">
@@ -29,31 +29,11 @@
     </ul>
 </nav>
 
-<table>
-    <%
-        List<ToolFileModel> toolViews = (ArrayList<ToolFileModel>) request.getAttribute("toolViews");
-
-        for(ToolFileModel toolView : toolViews){
-            //int fileIDint = tool.getFileID();
-            //String fileID = Integer.toString(fileIDint);
-
-    %>
-
-
-    <tr>
-        <td><img src="fileDownloadServlet?FILE_ID=<%=toolView.getFileID()%>" alt="<%=toolView.getToolName()%>" style="height: 250px" width="auto"></td>
-        <td>Verktøy: <%=toolView.getToolName()%></td>
-        <td>Informasjon: <%=toolView.getToolInfo()%></td>
-    </tr>
-    <%
-        }
-    %>
-</table>
-
 <div class="main">
-
     <div class="search">
-        <input type="text" placeholder="Søk etter produkt..">
+        <label>
+            <input type="text" placeholder="Søk etter produkt..">
+        </label>
     </div>
 
     <button type="button" class="collapsible"><strong>Aktive Bookinger</strong></button>
@@ -71,64 +51,30 @@
         </div>
     </div>
 
-
     <button type="button" class="notcollapsible"><strong>Andre Produkter</strong></button>
     <div class="content">
         <div class="container">
+    <%
+        List<ToolFileModel> products = (ArrayList<ToolFileModel>) request.getAttribute("toolViews");
 
-            <a class="products" href="bookingPage.jsp">
-                <img src="styles/#">
+        for(ToolFileModel product : products){
+            // int fileIDint = tool.getFileID();
+            //String fileID = Integer.toString(fileIDint);
+
+    %>
+            <a class="products" href="registerBooking">
+                <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>">
                 <div class="product">
-                    <div class="productname">Eksentersliper 230VAC</div>
-                    <div class="productinfo"> Info om produkt:</div>
-                    <div class="productinfo"> + papir </div>
+                    <div class="productname"><%=product.getToolName()%></div>
+                    <div class="productinfo">Info: <%=product.getToolInfo()%></div>
                 </div>
             </a>
 
-            <a class="products" href="bookingPage.jsp">
-                <img src="styles/#">
-                <div class="product">
-                    <div class="productname">Eksentersliper 230VAC</div>
-                    <div class="productinfo"> Info om produkt:</div>
-                    <div class="productinfo"> + papir </div>
-                </div>
-            </a>
 
-            <a class="products" href="bookingPage.jsp">
-                <img src="styles/E#">
-                <div class="product">
-                    <div class="productname">Eksentersliper 230VAC</div>
-                    <div class="productinfo"> Info om produkt:</div>
-                    <div class="productinfo"> + papir </div>
-                </div>
-            </a>
+    <%
+        }
+    %>
 
-            <a class="products" href="bookingPage.jsp">
-                <img src="styles/#">
-                <div class="product">
-                    <div class="productname">Eksentersliper 230VAC</div>
-                    <div class="productinfo"> Info om produkt:</div>
-                    <div class="productinfo"> + papir </div>
-                </div>
-            </a>
-
-            <a class="products" href="bookingPage.jsp">
-                <img src="styles/#">
-                <div class="product">
-                    <div class="productname">Eksentersliper 230VAC</div>
-                    <div class="productinfo"> Info om produkt:</div>
-                    <div class="productinfo"> + papir </div>
-                </div>
-            </a>
-
-            <a class="products" href="bookingPage.jsp">
-                <img src="styles/#">
-                <div class="product">
-                    <div class="productname">Eksentersliper 230VAC</div>
-                    <div class="productinfo"> Info om produkt:</div>
-                    <div class="productinfo"> + papir </div>
-                </div>
-            </a>
 
         </div>
     </div>

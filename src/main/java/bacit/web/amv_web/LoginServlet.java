@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 
                 // Set userID as attribute to request and forward to productPage
                 request.setAttribute("userID", userID);
-                request.getRequestDispatcher("productPage.jsp").forward(request, response);
+                response.sendRedirect("frontpageServlet");
 
             }
 

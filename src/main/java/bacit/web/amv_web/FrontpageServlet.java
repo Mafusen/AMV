@@ -16,8 +16,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet (name = "FrontpageAvailable", value = "/FrontPageAvailable")
-public class FrontpageAvailable extends HttpServlet {
+@WebServlet (name = "frontpageServlet", value = "/frontpageServlet")
+public class FrontpageServlet extends HttpServlet {
 
 
     @Override
@@ -35,7 +35,7 @@ public class FrontpageAvailable extends HttpServlet {
         }
 
         request.setAttribute("toolViews", toolViews);
-        request.getRequestDispatcher("/productPage.jsp").forward(request, response);
+        request.getRequestDispatcher("productPage.jsp").forward(request, response);
 
     }
 
