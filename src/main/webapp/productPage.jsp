@@ -38,10 +38,10 @@
 
     <button type="button" class="collapsible"><strong>Aktive Bookinger</strong></button>
     <div class="content">
-        <div class="container">
+        <div class="activecontainer">
 
             <a class="products" href="bookingPage.jsp">
-                <img src="styles/#">
+                <img src="styles/eksenter.png">
                 <div class="product">
                     <div class="productname">Eksentersliper 230VAC</div>
                     <div class="productinfo"> Info om produkt:</div>
@@ -67,6 +67,7 @@
                 <div class="product">
                     <div class="productname"><%=product.getToolName()%></div>
                     <div class="productinfo">Info: <%=product.getToolInfo()%></div>
+                    <div class="productprice">Pris per dag: <%=product.getPrice()%></div>
                 </div>
             </a>
 
@@ -94,6 +95,24 @@
             });
         }
     </script>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsibleinfo");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
 </div>
 </body>
 </html>

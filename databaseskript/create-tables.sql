@@ -74,5 +74,12 @@ create table if not exists  FILE(
     FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
 );
 
+create table if not exists USER_ROLE(
+
+                                        Username varchar (255) not null,
+                                        Rolename varchar (255) not null,
+                                        PRIMARY KEY (Username, Rolename)
+);
+
 
 
