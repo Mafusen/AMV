@@ -17,8 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "getUserServlet", value = "/getUserServlet")
-public class GetUserServlet extends HttpServlet {
+@WebServlet(name = "getUsersServlet", value = "/admin/getUsersServlet")
+public class GetUsersServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

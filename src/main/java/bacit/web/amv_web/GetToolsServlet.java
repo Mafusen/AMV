@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet (name = "getToolsServlet", value = "/getToolsServlet")
+@WebServlet (name = "getToolsServlet", value = "/admin/getToolsServlet")
 public class GetToolsServlet extends HttpServlet {
 
     @Override

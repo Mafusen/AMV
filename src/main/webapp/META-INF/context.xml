@@ -5,16 +5,16 @@
               username="root"
               password="12345"
               driverClassName="org.mariadb.jdbc.Driver"
-              url="jdbc:mariadb://172.17.0.1:3308/MytestDB"
+              url="jdbc:mariadb://172.17.0.1:3308/AMVDB"
               maxActive="15"
               maxIdle="3"/>
 
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
-           userTable="users"
-           userNameCol="LoginName"
+           userTable="USER"
+           userNameCol="Username"
            userCredCol="Password"
-           userRoleTable="user_roles"
-           roleNameCol="role_name"
+           userRoleTable="USER_ROLE"
+           roleNameCol="Rolename"
            localDataSource="true"
            dataSourceName="jdbc/database"/>
 </Context>

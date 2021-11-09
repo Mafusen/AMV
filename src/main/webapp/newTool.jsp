@@ -18,10 +18,10 @@
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="getToolsServlet">Admin</a></li>
+        <li class="nav-item"><a href="admin/getToolsServlet">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="logInServlet">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="index.jsp">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>
@@ -30,7 +30,7 @@
     <ul class="nav-links">
 
         <li class="nav-item"><a href="getUserServlet">Ansatte</a></li>
-        <li class="nav-item"><a href="getToolsServlet">Verktoy</a></li>
+        <li class="nav-item"><a href="admin/getToolsServlet">Verktoy</a></li>
         <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
     </ul>
 
