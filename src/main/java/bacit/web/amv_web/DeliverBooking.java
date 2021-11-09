@@ -15,6 +15,7 @@ public class DeliverBooking extends HttpServlet {
 
     @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+
         // Collect form data
         String comment = request.getParameter("kommentar");
         //Under er bare et eksempel og skal endres når hovedside er ferdig.
@@ -30,7 +31,7 @@ public class DeliverBooking extends HttpServlet {
         dao.deliverBooking(model);
 
         // Prepare information message for user about operation result
-        response.sendRedirect("calendar-booking.jsp");
+        response.sendRedirect("calendar-delivery.jsp");
 
     }
 

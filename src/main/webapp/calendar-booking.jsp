@@ -1,3 +1,4 @@
+<%@ page import="bacit.web.amv_models.ToolFileModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,24 +28,31 @@
     </ul>
 </nav>
 
+<%
+    ToolFileModel product = (ToolFileModel) request.getAttribute("product");
+%>
+
 <main class="container">
-    <form action="registerBooking" method="get">
+    <form action = "registerBooking" method = "get">
         <!-- Left Column / Headphones Image -->
         <div class="left-column">
-            <img src="lift2.jpg" alt="">
+            <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>" style="height: 200px; width: auto" >
         </div>
 
+        <a>
+            <input type = "hidden" id = "toolID" name = "toolID" value = "<%=product.getToolID()%>">
+        </a>
 
         <!-- Right Column -->
         <div class="right-column">
 
             <!-- Product Description -->
             <div class="product-description">
-                <h1>Lift</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo leo, aliquet maximus neque nec, cursus porttitor odio. Pellentesque semper dui et purus ultricies consectetur. Nulla rutrum lacinia urna vel sollicitudin.
-                    Proin cursus scelerisque lacinia. Duis dolor odio, pretium ut elementum id, viverra non ante. Proin sit amet suscipit est. Aliquam luctus nec nunc eget facilisis.</p>
+                <h1><%=product.getToolName()%></h1>
+                <p>
+                    Informarsjon: <%=product.getToolInfo()%>
+                </p>
             </div>
-
             <!-- Product Pricing -->
             <div class="calendar">
                 <div>
@@ -60,12 +68,15 @@
 
             <div class="product-price">
                 <p>
-                    100kr/dag
+                    <%=product.getPrice()%>kr/dag
                 </p>
             </div>
 
+
             <div class="buttons">
-                <button type="submit" class="btn btn-success">Book</button>
+                <a class="products" href="registerBooking">
+                    <button type="submit" class="btn btn-success">Book</button>
+                </a>
                 <button type="button" class="btn btn-danger" id="divide">Avbryt</button>
             </div>
 

@@ -22,10 +22,10 @@
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="admin/getToolsServlet">Admin</a></li>
+        <li class="nav-item"><a href="getToolsServlet">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="index.jsp">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="logInServlet">Logg ut</a></li>
     </ul>
 </nav>
 
@@ -52,17 +52,19 @@
     </div>
 
     <button type="button" class="notcollapsible"><strong>Andre Produkter</strong></button>
+
     <div class="content">
         <div class="container">
-    <%
-        List<ToolFileModel> products = (ArrayList<ToolFileModel>) request.getAttribute("toolViews");
 
-        for(ToolFileModel product : products){
-            // int fileIDint = tool.getFileID();
-            //String fileID = Integer.toString(fileIDint);
 
-    %>
-            <a class="products" href="registerBooking">
+            <%
+                List<ToolFileModel> products = (ArrayList<ToolFileModel>) request.getAttribute("toolViews");
+
+                for(ToolFileModel product : products){
+                    int toolID = product.getToolID();
+
+            %>
+            <a class="products" href="passProduct?toolID= + <%=toolID%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getToolName()%></div>
@@ -70,15 +72,14 @@
                     <div class="productprice">Pris per dag: <%=product.getPrice()%></div>
                 </div>
             </a>
+            <%
+                }
 
-
-    <%
-        }
-    %>
-
+            %>
 
         </div>
     </div>
+
 
     <script>
         var coll = document.getElementsByClassName("collapsible");

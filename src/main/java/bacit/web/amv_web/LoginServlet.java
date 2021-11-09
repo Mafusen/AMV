@@ -63,13 +63,5 @@ public class LoginServlet extends HttpServlet {
         }
 
     }
-
-    public void roleCheck(){
-        HttpServletRequest request = null;
-        if ( request.isUserInRole("root") ||
-                (request.isUserInRole("privileged") &&
-                        request.isUserInRole("merchandise")) ) {
-        }
-    }
 }
 
