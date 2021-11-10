@@ -7,7 +7,7 @@ create table if not exists USER(
     Fname varchar(255) not NULL,
     Lname varchar(255) not NULL,
 	Phone varchar(255),
-	Username varchar (255) not NULL,
+	Username varchar (255) UNIQUE not NULL,
     Password varchar(255) not NULL,
     IsActive boolean,
     PRIMARY KEY (USER_ID)
@@ -74,11 +74,17 @@ create table if not exists  FILE(
     FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
 );
 
-create table if not exists USER_ROLE(
+create table if not exists ROLE (
+                                    Rolename varchar (255) UNIQUE not null,
+                                    PRIMARY KEY (Rolename)
+);
 
+create table if not exists USER_ROLE(
                                         Username varchar (255) not null,
                                         Rolename varchar (255) not null,
-                                        PRIMARY KEY (Username, Rolename)
+                                        PRIMARY KEY (Username, Rolename),
+                                        FOREIGN KEY (Username) REFERENCES USER(Username),
+                                        FOREIGN KEY (Rolename) REFERENCES ROLE(Rolename)
 );
 
 
