@@ -56,7 +56,7 @@ public class RegisterBooking extends HttpServlet {
         dao.registerBooking(booking);
 
         // Prepare information message for user about operation result
-        response.sendRedirect("calendar-delivery.jsp");
+        response.sendRedirect("frontpageServlet");
 
     }
 
