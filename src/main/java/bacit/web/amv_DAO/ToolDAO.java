@@ -1,10 +1,8 @@
 package bacit.web.amv_DAO;
 
-import bacit.web.amv_models.BookingModel;
 import bacit.web.amv_models.ToolModel;
 import bacit.web.amv_utilities.DBUtils;
 
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,12 +26,13 @@ public class ToolDAO {
             ResultSet rs = statement.executeQuery();
 
         while (rs.next()){
-            ToolModel model = new ToolModel();
-            model.setToolID(rs.getInt("TOOL_ID"));
-            model.setToolName(rs.getString("Tool_Name"));
-            model.setToolInfo(rs.getString("Tool_Info"));
-            model.setPrice(rs.getInt("Price"));
-            model.setActive(rs.getBoolean("IsActive"));
+            ToolModel model = new ToolModel(
+                    rs.getInt("TOOL_ID"),
+                    rs.getString("Tool_Name"),
+                    rs.getString("Tool_Info"),
+                    rs.getInt("Price"),
+                    rs.getBoolean("IsActive")
+                    );
             tools.add(model);
         }
 

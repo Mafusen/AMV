@@ -1,9 +1,7 @@
-<%@ page import="bacit.web.amv_models.FileModel" %>
 <%@ page import="bacit.web.amv_models.ToolFileModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.Blob" %>
-<%@ page import="java.io.OutputStream" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
   Date: 15/10/2021
@@ -35,8 +33,8 @@
 
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="admin/getUsersServlet">Ansatte</a></li>
-        <li class="nav-item"><a href="admin/getToolsServlet">Verktoy</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Users">Ansatte</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Verktoy</a></li>
         <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
     </ul>
 
@@ -56,9 +54,6 @@
         List<ToolFileModel> toolFiles = (ArrayList<ToolFileModel>) request.getAttribute("toolFiles");
 
         for(ToolFileModel toolFile : toolFiles){
-            //int fileIDint = tool.getFileID();
-            //String fileID = Integer.toString(fileIDint);
-
     %>
 
     <tr>

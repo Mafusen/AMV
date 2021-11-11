@@ -7,25 +7,19 @@ public class UserModel {
     private String phone;
     private String userName;
     private String passWord;
-    public boolean valid;
+    public boolean active;
 
-    public UserModel(int userID, String firstName, String lastName, String phone, String userName, String passWord) {
+    public UserModel() {
+    }
 
+    public UserModel(int userID, String firstName, String lastName, String phone, String userName, String passWord, boolean active) {
         this.userID = userID;
+        this.userName = userName;
+        this.passWord = passWord;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
-        this.userName = userName;
-        this.passWord = passWord;
-
-    }
-
-
-    public UserModel() {
-
-    }
-
-    public UserModel(String username, String password, String firstName, String lastName, String password1) {
+        this.active = active;
     }
 
     public int getUserID(){
@@ -77,12 +71,7 @@ public class UserModel {
         this.passWord = passWord;
     }
 
-    public boolean isValid() {
-        return valid;
-    }
+    public boolean isActive() { return active; }
 
-    public void setValid(boolean newValid) {
-        valid = newValid;
-    }
-
+    public void setActive(boolean active) { this.active = active; }
 }
