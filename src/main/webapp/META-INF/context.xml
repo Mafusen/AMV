@@ -16,6 +16,10 @@
            userRoleTable="USER_ROLE"
            roleNameCol="Rolename"
            localDataSource="true"
-           dataSourceName="jdbc/database">
+           dataSourceName="jdbc/database"
+           digest="SHA-256">
+        <CredentialHandler className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+                           algorithm="SHA-256" iterations="1" saltLength="0" encoding="ISO-8859-1" />
     </Realm>
+
 </Context>

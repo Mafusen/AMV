@@ -21,7 +21,7 @@
         <li class="nav-item"><a href="admin/Tools">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="#logout">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>
@@ -30,7 +30,7 @@
     <ul class="nav-links">
 
         <li class="nav-item"><a href="adminEmployees.jsp">Ansatte</a></li>
-        <li class="nav-item"><a href="admin/getToolsServlet">Verktoy</a></li>
+        <li class="nav-item"><a href="admin/Tools">Verktoy</a></li>
         <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
     </ul>
 

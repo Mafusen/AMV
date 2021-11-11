@@ -28,7 +28,7 @@
         <li class="nav-item"><a href="adminTools.jsp">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="index.jsp">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="logOut">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>
@@ -47,17 +47,17 @@
 <br><br>
         <div>
             <label for="firstName">Fornavn: </label>
-            <input type="text" name="firstName" id="firstName">
+            <input type="text" name="firstName" id="firstName" required>
         </div>
 
         <div>
             <label for="lastName">Etternavn: </label>
-            <input type="text" name="lastName" id="lastName">
+            <input type="text" name="lastName" id="lastName" required>
         </div>
 
         <div>
             <label for="phone">Tlf: </label>
-            <input type="text" name="phone" id="phone">
+            <input type="text" name="phone" id="phone" required>
         </div>
 
         <div>

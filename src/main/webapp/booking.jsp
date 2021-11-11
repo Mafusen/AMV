@@ -21,7 +21,7 @@
         <li class="nav-item"><a href="admin/Tools">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="#logout">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="logOut">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>

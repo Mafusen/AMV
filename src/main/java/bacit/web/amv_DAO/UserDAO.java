@@ -117,7 +117,7 @@ public class UserDAO
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
             // Write  insertion query
-            String query = "insert into USER (Fname, Lname, Phone, Username, Password, IsActive) values (?, ?, ?, ?, ?, ?)";
+            String query = "insert into USER (Fname, Lname, Phone, Username, Password, IsActive) values (?, ?, ?, ?, sha2(?, 256), ?)";
 
             // Set parameters with PreparedStatement
             PreparedStatement statement = db.prepareStatement(query);

@@ -55,6 +55,9 @@ public class RegisterUserServlet extends HttpServlet {
             // Create list of possible roles
             List<RoleModel> roles = new ArrayList<>();
 
+            RoleModel defaultRole = new RoleModel(userName, "user");
+            roles.add(defaultRole);
+
             if(administrator){
                 RoleModel role = new RoleModel(userName, "administrator");
                 roles.add(role);
