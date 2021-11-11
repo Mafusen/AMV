@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,10 +14,8 @@
     <title>Produkt Side</title>
 
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link href="navbar.css" rel="stylesheet" type="text/css">
-        <link href="kalender.css" type="text/css" rel="stylesheet">
-        <title>Produkt Side</title>
+        <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
+        <title></title>
 
 <body>
 
@@ -32,22 +31,32 @@
         <li class="nav-item"><a style="padding-right: 30px" href="index.jsp">Logg ut</a></li>
     </ul>
 </nav>
+<br><br><br><br>
+<nav class="adminTabs">
 
+    <ul class="nav-links">
+
+        <li class="nav-item"><a href="admin/Users">Ansatte</a></li>
+        <li class="nav-item"><a href="admin/Tools">Verktoy</a></li>
+        <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
+    </ul>
+
+</nav>
 <main class="container">
     <form action="<%=request.getContextPath()%>/admin/registerUser" method="post">
-
+<br><br>
         <div>
             <label for="firstName">Fornavn: </label>
             <input type="text" name="firstName" id="firstName">
         </div>
 
         <div>
-            <label for="lastName">Fornavn: </label>
+            <label for="lastName">Etternavn: </label>
             <input type="text" name="lastName" id="lastName">
         </div>
 
         <div>
-            <label for="Phone">Fornavn: </label>
+            <label for="Phone">Tlf: </label>
             <input type="text" name="Phone" id="Phone">
         </div>
 
@@ -57,7 +66,7 @@
         </div>
 
         <div>
-            <label for="passWord">Brukernavn: </label>
+            <label for="passWord">Passord: </label>
             <input type="text" name="passWord" id="passWord" required>
         </div>
 

@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet (name = "newUser", value = "/admin/newUser")
+@WebServlet (name = "admin/newUser", value = "/admin/newUser")
 public class NewUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.sendRedirect(request.getContextPath() + "/newUser.jsp");
+        request.getRequestDispatcher("/newUser.jsp").forward(request, response);
 
     }
 }

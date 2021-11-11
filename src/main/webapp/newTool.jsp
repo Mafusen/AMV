@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
+    <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
     <title>Title</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
 
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="getUserServlet">Ansatte</a></li>
+        <li class="nav-item"><a href="admin/Users">Ansatte</a></li>
         <li class="nav-item"><a href="admin/Tools">Verktoy</a></li>
         <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
     </ul>
@@ -57,7 +57,7 @@
     <input type="file" name="file" id = "file"/>
 
     <br>
-    <a href = "getToolsServlet">
+    <a href = "admin/Tools">
     <button type="submit" class = "register">Registrer nytt verktøy</button>
     </a>
 

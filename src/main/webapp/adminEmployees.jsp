@@ -44,7 +44,7 @@
     <br><br><h1>Side med ansatte</h1>
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newUser">
-            <button name = submit type = submit value = submit >Legg til nytt verktøy</button>
+            <button name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
 </div>
