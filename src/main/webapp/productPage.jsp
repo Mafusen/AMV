@@ -68,8 +68,10 @@
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getToolName()%></div>
-                    <div class="productinfo">Info: <%=product.getToolInfo()%></div>
-                    <div class="productprice">Pris per dag: <%=product.getPrice()%></div>
+                    <div class="producttitles">Info:</div>
+                    <div class="productinfo"> <%=product.getToolInfo()%></div>
+                    <div class="producttitles">Pris per dag:</div>
+                    <div class="productprice"> <%=product.getPrice()%></div>
                 </div>
             </a>
             <%

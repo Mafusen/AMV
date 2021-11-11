@@ -129,12 +129,12 @@
     flex-direction: row;
     gap: 20px 20px;
     min-width: 400px;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 5px 7px 15px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 5px 7px 15px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
     min-height: 200px;
 }
 .products:hover {
-    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.4), 7px 9px 17px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.4), 7px 9px 17px 0 rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     background-color: #fdfdfd;);
 }
@@ -166,30 +166,39 @@
     padding-bottom: 15px;
 }
 
-.productinfo {
-    font-size: 18px;
+.producttitles {
+    font-size: 16px;
     display: flex;
     float: bottom;
     text-decoration: none;
     color: #000000;
+    padding-bottom: -10px;
+    font-weight: bold;
+}
+.productinfo {
+    font-size: 15px;
+    display: flex;
+    float: bottom;
+    text-decoration: none;
+    color: #000000;
+    padding-bottom: 15px;
 }
 
 .productprice {
-    font-size: 18px;
+    font-size: 15px;
     display: flex;
     float: bottom;
     padding-bottom: 20px;
     text-decoration: none;
     color: #000000;
 }
-.allproductinfo {
+/*.allproductinfo {
     font-size: 18px;
     display: flex;
     float: bottom;
-
     text-decoration: none;
     color: #000000;
-}
+}*/
 
 input[type=text], select, text {
     width: 90%;
