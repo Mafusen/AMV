@@ -31,8 +31,8 @@ public class BookingHistoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String searchString = request.getParameter("search");
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
+
+        String username = request.getRemoteUser();
 
         UserDAO dao = new UserDAO();
         UserModel user = dao.getUser(username);

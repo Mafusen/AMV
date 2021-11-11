@@ -53,6 +53,8 @@
       Date date = Calendar.getInstance().getTime();
       return dateFormat.format(date);
     }
+
+    public void createSession(){}
   %>
 </div>
 </body>
