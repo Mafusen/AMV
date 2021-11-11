@@ -35,7 +35,7 @@
     </ul>
 
 </nav>
-<form action = "admin/registerTool" method = "post" enctype="multipart/form-data">
+<form action = "<%=request.getContextPath()%>/admin/registerTool" method = "post" enctype="multipart/form-data">
 <div class="main">
     <br><br>
     <h1>Nytt verktøy:</h1>

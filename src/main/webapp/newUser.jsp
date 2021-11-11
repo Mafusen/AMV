@@ -56,8 +56,8 @@
         </div>
 
         <div>
-            <label for="Phone">Tlf: </label>
-            <input type="text" name="Phone" id="Phone">
+            <label for="phone">Tlf: </label>
+            <input type="text" name="phone" id="phone">
         </div>
 
         <div>
@@ -71,18 +71,18 @@
         </div>
 
         <div>
-            <label for="umember"> Unionsmedlemm </label>
-            <input type="checkbox" name="umember" id="umember">
+            <label for="unionMember"> Unionsmedlemm </label>
+            <input type="checkbox" name="unionMember" id="unionMember" value="unionMember_value" checked = "checked">
         </div>
 
         <div>
             <label for="admin"> Administrator </label>
-            <input type="checkbox" name="admin" id="admin">
+            <input type="checkbox" name="admin" id="admin" value="admin_value" checked = "checked">
         </div>
 
         <div>
-            <label for="coures"> Personløftersertifikat </label>
-            <input type="checkbox" name="coures" id="coures">
+            <label for="lift"> Personløftersertifikat </label>
+            <input type="checkbox" name="lift" id="lift" value ="lift_value" checked = "checked">
         </div>
 
         <div>

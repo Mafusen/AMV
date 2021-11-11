@@ -49,7 +49,7 @@
 
   <%!
     public String displayDate(){
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
       Date date = Calendar.getInstance().getTime();
       return dateFormat.format(date);
     }
