@@ -1,4 +1,4 @@
-INSERT INTO USER(
+insert into USER(
     Fname,
     Lname,
     Phone,

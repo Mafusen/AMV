@@ -51,18 +51,6 @@ create table if not exists CERTIFICATE(
 	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID),
 	FOREIGN KEY (COURSE_ID) REFERENCES COURSE(COURSE_ID)
 	);
-	
-create table if not exists UNION_MEMBER(
-	USER_ID int not NULL,
-	PRIMARY KEY (USER_ID),
-	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
-	);
-	
-create table if not exists ADMIN(	
-	USER_ID int not NULL,
-	PRIMARY KEY (USER_ID),
-	FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
-	);
 
 create table if not exists  FILE(
     FILE_ID int UNIQUE auto_increment not NULL,
@@ -75,16 +63,16 @@ create table if not exists  FILE(
 );
 
 create table if not exists ROLE (
-                                    Rolename varchar (255) UNIQUE not null,
-                                    PRIMARY KEY (Rolename)
+    Rolename varchar (255) UNIQUE not null,
+    PRIMARY KEY (Rolename)
 );
 
 create table if not exists USER_ROLE(
-                                        Username varchar (255) not null,
-                                        Rolename varchar (255) not null,
-                                        PRIMARY KEY (Username, Rolename),
-                                        FOREIGN KEY (Username) REFERENCES USER(Username),
-                                        FOREIGN KEY (Rolename) REFERENCES ROLE(Rolename)
+    Username varchar (255) not null,
+    Rolename varchar (255) not null,
+    PRIMARY KEY (Username, Rolename),
+    FOREIGN KEY (Username) REFERENCES USER(Username),
+    FOREIGN KEY (Rolename) REFERENCES ROLE(Rolename)
 );
 
 

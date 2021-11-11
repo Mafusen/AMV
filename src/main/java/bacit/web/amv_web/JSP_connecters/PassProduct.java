@@ -1,4 +1,4 @@
-package bacit.web.amv_web;
+package bacit.web.amv_web.JSP_connecters;
 
 import bacit.web.amv_DAO.FileDAO;
 import bacit.web.amv_DAO.ToolDAO;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet (name = "passProduct", value = "/passProduct")
-public class PassProductServlet extends HttpServlet {
+public class PassProduct extends HttpServlet {
 
 
     @Override

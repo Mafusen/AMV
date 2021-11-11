@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 
             // Send client back to login-page if not valid
             else
-                response.sendRedirect("index.jsp"); //error page
+                response.sendRedirect("#logout"); //error page
         }
 
 

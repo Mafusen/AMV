@@ -40,10 +40,10 @@
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
-        <realm-name>Tomcat Application</realm-name>
+        <realm-name>Login</realm-name>
         <form-login-config>
             <form-login-page>/login.jsp</form-login-page>
-            <form-error-page>/logInError.jsp</form-error-page>
+            <form-error-page>/login-failed.jsp</form-error-page>
         </form-login-config>
     </login-config>
 

@@ -14,17 +14,17 @@
 
 <html>
 <head>
-    <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
+    <link href = "<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type = "text/css">
     <title>Title</title>
 </head>
 <body>
 <nav class="navbar">
-    <a class="logo" href = "frontpageServlet">
+    <a class="logo" href = "<%=request.getContextPath()%>/frontpageServlet">
         <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="admin/getToolsServlet">Admin</a></li>
+        <li class="nav-item"><a href="admin/Tools">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookingHistoryServlet">Bookinger</a></li>
         <li class="nav-item"><a style="padding-right: 30px" href="logInServlet">Logg ut</a></li>
@@ -45,7 +45,7 @@
 <div class="main">
     <br><br><h1>Side med verktoy</h1>
     <div>
-        <a href = "newTool.jsp">
+        <a href = "<%=request.getContextPath()%>/admin/newTool">
         <button name = submit type = submit value = submit >Legg til nytt verktøy</button>
         </a>
 </div>
@@ -62,7 +62,7 @@
     %>
 
     <tr>
-        <td><img src="fileDownloadServlet?FILE_ID=<%=toolFile.getFileID()%>" alt="<%=toolFile.getToolName()%>" style="height: 250px" width="auto"></td>
+        <td><img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=toolFile.getFileID()%>" alt="<%=toolFile.getToolName()%>" style="height: 250px" width="auto"></td>
         <td>Verktøy: <%=toolFile.getToolName()%></td>
         <td>Informasjon <%=toolFile.getToolInfo()%></td>
     </tr>

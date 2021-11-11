@@ -35,7 +35,7 @@ public class FrontpageServlet extends HttpServlet {
         }
 
         request.setAttribute("toolViews", toolViews);
-        request.getRequestDispatcher("productPage.jsp").forward(request, response);
+        request.getRequestDispatcher("frontpage.jsp").forward(request, response);
 
     }
 

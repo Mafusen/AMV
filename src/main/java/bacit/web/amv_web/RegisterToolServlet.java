@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 
-@WebServlet(name = "registerToolServlet", value = "/registerToolServlet")
+@WebServlet(name = "admin/registerTool", value = "/admin/registerTool")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class RegisterToolServlet extends HttpServlet {
 
@@ -65,7 +65,7 @@ public class RegisterToolServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("http://localhost:8081/bacit-web-1.0-SNAPSHOT/getToolsServlet");
+        response.sendRedirect(request.getContextPath() + "/admin/Tools");
     }
 
 }

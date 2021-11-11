@@ -18,10 +18,10 @@
     </a>
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="admin/getToolsServlet">Admin</a></li>
+        <li class="nav-item"><a href="admin/Tools">Admin</a></li>
         <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
         <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="index.jsp">Logg ut</a></li>
+        <li class="nav-item"><a style="padding-right: 30px" href="#logout">Logg ut</a></li>
     </ul>
 </nav>
 <br><br><br><br>
