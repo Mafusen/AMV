@@ -1,5 +1,5 @@
-<%@ page import="bacit.web.amv_models.FileModel" %>
-<%@ page import="bacit.web.amv_models.ToolFileModel" %>
+<%@ page import="bacit.web.Models.FileModel" %>
+<%@ page import="bacit.web.Models.ToolFileModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.sql.Blob" %>

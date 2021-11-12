@@ -1,4 +1,4 @@
-<%@ page import="bacit.web.amv_models.ToolBookingModel" %><%--
+<%@ page import="bacit.web.Models.ToolBookingModel" %><%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
   Date: 03/11/2021

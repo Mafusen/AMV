@@ -1,4 +1,4 @@
-<%@ page import="bacit.web.amv_models.UserModel" %>
+<%@ page import="bacit.web.Models.UserModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%--

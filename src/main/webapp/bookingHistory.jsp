@@ -1,9 +1,9 @@
-<%@ page import="bacit.web.amv_models.BookingModel" %>
+<%@ page import="bacit.web.Models.BookingModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Collection" %>
-<%@ page import="bacit.web.amv_models.ToolModel" %>
-<%@ page import="bacit.web.amv_models.ToolBookingModel" %>
+<%@ page import="bacit.web.Models.ToolModel" %>
+<%@ page import="bacit.web.Models.ToolBookingModel" %>
 <%@ page import="javax.tools.Tool" %>
 <%--
   Created by IntelliJ IDEA.
