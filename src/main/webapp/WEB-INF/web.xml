@@ -47,4 +47,10 @@
         </form-login-config>
     </login-config>
 
+    <error-page>
+        <!-- No access -->
+        <error-code>403</error-code>
+        <location>/error403</location>
+    </error-page>
+
 </web-app>

@@ -15,9 +15,7 @@ public class ToolBookingModel {
     private int price;
     private boolean isActive;
 
-    public ToolBookingModel(){
-
-    }
+    public ToolBookingModel(){}
 
     public String getToolName() {
         return toolName;

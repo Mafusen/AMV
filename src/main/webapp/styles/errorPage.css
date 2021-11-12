@@ -1,0 +1,37 @@
+body {
+    margin-top: 200px;
+    text-align: center;
+    font-family: sans-serif, Roboto;
+    background-color: #ffffff}
+
+H1 {
+    font-size: 72px;
+    font-weight: bold;
+    color: #11165a;
+}
+p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #11165a;
+}
+
+input[type = button] {
+    background-color: #ffb300;
+    border: 1px;
+    border-color: #11165a;
+    border-style: solid;
+    color: #11165a;
+    padding: 12px 28px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 5px 7px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[type = button]:hover {
+    background-color: rgba(255, 179, 0, 0.47);
+}

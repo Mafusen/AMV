@@ -38,7 +38,7 @@
 
         <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Users">Ansatte</a></li>
         <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Verktoy</a></li>
-        <li class="nav-item"><a href="adminReports.jsp">Rapport</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/report">Rapport</a></li>
     </ul>
 
 </nav>
