@@ -15,7 +15,9 @@
     <title>Registrer bruker</title>
 </head>
         <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
-        <title></title>
+        <link rel="stylesheet" href="styles/newUser.css">
+        <link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
+        <title>Registrer Bruker</title>
 
 <body>
 
@@ -47,7 +49,6 @@
 
 <main class="container">
     <form action="<%=request.getContextPath()%>/admin/registerUser" method="post">
-
 
         <div class="column">
             <div class="inputtext">
