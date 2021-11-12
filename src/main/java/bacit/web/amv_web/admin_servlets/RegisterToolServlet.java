@@ -1,4 +1,4 @@
-package bacit.web.amv_web;
+package bacit.web.amv_web.admin_servlets;
 
 import bacit.web.amv_DAO.FileDAO;
 import bacit.web.amv_DAO.ToolDAO;

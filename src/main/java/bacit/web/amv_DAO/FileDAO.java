@@ -1,7 +1,7 @@
 package bacit.web.amv_DAO;
 
 import bacit.web.amv_models.FileModel;
-import bacit.web.amv_web.DBUtils;
+import bacit.web.amv_utilities.DBUtils;
 
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.PrintWriter;

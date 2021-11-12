@@ -1,7 +1,7 @@
 package bacit.web.amv_DAO;
 
 import bacit.web.amv_models.ReportModel;
-import bacit.web.amv_web.DBUtils;
+import bacit.web.amv_utilities.DBUtils;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
