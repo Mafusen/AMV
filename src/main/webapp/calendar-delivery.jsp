@@ -20,10 +20,10 @@
   </a>
   <ul class="nav-links">
 
-    <li class="nav-item"><a href="admin/Tools">Admin</a></li>
+    <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
     <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-    <li class="nav-item"><a href="bookings.jsp">Bookinger</a></li>
-    <li class="nav-item"><a style="padding-right: 30px" href="logOut">Logg ut</a></li>
+    <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
+    <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
   </ul>
 </nav>
 
