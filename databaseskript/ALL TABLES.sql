@@ -13,7 +13,7 @@ values (
    'Sørensen',
    '90807060',
    'Sorma',
-   'MaSø123',
+   SHA2('MaSø123', 256),
    TRUE
 ),
 (
@@ -21,7 +21,7 @@ values (
    'Jensen',
    '90708060',
    'Jenru',
-   'RuJe123',
+   SHA2('RuJe123', 256),
    TRUE
 ),
 (
@@ -29,7 +29,7 @@ values (
    'Yasaev',
    '80405060',
    'Yassa',
-   'SaYa123',
+   SHA2('SaYa123', 256),
    TRUE
 ),
 (
@@ -37,7 +37,7 @@ values (
    'Amiry',
    '90302050',
    'Amiwa',
-   'WaAm123',
+   SHA2('WaAm123', 256),
    TRUE
 ),
 (
@@ -45,7 +45,7 @@ values (
    'Somme',
    '90506070',
    'Sombj',
-   'BjSo123',
+   SHA2('BjSo123', 256),
    TRUE
 ),
 (
@@ -53,7 +53,7 @@ values (
    'Elvemo',
    '9203040',
    'Elvvi',
-   'ViEl123',
+   SHA2('ViEl123', 256),
    TRUE
 ),
 
@@ -63,7 +63,7 @@ values (
    'Barken',
    '91718060',
    'Barma',
-   'MaBa123',
+   SHA2('MaBa123', 256),
    TRUE
 ),
 (
@@ -71,7 +71,7 @@ values (
    'Elveblest',
    '91718262',
    'Elvhi',
-   'HiEl123',
+   SHA2('HiEl123', 256),
    TRUE
 ),
 (
@@ -79,7 +79,7 @@ values (
    'Ugla',
    '92728262',
    'Uglhe',
-   'HeUg123',
+   SHA2('HeUg123', 256),
    TRUE
 ),
 (
@@ -87,7 +87,7 @@ values (
    'Torget',
    '92728363',
    'Torth',
-   'ThTo123',
+   SHA2('ThTo123', 256),
    TRUE
 ),
 (
@@ -95,7 +95,7 @@ values (
    'Snø',
    '93728567',
    'Snøjo',
-   'JoSn123',
+   SHA2('JoSn123', 256),
    TRUE
 );
 
