@@ -11,9 +11,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produkt Side</title>
-
-    <head>
+    <link rel="stylesheet" href="styles/newUser.css">
+    <title>Registrer bruker</title>
+</head>
         <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
         <title></title>
 
@@ -42,55 +42,82 @@
     </ul>
 
 </nav>
+
+<h1>Legg til ny bruker:</h1>
+
 <main class="container">
     <form action="<%=request.getContextPath()%>/admin/registerUser" method="post">
-<br><br>
-        <div>
-            <label for="firstName">Fornavn: </label>
-            <input type="text" name="firstName" id="firstName" required>
+
+
+        <div class="column">
+            <div class="inputtext">
+                <label for="firstName">Fornavn: </label>
+            </div>
+            <div>
+                <input class="input" type="text" name="firstName" id="firstName" required placeholder="Ola">
+            </div>
+
+            <div class="inputtext">
+                <label for="lastName">Etternavn: </label>
+            </div>
+            <div>
+                <input class="input" type="text" name="lastName" id="lastName" required placeholder="Nordmann">
+            </div>
+
+            <div class="inputtext">
+                <label for="phone">Tlf: </label>
+            </div>
+            <div>
+                <input class="input" type="text" name="phone" id="phone" required placeholder="99966999">
+            </div>
+
+            <div class="inputtext">
+                <label for="userName">Brukernavn: </label>
+            </div>
+            <div>
+                <input class="input" type="text" name="userName" id="userName" required placeholder="Norol">
+            </div>
+
+            <div class="inputtext">
+                <label for="passWord">Passord: </label>
+            </div>
+            <div>
+                <input class="input" type="text" name="passWord" id="passWord" required placeholder="Passord1">
+            </div>
         </div>
 
-        <div>
-            <label for="lastName">Etternavn: </label>
-            <input type="text" name="lastName" id="lastName" required>
-        </div>
+        <div class="column">
+            <br> </br> <br> </br> <br> </br>
+            <div class="role">
+                <label for="unionMember"> Unionsmedlem </label>
+                <input type="checkbox" name="unionMember" id="unionMember" value="unionMember_value">
+            </div>
 
-        <div>
-            <label for="phone">Tlf: </label>
-            <input type="text" name="phone" id="phone" required>
-        </div>
+            <div class="role">
+                <label for="admin"> Administrator </label>
+                <input type="checkbox" name="admin" id="admin" value="admin_value">
+            </div>
 
-        <div>
-            <label for="userName">Brukernavn: </label>
-            <input type="text" name="userName" id="userName" required>
-        </div>
+            <div class="role">
+                <label for="lift"> Personløftersertifikat </label>
+                <input type="checkbox" name="lift" id="lift" value ="lift_value">
+            </div>
 
-        <div>
-            <label for="passWord">Passord: </label>
-            <input type="text" name="passWord" id="passWord" required>
-        </div>
+            <div class="role">
+                <label for="endDate"> Sertifikatet går ut: </label>
+            </div>
+            <div>
+                <input type="date" name="endDate" id="endDate">
+            </div>
+            <br> </br> <br> </br>
+            <div class="userForm">
+                <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
 
-        <div>
-            <label for="unionMember"> Unionsmedlemm </label>
-            <input type="checkbox" name="unionMember" id="unionMember" value="unionMember_value" checked = "checked">
+                <a href = "admin/Users">
+                    <button class="submit" type="submit" >Registrer ny bruker</button>
+                </a>
+            </div>
         </div>
-
-        <div>
-            <label for="admin"> Administrator </label>
-            <input type="checkbox" name="admin" id="admin" value="admin_value" checked = "checked">
-        </div>
-
-        <div>
-            <label for="lift"> Personløftersertifikat </label>
-            <input type="checkbox" name="lift" id="lift" value ="lift_value" checked = "checked">
-        </div>
-
-        <div>
-            <label for="endDate"> Utgåelses Dato for kurset: </label>
-            <input type="date" name="endDate" id="endDate">
-        </div>
-
-        <button type="submit" >Registrer ny bruker</button>
     </form>
 
 </main>
