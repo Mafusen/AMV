@@ -34,7 +34,11 @@ public class RegisterUserServlet extends HttpServlet {
             boolean administrator = request.getParameter("admin") != null;
             boolean unionMember = request.getParameter("unionMember") !=null;
             boolean lift = request.getParameter("lift") !=null;
-            String endDate = request.getParameter("endDate");
+            String endDate = null;
+
+            if(request.getParameter("endDate") != null) {
+                endDate = request.getParameter("endDate");
+            }
 
             // Insert data in UserModel object
             UserModel uModel = new UserModel();
@@ -79,8 +83,13 @@ public class RegisterUserServlet extends HttpServlet {
             int courseID = 1;
 
             // Get endDate ready for DB insert
-            String dateReformat = endDate.replace( ".", "-");
-            Date date = Date.valueOf(dateReformat);
+            Date date = null;
+            if(endDate != null) {
+                String dateReformat = endDate.replace(".", "-");
+                if(!dateReformat.isEmpty()) {
+                    date = Date.valueOf(dateReformat);
+                }
+            }
 
             // Create list of possible roles
             List<CertificateModel> certificates = new ArrayList<>();

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="<%=request.getContextPath()%>/styles/newTool.css" rel="stylesheet" type = "text/css">
     <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
     <title>Title</title>
 </head>
@@ -36,32 +37,74 @@
 
 </nav>
 <form action = "<%=request.getContextPath()%>/admin/registerTool" method = "post" enctype="multipart/form-data">
-<div class="main">
+<div class="newtooltitle">
     <br><br>
-    <h1>Nytt verktøy:</h1>
+    <h1>Legg til nytt verktøy:</h1>
     <hr>
-    <label for="name"><b>Navn på verktøy: </b></label>
-    <input type="text" name="name" id="name" placeholder="Skriv inn navn på verktøy">
-    <br>
-
-    <label for="info"><b>Info om verktøy:</b></label>
-    <input type="text" name="info" id="info" placeholder="Skriv inn info om verktøy">
-    <br>
-
-    <label for="price"><b>Pris: </b></label>
-    <input type="text" name="price" id="price" placeholder="Skriv inn pris på verktøy">
-    <br>
-
-
-    <label for="file"><b>Last opp bilde</b></label>
-    <input type="file" name="file" id = "file"/>
-
-    <br>
-    <a href = "admin/Tools">
-    <button type="submit" class = "register">Registrer nytt verktøy</button>
-    </a>
-
 </div>
+
+    <div class="toolform">
+        <div class = "inputtext">
+    <label for="name"><b>Navn på verktøy: </b></label>
+        </div>
+        <div>
+
+        <input class = "input1" type="text" name="name" id="name" placeholder="Skriv inn navn på verktøy">
+        </div>
+        <br>
+    </div>
+
+    <br>
+
+    <div class = "toolform">
+        <div class = "inputtext">
+            <label for="info"><b>Info om verktøy:</b></label>
+        </div>
+
+        <div>
+            <input class="input2" type="text" name="info" id="info" placeholder="Skriv info om verktøy">
+        </div>
+        <br>
+    </div>
+
+    <br>
+
+    <div class="toolform">
+        <div class="inputtext">
+            <label for="price"><b>Pris: </b></label>
+        </div>
+
+        <div>
+            <input class="input3" type="text" name="price" id="price" placeholder="Skriv pris på verktøy">
+        </div>
+        <br>
+    </div>
+
+    <br>
+
+    <div class="toolform">
+        <div class="inputtext">
+            <label for="file"><b>Last opp bilde:</b></label>
+        </div>
+        <div>
+            <input type="file" name="file" id = "file"/>
+        </div>
+        <br>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="toolform">
+
+        <button class="button2" type="reset" value="Reset alle felter">Reset alle felter</button>
+
+        <a href = "admin/Tools">
+            <button class="button1" type="submit" value="register">Registrer nytt verktøy</button>
+        </a>
+
+    </div>
+
 </form>
 </body>
 </html>

@@ -12,9 +12,7 @@ nav {
     display: inline-block;
     margin: 0;
     top: 0;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
 }
-
 
 .navbar {
     display: flex;
@@ -22,6 +20,23 @@ nav {
     align-items: center;
     position: fixed;
 
+}
+
+nav2{
+    width: 100%;
+    background-color: rgb(255, 201, 72);
+    display: inline-block;
+    margin: 0;
+    top: 0;
+}
+
+.navbar2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top: 70px;
+    max-height: 65px;
 }
 
 .logo {

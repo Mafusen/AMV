@@ -15,7 +15,6 @@
     <title>Registrer bruker</title>
 </head>
         <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="styles/newUser.css">
         <link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
         <title>Registrer Bruker</title>
 
@@ -34,7 +33,7 @@
     </ul>
 </nav>
 <br><br><br><br>
-<nav class="adminTabs">
+<nav class="navbar2">
 
     <ul class="nav-links">
 
@@ -88,7 +87,7 @@
         </div>
 
         <div class="column">
-            <br> </br> <br> </br> <br> </br>
+            <br> <br> <br>
             <div class="role">
                 <label for="unionMember"> Unionsmedlem </label>
                 <input type="checkbox" name="unionMember" id="unionMember" value="unionMember_value">
