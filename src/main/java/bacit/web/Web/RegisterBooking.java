@@ -20,9 +20,6 @@ public class RegisterBooking extends HttpServlet {
 
     @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        HttpSession session = request.getSession();
-
-
         // Collect form data
         String startDate = request.getParameter("start");
         String endDate = request.getParameter("end");

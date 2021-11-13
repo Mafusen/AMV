@@ -17,6 +17,23 @@ public class ToolBookingModel {
 
     public ToolBookingModel(){}
 
+    public ToolBookingModel(int bookingID, String startDate, String endDate, String comment, boolean isDelivered,
+                            int totalPrice, int userID, int toolID, String toolName, String toolInfo, int price,
+                            boolean isActive){
+        this.bookingID = bookingID;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.comment = comment;
+        this.isDelivered = isDelivered;
+        this.totalPrice = totalPrice;
+        this.userID = userID;
+        this.toolID = toolID;
+        this.toolName = toolName;
+        this.toolInfo = toolInfo;
+        this.price = price;
+        this.isActive = isActive;
+    }
+
     public String getToolName() {
         return toolName;
     }

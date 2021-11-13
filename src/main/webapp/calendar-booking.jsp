@@ -1,4 +1,15 @@
 <%@ page import="bacit.web.Models.ToolFileModel" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="bacit.web.Models.ToolBookingModel" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="bacit.web.Models.UserModel" %>
+<%@ page import="bacit.web.Models.BookingModel" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -57,11 +68,11 @@
             <div class="calendar">
                 <div>
                     <label for="start">Start Dato:</label>
-                    <input type="date" id="start" name="start">
+                    <input type="date" id="start" name="start" required>
                 </div>
                 <div>
                     <label for="end">Slutt Dato:</label>
-                    <input type="date" id="end" name="end">
+                    <input type="date" id="end" name="end" required>
                 </div>
 
             </div>
@@ -74,14 +85,46 @@
 
 
             <div class="buttons">
-                <a class="products" href="registerBooking">
-                    <button type="submit" class="btn btn-success">Book</button>
-                </a>
-                <button type="button" class="btn btn-danger" id="divide">Avbryt</button>
+                <button type="submit" class="btn btn-success">Book</button>
+                <button type="button" class="btn btn-danger" value = "Avbryt" onclick="history.go(-1)">Avbryt</button>
             </div>
 
         </div>
+
+        <div>
+            <table class="table" style=text-align:center border=1 width=50% height=10%>
+                <thead>
+                <tr>
+                    <th>Booket av</th>
+                    <th>Mobil</th>
+                    <th>Fra</th>
+                    <th>Til</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- toolID skal egentlig vært product.getToolID -->
+                <%
+                    HashMap<UserModel, BookingModel> bookings = (HashMap<UserModel, BookingModel>) request.getAttribute("bookings");
+                    for(Map.Entry<UserModel, BookingModel> booking : bookings.entrySet()){
+                %>
+                <tr>
+                    <td><%=booking.getKey().getFirstName() +" "+ booking.getKey().getLastName()%></td>
+                    <td><%=booking.getKey().getPhone()%></td>
+                    <td><%=booking.getValue().getStartDate()%></td>
+                    <td><%=booking.getValue().getEndDate()%></td>
+
+                </tr>
+                <%
+                    }
+                %>
+                </tbody>
+            </table>
+        </div>
     </form>
+
+
+
 </main>
 <script>
     var today = new Date().toISOString().split('T')[0];

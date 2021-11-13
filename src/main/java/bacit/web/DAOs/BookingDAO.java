@@ -1,6 +1,8 @@
 package bacit.web.DAOs;
 
 import bacit.web.Models.BookingModel;
+import bacit.web.Models.ToolBookingModel;
+import bacit.web.Models.UserModel;
 import bacit.web.Utilities.DBUtils;
 
 import java.io.PrintWriter;
@@ -9,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -48,6 +51,40 @@ public class BookingDAO {
         }
 
         return productBookings;
+    }
+
+    public HashMap<UserModel, BookingModel> activeToolBookings(int toolID){
+
+        HashMap<UserModel, BookingModel> bookings = new HashMap<>();
+
+        try{
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            String query = "SELECT USER.Fname, USER.Lname, USER.Phone, BOOKING.StartDate, BOOKING.EndDate FROM BOOKING " +
+                    "inner JOIN USER ON BOOKING.USER_ID=USER.USER_ID where TOOL_ID = ? and " +
+                    "EndDate >= curdate() ORDER BY EndDate ASC";
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, toolID);
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()){
+                UserModel user = new UserModel();
+                user.setFirstName(rs.getString("Fname"));
+                user.setLastName(rs.getString("Lname"));
+                user.setPhone(rs.getString("Phone"));
+
+                BookingModel booking = new BookingModel();
+                booking.setStartDate(rs.getString("StartDate"));
+                booking.setEndDate(rs.getString("EndDate"));
+
+                bookings.put(user, booking);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return bookings;
+
     }
 
     public List<BookingModel> getUserBookings(int userID){

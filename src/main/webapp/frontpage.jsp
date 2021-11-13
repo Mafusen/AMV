@@ -41,7 +41,7 @@
         <div class="activecontainer">
 
             <a class="products" href="bookingPage.jsp">
-                <img src="styles/eksenter.png">
+                <img src="">
                 <div class="product">
                     <div class="productname">Eksentersliper 230VAC</div>
                     <div class="productinfo"> Info om produkt:</div>
@@ -64,7 +64,7 @@
                     int toolID = product.getToolID();
 
             %>
-            <a class="products" href="passProduct?toolID= + <%=toolID%>">
+            <a class="products" href="passProduct?toolID=<%=toolID%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getToolName()%></div>
