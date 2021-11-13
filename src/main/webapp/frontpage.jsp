@@ -1,9 +1,6 @@
 <%@ page import="bacit.web.Models.FileModel" %>
-<%@ page import="bacit.web.Models.ToolFileModel" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.Blob" %>
-<%@ page import="java.io.OutputStream" %>
+<%@ page import="bacit.web.Models.ToolModel" %>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
@@ -58,23 +55,23 @@
 
 
             <%
-                List<ToolFileModel> products = (ArrayList<ToolFileModel>) request.getAttribute("toolViews");
+                //HashMap<ToolModel, FileModel> products = (HashMap<ToolModel, FileModel>) request.getAttribute("products");
 
-                for(ToolFileModel product : products){
-                    int toolID = product.getToolID();
+                LinkedHashMap<ToolModel, FileModel> products = (LinkedHashMap<ToolModel, FileModel>) request.getAttribute("products");
+
+                for (Map.Entry<ToolModel, FileModel> product : products.entrySet()) {
 
             %>
-            <a class="products" href="passProduct?toolID=<%=toolID%>">
-                <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>">
+            <a class="products" href="passProduct?toolID=<%=product.getKey().getToolID()%>">
+                <img src="fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
                 <div class="product">
-                    <div class="productname"><%=product.getToolName()%></div>
-                    <div class="productinfo">Info: <%=product.getToolInfo()%></div>
-                    <div class="productprice">Pris per dag: <%=product.getPrice()%></div>
+                    <div class="productname"><%=product.getKey().getToolName()%></div>
+                    <div class="productinfo">Info: <%=product.getKey().getToolInfo()%></div>
+                    <div class="productprice">Pris per dag: <%=product.getKey().getPrice()%></div>
                 </div>
             </a>
             <%
                 }
-
             %>
 
         </div>

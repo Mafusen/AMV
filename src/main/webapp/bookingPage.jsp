@@ -8,7 +8,7 @@
     <title>Produkt Side</title>
 
     <head>
-        <link href="bookingPage.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/styles/bookingPage.css" rel="stylesheet" type="text/css">
         <link href="styles/navbar.css" rel="stylesheet" type="text/css">
         <title>Produkt Side</title>
 

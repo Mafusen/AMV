@@ -1,7 +1,8 @@
-package bacit.web.Web;
+package bacit.web.Web.admin_servlets;
 
 import bacit.web.DAOs.ToolDAO;
 import bacit.web.Models.FileModel;
+
 import bacit.web.Models.ToolModel;
 
 import javax.servlet.ServletException;
@@ -13,9 +14,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-@WebServlet (name = "frontpageServlet", value = "/frontpageServlet")
-public class FrontpageServlet extends HttpServlet {
-
+@WebServlet (name = "admin/Tools", value = "/admin/Tools")
+public class GetToolsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,16 +23,28 @@ public class FrontpageServlet extends HttpServlet {
         LinkedHashMap<ToolModel, FileModel> products = getProducts();
 
         request.setAttribute("products", products);
-        request.getRequestDispatcher("frontpage.jsp").forward(request, response);
+        request.getRequestDispatcher("/adminTools.jsp").forward(request, response);
 
     }
 
-    public LinkedHashMap<ToolModel, FileModel> getProducts () {
+    public LinkedHashMap<ToolModel, FileModel> getProducts (){
 
         ToolDAO tDao = new ToolDAO();
 
         return tDao.getProducts();
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

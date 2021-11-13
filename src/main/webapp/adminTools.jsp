@@ -1,6 +1,8 @@
-<%@ page import="bacit.web.Models.ToolFileModel" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="bacit.web.Models.FileModel" %>
+<%@ page import="bacit.web.Models.ToolModel" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.LinkedHashMap" %>
 <%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
@@ -51,15 +53,15 @@
 
 <table>
     <%
-        List<ToolFileModel> toolFiles = (ArrayList<ToolFileModel>) request.getAttribute("toolFiles");
+        LinkedHashMap<ToolModel, FileModel> products = (LinkedHashMap<ToolModel, FileModel>) request.getAttribute("products");
 
-        for(ToolFileModel toolFile : toolFiles){
+        for(Map.Entry<ToolModel, FileModel> product : products.entrySet()){
     %>
 
     <tr>
-        <td><img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=toolFile.getFileID()%>" alt="<%=toolFile.getToolName()%>" style="height: 250px" width="auto"></td>
-        <td>Verktøy: <%=toolFile.getToolName()%></td>
-        <td>Informasjon <%=toolFile.getToolInfo()%></td>
+        <td><img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt="<%=product.getKey().getToolName()%>" style="height: 250px" width="auto"></td>
+        <td>Verktøy: <%=product.getKey().getToolName()%></td>
+        <td>Informasjon <%=product.getKey().getToolInfo()%></td>
     </tr>
     <%
         }

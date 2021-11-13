@@ -4,7 +4,6 @@ import bacit.web.DAOs.BookingDAO;
 import bacit.web.DAOs.ToolDAO;
 import bacit.web.DAOs.UserDAO;
 import bacit.web.Models.BookingModel;
-import bacit.web.Models.ToolBookingModel;
 import bacit.web.Models.ToolModel;
 import bacit.web.Models.UserModel;
 
@@ -15,6 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @WebServlet(name = "bookingHistoryServlet", value = "/bookingHistoryServlet")
@@ -25,80 +26,23 @@ public class BookingHistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String searchString = request.getParameter("search");
-
         String username = request.getRemoteUser();
 
         UserDAO dao = new UserDAO();
         UserModel user = dao.getUser(username);
         int userID = user.getUserID();
 
-        BookingDAO bDao = new BookingDAO();
+        LinkedHashMap<ToolModel, BookingModel> bookings = listBookings(userID);
 
-        List<ToolBookingModel> toolBookings = createToolBookingList(bDao.getUserBookings(userID), searchString);
-
-        request.setAttribute("toolBookings", toolBookings);
+        request.setAttribute("bookings", bookings);
         request.getRequestDispatcher("/bookingHistory.jsp").forward(request, response);
 
     }
 
-    public List<ToolBookingModel> createToolBookingList(List<BookingModel> bookings, String searchString) {
-        List<ToolBookingModel> toolBookings = new ArrayList<>();
+    public LinkedHashMap<ToolModel, BookingModel> listBookings(int userID) {
 
-        for (BookingModel booking : bookings) {
-            int toolID = booking.getToolID();
-            ToolDAO tDao = new ToolDAO();
-            if (searchString == null) {
-                ToolModel tool;
-                ToolBookingModel model = new ToolBookingModel();
+        BookingDAO bDao = new BookingDAO();
 
-                try {
-                    tool = tDao.getTool(toolID);
-
-                    model.setUserID(booking.getUserID());
-                    model.setBookingID(booking.getBookingID());
-                    model.setToolID(tool.getToolID());
-                    model.setToolName(tool.getToolName());
-                    model.setToolInfo(tool.getToolInfo());
-                    model.setPrice(tool.getPrice());
-                    model.setActive(tool.isActive());
-                    model.setStartDate(booking.getStartDate());
-                    model.setEndDate(booking.getEndDate());
-                    model.setComment(booking.getComment());
-                    model.setIsDelivered(booking.getIsDelivered());
-                    model.setTotalPrice(booking.getTotalPrice());
-                    toolBookings.add(model);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                ToolModel tool;
-                ToolBookingModel model = new ToolBookingModel();
-
-                try {
-                    tool = tDao.getTool(toolID);
-
-                    model.setUserID(booking.getUserID());
-                    model.setBookingID(booking.getBookingID());
-                    model.setToolID(tool.getToolID());
-                    model.setToolName(tool.getToolName());
-                    model.setToolInfo(tool.getToolInfo());
-                    model.setPrice(tool.getPrice());
-                    model.setActive(tool.isActive());
-                    model.setStartDate(booking.getStartDate());
-                    model.setEndDate(booking.getEndDate());
-                    model.setComment(booking.getComment());
-                    model.setIsDelivered(booking.getIsDelivered());
-                    model.setTotalPrice(booking.getTotalPrice());
-                    if (tool.getToolName().contains(searchString)) {
-                        toolBookings.add(model);
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
-        return toolBookings;
+        return bDao.getUserBookings(userID);
     }
 }

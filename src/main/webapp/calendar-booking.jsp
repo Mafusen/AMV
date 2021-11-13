@@ -1,15 +1,7 @@
-<%@ page import="bacit.web.Models.ToolFileModel" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="bacit.web.Models.ToolBookingModel" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="bacit.web.Models.UserModel" %>
-<%@ page import="bacit.web.Models.BookingModel" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="bacit.web.Models.*" %>
+<%@ page import="java.util.LinkedHashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,18 +32,20 @@
 </nav>
 
 <%
-    ToolFileModel product = (ToolFileModel) request.getAttribute("product");
+    FileModel file = (FileModel) request.getAttribute("file");
+    ToolModel tool = (ToolModel) request.getAttribute("tool");
+
 %>
 
 <main class="container">
     <form action = "registerBooking" method = "get">
         <!-- Left Column / Headphones Image -->
         <div class="left-column">
-            <img src="fileDownloadServlet?FILE_ID=<%=product.getFileID()%>" alt = "<%=product.getToolName()%>" style="height: 200px; width: auto" >
+            <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt = "<%=tool.getToolName()%>" style="height: 200px; width: auto" >
         </div>
 
         <a>
-            <input type = "hidden" id = "toolID" name = "toolID" value = "<%=product.getToolID()%>">
+            <input type = "hidden" id = "toolID" name = "toolID" value = "<%=tool.getToolID()%>">
         </a>
 
         <!-- Right Column -->
@@ -59,9 +53,9 @@
 
             <!-- Product Description -->
             <div class="product-description">
-                <h1><%=product.getToolName()%></h1>
+                <h1><%=tool.getToolName()%></h1>
                 <p>
-                    Informarsjon: <%=product.getToolInfo()%>
+                    Informarsjon: <%=tool.getToolInfo()%>
                 </p>
             </div>
             <!-- Product Pricing -->
@@ -79,7 +73,7 @@
 
             <div class="product-price">
                 <p>
-                    <%=product.getPrice()%>kr/dag
+                    <%=tool.getPrice()%>kr/dag
                 </p>
             </div>
 
@@ -103,9 +97,8 @@
                 </thead>
                 <tbody>
 
-                <!-- toolID skal egentlig vært product.getToolID -->
                 <%
-                    HashMap<UserModel, BookingModel> bookings = (HashMap<UserModel, BookingModel>) request.getAttribute("bookings");
+                    LinkedHashMap<UserModel, BookingModel> bookings = (LinkedHashMap<UserModel, BookingModel>) request.getAttribute("bookings");
                     for(Map.Entry<UserModel, BookingModel> booking : bookings.entrySet()){
                 %>
                 <tr>
