@@ -1,4 +1,6 @@
-<%@ page import="bacit.web.Models.ToolBookingModel" %><%--
+<%@ page import="bacit.web.Models.ToolModel" %>
+<%@ page import="bacit.web.Models.BookingModel" %>
+<%@ page import="bacit.web.Models.FileModel" %><%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
   Date: 03/11/2021
@@ -29,19 +31,32 @@
 
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Users">Ansatte</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Verktoy</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/report">Rapport</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">LeieHistorikk</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Aktive Bookinger</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Fremtidige Bookinger</a></li>
     </ul>
 
 </nav>
 <%
-    ToolBookingModel toolBooking = (ToolBookingModel) request.getAttribute("toolBooking");
+    ToolModel tool = (ToolModel) request.getAttribute("tool");
+    BookingModel booking = (BookingModel) request.getAttribute("booking");
+    FileModel file = (FileModel) request.getAttribute("file");
+    String deliveryStatus = "Ikke levert!";
+
+    if (booking.getIsDelivered()){
+        deliveryStatus = "Levert";
+    }
 %>
 <div class="main">
-    <h1><%=toolBooking.getToolName()%></h1>
-    <a><%=toolBooking.getStartDate()%></a>
-    <a><%=toolBooking.getEndDate()%></a>
+    <h1><%=tool.getToolName()%></h1>
+    <a><img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt = "<%=tool.getToolName()%>"></a>
+    <a>Info: <%=tool.getToolInfo()%></a>
+    <a>Pris per dag: <%=tool.getPrice()%></a>
+    <a>Startdato: <%=booking.getStartDate()%></a>
+    <a>Sluttdato: <%=booking.getEndDate()%></a>
+    <a>Kommentar: <%=booking.getComment()%></a>
+    <a>Leveringsstatus: <%=deliveryStatus%></a>
+    <a>Total kostnad: <%=booking.getTotalPrice()%></a>
 </div>
 
 </body>

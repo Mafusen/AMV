@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet (name = "passProduct", value = "/passProduct")
 public class PassProduct extends HttpServlet {
@@ -23,13 +24,22 @@ public class PassProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String toolIString = request.getParameter("toolID").trim();
-        int toolID = Integer.parseInt(toolIString);
+        String toolIDString = request.getParameter("toolID");
+        int toolID = Integer.parseInt(toolIDString);
 
-        ToolFileModel product = getProduct(toolID);
         HashMap<UserModel, BookingModel> bookings = getBookings(toolID);
 
-        request.setAttribute("product", product);
+        ToolModel tool = null;
+        FileModel file = null;
+        try {
+            tool = getTool(toolID);
+            file = getFile(toolID);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        request.setAttribute("file", file);
+        request.setAttribute("tool", tool);
         request.setAttribute("bookings", bookings);
         request.getRequestDispatcher("calendar-booking.jsp").forward(request, response);
     }
@@ -41,28 +51,24 @@ public class PassProduct extends HttpServlet {
         return bDao.activeToolBookings(toolID);
     }
 
-    public ToolFileModel getProduct(int toolID){
+    public HashMap<ToolModel, FileModel> getProduct(int toolID){
 
         ToolDAO tDao = new ToolDAO();
-        ToolModel tool = new ToolModel();
-
-        try {
-            tool = tDao.getTool(toolID);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        FileDAO fDao = new FileDAO();
-        FileModel file = new FileModel();
-        try {
-            file = fDao.getFileForTool(tool.getToolID());
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return new ToolFileModel(tool.getToolID(), tool.getToolName(), tool.getToolInfo(), tool.getPrice(), tool.isActive(),
-                file.getFileID(), file.getName(), file.getContents(), file.getContentType());
+        return tDao.getProduct(toolID);
     }
 
+    public ToolModel getTool(int toolID) throws SQLException {
+
+        ToolDAO tDao = new ToolDAO();
+        return tDao.getTool(toolID);
+
+    }
+
+    public FileModel getFile(int toolID) throws SQLException, ClassNotFoundException {
+
+        FileDAO fDao = new FileDAO();
+        return fDao.getFileForTool(toolID);
+
+    }
 
 }

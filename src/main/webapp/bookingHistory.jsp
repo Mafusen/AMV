@@ -1,10 +1,8 @@
 <%@ page import="bacit.web.Models.BookingModel" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Collection" %>
 <%@ page import="bacit.web.Models.ToolModel" %>
-<%@ page import="bacit.web.Models.ToolBookingModel" %>
-<%@ page import="javax.tools.Tool" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.LinkedHashMap" %>
 <%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
@@ -53,23 +51,17 @@
 
     <table>
 <%
-    List<ToolBookingModel> toolBookings = (ArrayList<ToolBookingModel>) request.getAttribute("toolBookings");
+    LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
 
-    for(ToolBookingModel toolBooking : toolBookings){
+    for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
 %>
         <tr>
             <td>BILDE GÅR HER</td>
-            <td>Produkt: <%=toolBooking.getToolName()%></td>
-            <td>Leieperiode: <%=toolBooking.getStartDate() + " ---> " + toolBooking.getEndDate()%></td>
-            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=toolBooking.getBookingID()%>">Se Produkt</button></form></td>
+            <td>Produkt: <%=booking.getKey().getToolName()%></td>
+            <td>Leieperiode: <%=booking.getValue().getStartDate() + " ---> " + booking.getValue().getEndDate()%></td>
+            <td>Kommentar: <%=booking.getValue().getComment()%></td>
+            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Produkt</button></form></td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <a></a>
-        <a></a>
         <br><br>
     <%
         }

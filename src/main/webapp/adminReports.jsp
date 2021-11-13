@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.sql.*"%>
 <%@ page import="java.util.List" %>
 <%@ page import="bacit.web.Models.ReportModel" %>
 <%@ page import="java.util.ArrayList" %>

@@ -1,18 +1,19 @@
 package bacit.web.Web;
 
-        import bacit.web.DAOs.BookingDAO;
-        import bacit.web.DAOs.ToolDAO;
-        import bacit.web.Models.BookingModel;
-        import bacit.web.Models.ToolBookingModel;
-        import bacit.web.Models.ToolModel;
+import bacit.web.DAOs.BookingDAO;
+import bacit.web.DAOs.FileDAO;
+import bacit.web.DAOs.ToolDAO;
+import bacit.web.Models.BookingModel;
+import bacit.web.Models.FileModel;
+import bacit.web.Models.ToolModel;
 
-        import javax.servlet.ServletException;
-        import javax.servlet.annotation.WebServlet;
-        import javax.servlet.http.HttpServlet;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import java.io.IOException;
-        import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "getBookingServlet", value = "/getBookingServlet")
 public class GetBookingServlet extends HttpServlet {
@@ -22,44 +23,62 @@ public class GetBookingServlet extends HttpServlet {
 
         String bookingIDString = request.getParameter("bookingID");
         int bookingID = Integer.parseInt(bookingIDString);
-        ToolBookingModel toolBooking = new ToolBookingModel();
 
 
+        BookingModel booking = new BookingModel();
+        booking = getBooking(bookingID);
+
+        ToolModel tool = new ToolModel();
         try {
-            toolBooking = getToolBooking(bookingID);
+            tool = getTool(booking.getToolID());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        ToolDAO tDao = new ToolDAO();
+        ToolModel toolModel = null;
+        try {
+            toolModel = tDao.getTool(tool.getToolID());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        request.setAttribute("toolBooking", toolBooking);
+        assert toolModel != null;
+        int toolID = toolModel.getToolID();
+        FileModel file = null;
+        try {
+            file = getFile(toolID);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        request.setAttribute("tool", tool);
+        request.setAttribute("booking", booking);
+        request.setAttribute("file", file);
         request.getRequestDispatcher("booking.jsp").forward(request, response);
     }
 
-    private ToolBookingModel getToolBooking(int bookingID) throws SQLException {
-        ToolBookingModel toolBooking = new ToolBookingModel();
-
-        BookingDAO bDao = new BookingDAO();
-        BookingModel bModel = bDao.getBooking(bookingID);
-        int toolID = bModel.getToolID();
+    private ToolModel getTool(int toolID) throws SQLException {
 
         ToolDAO tDao = new ToolDAO();
-        ToolModel tModel = tDao.getTool(toolID);
 
-        toolBooking.setUserID(bModel.getUserID());
-        toolBooking.setBookingID(bModel.getBookingID());
-        toolBooking.setToolID(bModel.getToolID());
-        toolBooking.setStartDate(bModel.getStartDate());
-        toolBooking.setEndDate(bModel.getEndDate());
-        toolBooking.setComment(bModel.getComment());
-        toolBooking.setIsDelivered(bModel.getIsDelivered());
-        toolBooking.setTotalPrice(bModel.getTotalPrice());
-        toolBooking.setToolName(tModel.getToolName());
-        toolBooking.setToolInfo(tModel.getToolInfo());
-        toolBooking.setPrice(tModel.getPrice());
-        toolBooking.setActive(tModel.isActive());
-
-        return toolBooking;
+        return tDao.getTool(toolID);
     }
+
+    private BookingModel getBooking(int bookingID){
+
+        BookingDAO bDao = new BookingDAO();
+
+        return bDao.getBooking(bookingID);
+    }
+
+    private FileModel getFile(int toolID) throws SQLException, ClassNotFoundException {
+
+        FileDAO fDao = new FileDAO();
+
+        return fDao.getFileForTool(toolID);
+
+    };
 
 }

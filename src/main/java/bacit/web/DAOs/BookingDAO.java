@@ -1,7 +1,7 @@
 package bacit.web.DAOs;
 
 import bacit.web.Models.BookingModel;
-import bacit.web.Models.ToolBookingModel;
+import bacit.web.Models.ToolModel;
 import bacit.web.Models.UserModel;
 import bacit.web.Utilities.DBUtils;
 
@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 
@@ -53,9 +54,9 @@ public class BookingDAO {
         return productBookings;
     }
 
-    public HashMap<UserModel, BookingModel> activeToolBookings(int toolID){
+    public LinkedHashMap<UserModel, BookingModel> activeToolBookings(int toolID){
 
-        HashMap<UserModel, BookingModel> bookings = new HashMap<>();
+        LinkedHashMap<UserModel, BookingModel> bookings = new LinkedHashMap<>();
 
         try{
             Connection db = DBUtils.getINSTANCE().getConnection(out);
@@ -87,37 +88,36 @@ public class BookingDAO {
 
     }
 
-    public List<BookingModel> getUserBookings(int userID){
+    public LinkedHashMap<ToolModel, BookingModel> getUserBookings(int userID){
 
-
-        List<BookingModel> bookings = new ArrayList<>();
+        LinkedHashMap<ToolModel, BookingModel> bookings = new LinkedHashMap<>();
 
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
-
-            String query = "select * from BOOKING where USER_ID = ?";
+            String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.IsDelivered, BOOKING.TotalPrice, TOOL.Tool_Name FROM BOOKING " +
+                    "inner JOIN TOOL ON BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ?;";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                BookingModel model = new BookingModel();
-                model.setBookingID(rs.getInt("BOOKING_ID"));
-                model.setStartDate(rs.getString("StartDate"));
-                model.setEndDate(rs.getString("EndDate"));
-                model.setComment(rs.getString("Cmnt"));
-                model.setIsDelivered(rs.getBoolean("IsDelivered"));
-                model.setTotalPrice(rs.getInt("TotalPrice"));
-                model.setUserID(rs.getInt("USER_ID"));
-                model.setToolID(rs.getInt("TOOL_ID"));
-                bookings.add(model);
-            }
+                ToolModel tool = new ToolModel();
+                tool.setToolName(rs.getString("Tool_Name"));
 
+                BookingModel booking = new BookingModel();
+                booking.setBookingID(rs.getInt("BOOKING_ID"));
+                booking.setStartDate(rs.getString("StartDate"));
+                booking.setEndDate(rs.getString("EndDate"));
+                booking.setComment(rs.getString("Cmnt"));
+                booking.setIsDelivered(rs.getBoolean("IsDelivered"));
+                booking.setTotalPrice(rs.getInt("TotalPrice"));
+
+                bookings.put(tool, booking);
+            }
         }
         catch(SQLException | ClassNotFoundException exception){
             exception.printStackTrace();
         }
-
 
         return bookings;
     }

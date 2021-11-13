@@ -1,5 +1,6 @@
 package bacit.web.DAOs;
 
+import bacit.web.Models.FileModel;
 import bacit.web.Models.ToolModel;
 import bacit.web.Utilities.DBUtils;
 
@@ -8,40 +9,87 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
 
 public class ToolDAO {
 
     PrintWriter out;
 
-    public List<ToolModel> getAllTools() throws SQLException {
+    public LinkedHashMap<ToolModel, FileModel> getProducts(){
 
-        List<ToolModel> tools = new ArrayList<>();
+        LinkedHashMap<ToolModel, FileModel> products = new LinkedHashMap<>();
 
-        try {
+        try{
             Connection db = DBUtils.getINSTANCE().getConnection(out);
-            String query = "select * from TOOL";
+
+            String query = "SELECT TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price, TOOL.IsActive, FILE.FILE_ID, " +
+                    "FILE.File_Name, FILE.File_Content, FILE.ContentType FROM FILE inner JOIN TOOL " +
+                    "ON FILE.TOOL_ID=TOOL.TOOL_ID where isActive = 1;";
             PreparedStatement statement = db.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
 
-        while (rs.next()){
-            ToolModel model = new ToolModel(
-                    rs.getInt("TOOL_ID"),
-                    rs.getString("Tool_Name"),
-                    rs.getString("Tool_Info"),
-                    rs.getInt("Price"),
-                    rs.getBoolean("IsActive")
-                    );
-            tools.add(model);
+            while(rs.next()){
+
+                ToolModel tool = new ToolModel();
+                tool.setToolID(rs.getInt("TOOL_ID"));
+                tool.setToolName(rs.getString("Tool_Name"));
+                tool.setToolInfo(rs.getString("Tool_Info"));
+                tool.setPrice(rs.getInt("Price"));
+                tool.setActive(rs.getBoolean("isActive"));
+
+                FileModel file = new FileModel();
+                file.setFileID(rs.getInt("FILE_ID"));
+
+                products.put(tool, file);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
-        } catch(SQLException | ClassNotFoundException exception){
-            exception.printStackTrace();
-        }
+        return products;
 
-         return tools;
     }
+
+
+    public LinkedHashMap<ToolModel, FileModel> getProduct(int toolID){
+
+        LinkedHashMap<ToolModel, FileModel> product = new LinkedHashMap<>();
+
+        try{
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            String query = "SELECT TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price, TOOL.IsActive, FILE.FILE_ID, " +
+                    "FILE.File_Name, FILE.File_Content, FILE.ContentType FROM TOOL inner JOIN FILE ON TOOL.TOOL_ID = ? " +
+                    "and FILE.TOOL_ID = ? ";
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, toolID);
+            statement.setInt(2, toolID);
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()){
+
+                ToolModel tool = new ToolModel();
+                tool.setToolID(rs.getInt("TOOL_ID"));
+                tool.setToolName(rs.getString("Tool_Name"));
+                tool.setToolInfo(rs.getString("Tool_Info"));
+                tool.setPrice(rs.getInt("Price"));
+                tool.setActive(rs.getBoolean("isActive"));
+
+                FileModel file = new FileModel();
+                file.setFileID(rs.getInt("FILE_ID"));
+
+                product.put(tool, file);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return product;
+
+    }
+
 
     public ToolModel getTool(int toolID) throws SQLException {
 
@@ -67,6 +115,7 @@ public class ToolDAO {
             return model;
 
     }
+
 
     public void newTool(ToolModel tool) throws SQLException, ClassNotFoundException {
         Connection db = DBUtils.getINSTANCE().getConnection(out);
