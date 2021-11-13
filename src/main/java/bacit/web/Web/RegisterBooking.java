@@ -28,7 +28,7 @@ public class RegisterBooking extends HttpServlet {
         String endDate = request.getParameter("end");
         String comment = "";
 
-        String username = (String) session.getAttribute("username");
+        String username = request.getRemoteUser();
 
         UserDAO uDao = new UserDAO();
         UserModel user;

@@ -1,0 +1,88 @@
+.toolform {
+    padding-left: 50px;
+}
+
+.newtooltitle{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+}
+
+.inputtext {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.input1 {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    width: 400px;
+    height: 50px;
+    padding-left: 12px;
+    border-width: 2px;
+    border-color: #d0d0d0;
+
+}
+
+.input2 {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    width: 400px;
+    height: 75px;
+    padding-left: 12px;
+    border-width: 2px;
+    border-color: #d0d0d0;
+    padding-bottom: 30px;
+}
+
+.input3 {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    width: 400px;
+    height: 50px;
+    padding-left: 12px;
+    border-width: 2px;
+    border-color: #d0d0d0;
+}
+
+.imgbutton {
+    height: 40px;
+    width: 100px;
+    background-color: #d2d2d2;
+    border-radius: 8px;
+    float: left;
+    border-width: 0px;
+}
+
+.button1 {
+    height: 50px;
+    width: 110px;
+    background-color: #009821;
+    border-radius: 8px;
+    color: #ffffff;
+    float: left;
+    margin-left: 180px;
+    border-width: 0px;
+    cursor: pointer;
+}
+
+.button2 {
+    height: 50px;
+    width: 110px;
+    background-color: #d2d2d2;
+    border-radius: 8px;
+    float: left;
+    border-width: 0px;
+    cursor: pointer;
+}
+
+.button1:hover {
+    background-color: #00861e; /* Green */
+    color: white;
+}
+
+.button2:hover {
+    background-color: #bbbbbb; /* Green */
+    color: black;
+}
