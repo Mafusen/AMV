@@ -25,7 +25,7 @@
   </ul>
 </nav>
 <br><br><br><br>
-<nav class="adminTabs">
+<nav2 class="navbar2">
 
   <ul class="nav-links">
 
@@ -34,7 +34,7 @@
     <li class="nav-item"><a href="adminReports.jsp">Fremtidige Bookinger</a></li>
   </ul>
 
-</nav>
+</nav2>
 
 <div class="main">
   <br><br><h1>Side for rapporter</h1>

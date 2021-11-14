@@ -33,7 +33,7 @@
     </ul>
 </nav>
 <br><br><br><br>
-<nav class="navbar2">
+<nav2 class="navbar2">
 
     <ul class="nav-links">
 
@@ -42,7 +42,7 @@
         <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/report">Rapport</a></li>
     </ul>
 
-</nav>
+</nav2>
 <br><br><br><br>
 <h1>Legg til ny bruker:</h1>
 
