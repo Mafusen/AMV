@@ -11,7 +11,6 @@
     <title>Produkt Side</title>
 
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link href="styles/navbar.css" rel="stylesheet" type="text/css">
         <link href="styles/calendar.css" type="text/css" rel="stylesheet">
         <title>Produkt Side</title>
@@ -36,39 +35,24 @@
     ToolModel tool = (ToolModel) request.getAttribute("tool");
 
 %>
+<main class="columns">
+    <div class="columnleft">
+        <form action = "registerBooking" method = "get">
 
-<main class="container">
-    <form action = "registerBooking" method = "get">
-        <!-- Left Column / Headphones Image -->
-        <div class="left-column">
-            <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt = "<%=tool.getToolName()%>" style="height: 200px; width: auto" >
-        </div>
+         <div class="left-column">
+            <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt = "<%=tool.getToolName()%>">
+         </div>
 
         <a>
             <input type = "hidden" id = "toolID" name = "toolID" value = "<%=tool.getToolID()%>">
         </a>
 
-        <!-- Right Column -->
-        <div class="right-column">
-
-            <!-- Product Description -->
-            <div class="product-description">
-                <h1><%=tool.getToolName()%></h1>
-                <p>
-                    Informarsjon: <%=tool.getToolInfo()%>
-                </p>
+        <div class="product">
+            <div class="product-name">
+                <p><%=tool.getToolName()%></p>
             </div>
-            <!-- Product Pricing -->
-            <div class="calendar">
-                <div>
-                    <label for="start">Start Dato:</label>
-                    <input type="date" id="start" name="start" required>
-                </div>
-                <div>
-                    <label for="end">Slutt Dato:</label>
-                    <input type="date" id="end" name="end" required>
-                </div>
-
+            <div class="product-info">
+                    Informasjon: <%=tool.getToolInfo()%>
             </div>
 
             <div class="product-price">
@@ -77,16 +61,28 @@
                 </p>
             </div>
 
+            <div class="calendar">
+                <div class="startdate">
+                    <label for="start">Startdato:</label>
+                    <input type="date" id="start" name="start" required>
+                </div>
+                <div>
+                    <label for="end">Sluttdato:</label>
+                    <input type="date" id="end" name="end" required>
+                </div>
 
-            <div class="buttons">
-                <button type="submit" class="btn btn-success">Book</button>
-                <button type="button" class="btn btn-danger" value = "Avbryt" onclick="history.go(-1)">Avbryt</button>
             </div>
 
-        </div>
+              <div class="buttons">
+                <button type="submit" class="btn-success">Book</button>
+                <button type="button" class="btn-cancel" value = "Avbryt" onclick="history.go(-1)">Avbryt</button>
+              </div>
 
-        <div>
-            <table class="table" style=text-align:center border=1 width=50% height=10%>
+        </div>
+    </form>
+    </div>
+        <div class="columnright">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>Booket av</th>
@@ -114,11 +110,9 @@
                 </tbody>
             </table>
         </div>
-    </form>
-
-
-
 </main>
+
+
 <script>
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("start")[0].setAttribute('min', today);
