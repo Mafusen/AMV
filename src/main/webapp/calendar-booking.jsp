@@ -11,10 +11,9 @@
     <title>Produkt Side</title>
 
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link href="styles/navbar.css" rel="stylesheet" type="text/css">
         <link href="styles/calendar.css" type="text/css" rel="stylesheet">
-        <title>Produkt Side</title>
+        <title>Booking Side</title>
 
 <body>
 
@@ -34,91 +33,85 @@
 <%
     FileModel file = (FileModel) request.getAttribute("file");
     ToolModel tool = (ToolModel) request.getAttribute("tool");
-
 %>
+<main class="columns">
+    <div class="columnleft">
+        <form action = "registerBooking" method = "get">
 
-<main class="container">
-    <form action = "registerBooking" method = "get">
-        <!-- Left Column / Headphones Image -->
-        <div class="left-column">
-            <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt = "<%=tool.getToolName()%>" style="height: 200px; width: auto" >
-        </div>
-
-        <a>
-            <input type = "hidden" id = "toolID" name = "toolID" value = "<%=tool.getToolID()%>">
-        </a>
-
-        <!-- Right Column -->
-        <div class="right-column">
-
-            <!-- Product Description -->
-            <div class="product-description">
-                <h1><%=tool.getToolName()%></h1>
-                <p>
-                    Informarsjon: <%=tool.getToolInfo()%>
-                </p>
+            <div class="left-column">
+                <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt = "<%=tool.getToolName()%>">
             </div>
-            <!-- Product Pricing -->
-            <div class="calendar">
-                <div>
-                    <label for="start">Start Dato:</label>
-                    <input type="date" id="start" name="start" required>
+
+            <a>
+                <input type = "hidden" id = "toolID" name = "toolID" value = "<%=tool.getToolID()%>">
+            </a>
+
+            <div class="product">
+                <div class="product-name">
+                    <p><%=tool.getToolName()%></p>
                 </div>
-                <div>
-                    <label for="end">Slutt Dato:</label>
-                    <input type="date" id="end" name="end" required>
+                <div class="product-info">
+                    Informasjon: <%=tool.getToolInfo()%>
                 </div>
 
+                <div class="product-price">
+                    <p>
+                        <%=tool.getPrice()%>kr/dag
+                    </p>
+                </div>
+
+                <div class="calendar">
+                    <div class="startdate">
+                        <label for="start">Startdato:</label>
+                        <input type="date" id="start" name="start" required>
+                    </div>
+                    <div>
+                        <label for="end">Sluttdato:</label>
+                        <input type="date" id="end" name="end" required>
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="btn-success">Book</button>
+                    <button type="button" class="btn-cancel" value = "Avbryt" onclick="history.go(-1)">Avbryt</button>
+                </div>
+
             </div>
+        </form>
+    </div>
+    <div class="columnright">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Booket av</th>
+                <th>Mobil</th>
+                <th>Fra</th>
+                <th>Til</th>
+            </tr>
+            </thead>
+            <tbody>
 
-            <div class="product-price">
-                <p>
-                    <%=tool.getPrice()%>kr/dag
-                </p>
-            </div>
+            <%
+                LinkedHashMap<UserModel, BookingModel> bookings = (LinkedHashMap<UserModel, BookingModel>) request.getAttribute("bookings");
+                for(Map.Entry<UserModel, BookingModel> booking : bookings.entrySet()){
+            %>
+            <tr>
+                <td><%=booking.getKey().getFirstName() +" "+ booking.getKey().getLastName()%></td>
+                <td><%=booking.getKey().getPhone()%></td>
+                <td><%=booking.getValue().getStartDate()%></td>
+                <td><%=booking.getValue().getEndDate()%></td>
 
-
-            <div class="buttons">
-                <button type="submit" class="btn btn-success">Book</button>
-                <button type="button" class="btn btn-danger" value = "Avbryt" onclick="history.go(-1)">Avbryt</button>
-            </div>
-
-        </div>
-
-        <div>
-            <table class="table" style=text-align:center border=1 width=50% height=10%>
-                <thead>
-                <tr>
-                    <th>Booket av</th>
-                    <th>Mobil</th>
-                    <th>Fra</th>
-                    <th>Til</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <%
-                    LinkedHashMap<UserModel, BookingModel> bookings = (LinkedHashMap<UserModel, BookingModel>) request.getAttribute("bookings");
-                    for(Map.Entry<UserModel, BookingModel> booking : bookings.entrySet()){
-                %>
-                <tr>
-                    <td><%=booking.getKey().getFirstName() +" "+ booking.getKey().getLastName()%></td>
-                    <td><%=booking.getKey().getPhone()%></td>
-                    <td><%=booking.getValue().getStartDate()%></td>
-                    <td><%=booking.getValue().getEndDate()%></td>
-
-                </tr>
-                <%
-                    }
-                %>
-                </tbody>
-            </table>
-        </div>
-    </form>
-
-
-
+            </tr>
+            <%
+                }
+            %>
+            </tbody>
+        </table>
+    </div>
 </main>
+
+
 <script>
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("start")[0].setAttribute('min', today);

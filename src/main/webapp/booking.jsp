@@ -27,7 +27,7 @@
     </ul>
 </nav>
 <br><br><br><br>
-<navbar class="navbar2">
+<nav2 class="navbar2">
 
     <ul class="nav-links">
 
@@ -36,7 +36,8 @@
         <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Fremtidige Bookinger</a></li>
     </ul>
 
-</navbar>
+</nav2>
+<br><br><br><br>
 <%
     ToolModel tool = (ToolModel) request.getAttribute("tool");
     BookingModel booking = (BookingModel) request.getAttribute("booking");
