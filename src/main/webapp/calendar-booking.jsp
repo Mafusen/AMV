@@ -13,7 +13,7 @@
     <head>
         <link href="styles/navbar.css" rel="stylesheet" type="text/css">
         <link href="styles/calendar.css" type="text/css" rel="stylesheet">
-        <title>Produkt Side</title>
+        <title>Booking Side</title>
 
 <body>
 
