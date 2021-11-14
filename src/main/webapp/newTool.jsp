@@ -38,14 +38,14 @@
 </nav2>
 <form action = "<%=request.getContextPath()%>/admin/registerTool" method = "post" enctype="multipart/form-data">
 <div class="newtooltitle">
-    <br><br>
+    <br><br><br><br>
     <h1>Legg til nytt verktøy:</h1>
     <hr>
 </div>
-
+<br>
     <div class="toolform">
         <div class = "inputtext">
-    <label for="name"><b>Navn på verktøy: </b></label>
+    <label for="name" style="margin-top: 10px"><b>Navn på verktøy: </b></label>
         </div>
         <div>
 
