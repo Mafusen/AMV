@@ -26,7 +26,7 @@
     </ul>
 </nav>
 <br><br><br><br>
-<nav class="adminTabs">
+<nav2 class="navbar2">
 
     <ul class="nav-links">
 
@@ -35,7 +35,7 @@
         <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/report">Rapport</a></li>
     </ul>
 
-</nav>
+</nav2>
 <form action = "<%=request.getContextPath()%>/admin/registerTool" method = "post" enctype="multipart/form-data">
 <div class="newtooltitle">
     <br><br>
