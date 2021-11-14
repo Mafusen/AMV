@@ -1,6 +1,9 @@
 package bacit.web.Web;
 
+import bacit.web.DAOs.BookingDAO;
 import bacit.web.DAOs.ToolDAO;
+import bacit.web.DAOs.UserDAO;
+import bacit.web.Models.BookingModel;
 import bacit.web.Models.FileModel;
 import bacit.web.Models.ToolModel;
 
@@ -20,8 +23,14 @@ public class FrontpageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        LinkedHashMap<ToolModel, FileModel> products = getProducts();
+        String username = request.getRemoteUser();
+        UserDAO uDao = new UserDAO();
+        int userID = uDao.getUser(username).getUserID();
 
+        LinkedHashMap<ToolModel, FileModel> products = getProducts();
+        LinkedHashMap<ToolModel, BookingModel> bookings = getActiveBookings(userID);
+
+        request.setAttribute("bookings", bookings);
         request.setAttribute("products", products);
         request.getRequestDispatcher("frontpage.jsp").forward(request, response);
 
@@ -32,6 +41,14 @@ public class FrontpageServlet extends HttpServlet {
         ToolDAO tDao = new ToolDAO();
 
         return tDao.getProducts();
+    }
+
+    public LinkedHashMap<ToolModel, BookingModel> getActiveBookings(int userID){
+
+        BookingDAO bDao = new BookingDAO();
+
+        return bDao.activeUserBookings(userID);
+
     }
 
 

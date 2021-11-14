@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet (name = "passProduct", value = "/passProduct")
 public class PassProduct extends HttpServlet {
@@ -51,7 +48,7 @@ public class PassProduct extends HttpServlet {
         return bDao.activeToolBookings(toolID);
     }
 
-    public HashMap<ToolModel, FileModel> getProduct(int toolID){
+    public LinkedHashMap<ToolModel, FileModel> getProduct(int toolID){
 
         ToolDAO tDao = new ToolDAO();
         return tDao.getProduct(toolID);

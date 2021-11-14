@@ -25,8 +25,7 @@ public class GetBookingServlet extends HttpServlet {
         int bookingID = Integer.parseInt(bookingIDString);
 
 
-        BookingModel booking = new BookingModel();
-        booking = getBooking(bookingID);
+        BookingModel booking = getBooking(bookingID);
 
         ToolModel tool = new ToolModel();
         try {
