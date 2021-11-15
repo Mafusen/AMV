@@ -128,10 +128,50 @@ public class BookingDAO {
 
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
+            String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.IsDelivered, BOOKING.TotalPrice, " +
+                    "TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price FROM BOOKING inner JOIN TOOL ON " +
+                    "BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ? and BOOKING.StartDate >= curdate() and " +
+                    "BOOKING.EndDate <= curdate()+(BOOKING.EndDate-BOOKING.StartDate) and BOOKING.IsDelivered = 0; ";
+
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, userID);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                ToolModel tool = new ToolModel();
+                tool.setToolID(rs.getInt("TOOL_ID"));
+                tool.setToolName(rs.getString("Tool_Name"));
+                tool.setToolInfo(rs.getString("Tool_Info"));
+                tool.setPrice(rs.getInt("Price"));
+
+                BookingModel booking = new BookingModel();
+                booking.setBookingID(rs.getInt("BOOKING_ID"));
+                booking.setStartDate(rs.getString("StartDate"));
+                booking.setEndDate(rs.getString("EndDate"));
+                booking.setComment(rs.getString("Cmnt"));
+                booking.setIsDelivered(rs.getBoolean("IsDelivered"));
+                booking.setTotalPrice(rs.getInt("TotalPrice"));
+
+                bookings.put(tool, booking);
+            }
+        }
+        catch(SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+
+        return bookings;
+    }
+
+    public LinkedHashMap<ToolModel, BookingModel> getFutureBookings(int userID){
+
+        LinkedHashMap<ToolModel, BookingModel> bookings = new LinkedHashMap<>();
+
+        try {
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
             String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, " +
                     "BOOKING.IsDelivered, BOOKING.TotalPrice, TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price FROM BOOKING " +
                     "inner JOIN TOOL ON BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ? " +
-                    "and BOOKING.StartDate >= curdate() and BOOKING.IsDelivered = 0;";
+                    "and BOOKING.StartDate > curdate();";
 
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);
