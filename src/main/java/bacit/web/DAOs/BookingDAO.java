@@ -282,4 +282,43 @@ public class BookingDAO {
         }
     }
 
+    public boolean checkFuture (int bookingID) throws SQLException, ClassNotFoundException {
+
+        boolean isFuture = false;
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "SELECT BOOKING_ID FROM BOOKING where BOOKING_ID = ? and BOOKING.StartDate > curdate();";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, bookingID);
+        ResultSet rs = statement.executeQuery();
+        int dbID = 0;
+        while(rs.next()){
+            dbID = rs.getInt("BOOKING_ID");
+        }
+
+        if(dbID != 0){
+            isFuture = true;
+        }
+
+        return isFuture;
+
+    }
+
+    public boolean deleteBooking(int bookingID) throws SQLException, ClassNotFoundException {
+
+        boolean deletion = false;
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "DELETE from BOOKING where BOOKING.Booking_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, bookingID);
+        statement.executeQuery();
+
+        if(getBooking(bookingID).getBookingID() != bookingID){
+            deletion = true;
+        }
+
+        return deletion;
+    }
+
 }

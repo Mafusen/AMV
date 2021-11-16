@@ -17,16 +17,7 @@
 <body>
 <%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
-<nav2 class="navbar2">
-
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">LeieHistorikk</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/aktiveBookinger">Aktive Bookinger</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/fremtidigeBookinger">Fremtidige Bookinger</a></li>
-    </ul>
-
-</nav2>
+<%@include file="jspHelpers/navbarBookings.jsp"%>
 <div class="main">
     <br><br><h1>Min Leiehistorikk</h1>
     <form action = "bookingHistoryServlet" method = "get">
@@ -47,7 +38,7 @@
             <td>Produkt: <%=booking.getKey().getToolName()%></td>
             <td>Leieperiode: <%=booking.getValue().getStartDate() + " ---> " + booking.getValue().getEndDate()%></td>
             <td>Kommentar: <%=booking.getValue().getComment()%></td>
-            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Produkt</button></form></td>
+            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Booking</button></form></td>
         </tr>
         <br><br>
         <%

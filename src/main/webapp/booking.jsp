@@ -1,6 +1,8 @@
 <%@ page import="bacit.web.Models.ToolModel" %>
 <%@ page import="bacit.web.Models.BookingModel" %>
-<%@ page import="bacit.web.Models.FileModel" %><%--
+<%@ page import="bacit.web.Models.FileModel" %>
+<%@ page import="bacit.web.DAOs.BookingDAO" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
   Date: 03/11/2021
@@ -14,29 +16,9 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar">
-    <a class="logo" href = "<%=request.getContextPath()%>/frontpageServlet">
-        <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
-    </a>
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
-        <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
-    </ul>
-</nav>
+<%@include file="jspHelpers/navbarMain.jsp"%>>
 <br><br><br><br>
-<nav2 class="navbar2">
-
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">LeieHistorikk</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Aktive Bookinger</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Fremtidige Bookinger</a></li>
-    </ul>
-
-</nav2>
+<%@include file="jspHelpers/navbarBookings.jsp"%>
 <br><br><br><br>
 <%
     ToolModel tool = (ToolModel) request.getAttribute("tool");
@@ -58,6 +40,22 @@
     <a>Kommentar: <%=booking.getComment()%></a>
     <a>Leveringsstatus: <%=deliveryStatus%></a>
     <a>Total kostnad: <%=booking.getTotalPrice()%></a>
+    <a><%=booking.getBookingID()%></a>
+    <br>
+    <%
+        BookingDAO bDao = new BookingDAO();
+        boolean isFuture = false;
+        try {
+            isFuture = bDao.checkFuture(booking.getBookingID());
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if(isFuture){
+    %>
+    <form action = "deleteBooking" method = "get"><button type = submit name="bookingID" value="<%=booking.getBookingID()%>">Slett kommende booking</button></form>
+    <%
+        }
+    %>
 </div>
 
 </body>
