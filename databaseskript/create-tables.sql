@@ -52,14 +52,16 @@ create table if not exists CERTIFICATE(
 	FOREIGN KEY (COURSE_ID) REFERENCES COURSE(COURSE_ID)
 	);
 
-create table if not exists  FILE(
-    FILE_ID int UNIQUE auto_increment not NULL,
-    File_Name varchar (255) not null,
-    File_Content LONGBLOB not null,
-    ContentType varchar (255) not null,
-    TOOL_ID int not null,
+create table if not exists  FILE
+(
+    FILE_ID      int UNIQUE auto_increment not NULL,
+    File_Name    varchar(255)              not null,
+    File_Content LONGBLOB                  not null,
+    ContentType  varchar(255)              not null,
+    TOOL_ID      int                       not null,
     PRIMARY KEY (FILE_ID),
-    FOREIGN KEY (TOOL_ID) REFERENCES TOOL(TOOL_ID)
+    FOREIGN KEY (TOOL_ID) REFERENCES TOOL (TOOL_ID)
+);
 
 create table if not exists ROLE (
     Rolename varchar (255) UNIQUE not null,
