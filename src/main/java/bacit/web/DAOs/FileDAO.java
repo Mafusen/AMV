@@ -61,7 +61,7 @@ public class FileDAO {
         ResultSet rs =  statement.executeQuery();
 
         while (rs.next()) {
-            model.setFileID(rs.getInt("FILE_ID"));
+             model.setFileID(rs.getInt("FILE_ID"));
              model.setName(rs.getString("File_Name"));
              model.setContents(rs.getBytes("File_Content"));
              model.setContentType(rs.getString("ContentType"));

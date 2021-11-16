@@ -38,7 +38,7 @@
             <td>Produkt: <%=booking.getKey().getToolName()%></td>
             <td>Leieperiode: <%=booking.getValue().getStartDate() + " ---> " + booking.getValue().getEndDate()%></td>
             <td>Kommentar: <%=booking.getValue().getComment()%></td>
-            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Booking</button></form></td>
+            <td><form action = "passBooking"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Booking</button></form></td>
         </tr>
         <br><br>
         <%

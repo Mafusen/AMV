@@ -17,20 +17,20 @@ public class DeliverBooking extends HttpServlet {
 
         // Collect form data
         String comment = request.getParameter("kommentar");
-        //Under er bare et eksempel og skal endres når hovedside er ferdig.
-        int bookingID = 12;
+        String bookingIDString = request.getParameter("bookingID");
+        int bookingID = Integer.parseInt(bookingIDString);
 
         // Insert in constructor for BookingModel
-        BookingModel model = new BookingModel();
-        model.setComment(comment);
-        model.setBookingID(bookingID);
+        BookingDAO bDao = new BookingDAO();
+        BookingModel booking = bDao.getBooking(bookingID);
+        booking.setComment(comment);
 
         // Call DAO layer and save the user object to DB
-        BookingDAO dao = new BookingDAO();
-        dao.deliverBooking(model);
+
+        bDao.deliverBooking(booking);
 
         // Prepare information message for user about operation result
-        response.sendRedirect("calendar-delivery.jsp");
+        response.sendRedirect(request.getContextPath() + "/frontpageServlet");
 
     }
 
