@@ -1,4 +1,3 @@
-<%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="bacit.web.Models.*" %>
 <%@ page import="java.util.LinkedHashMap" %>
