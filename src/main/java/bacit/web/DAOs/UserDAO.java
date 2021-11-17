@@ -136,5 +136,54 @@ public class UserDAO
         }
     }
 
+    public void editUser(UserModel model){
+
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  update query
+            String query = "update USER set Phone = ?, Password = sha2(?, 256),  IsActive = ? where Username = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getPhone());
+            statement.setString(2, model.getPassword());
+            statement.setBoolean(3, true);
+            statement.setString(4, model.getUserName());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+    }
+
+
+    public void changePassword(UserModel model){
+
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  update query
+            String query = "update USER set Password = sha2(?, 256) where Username = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getPassword());
+            statement.setString(2, model.getUserName());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+    }
+
 
 }
