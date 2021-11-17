@@ -47,6 +47,11 @@
             <button name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
+     <div>
+        <a href = "<%=request.getContextPath()%>/admin/editUser">
+            <button name = submit type = submit value = submit >Rediger bruker</button>
+        </a>
+    </div>
 </div>
 
 <table>
