@@ -1,2 +1,19 @@
-package bacit.web.Web.JSP_connecters;public class popupDelivery {
+package bacit.web.Web.JSP_connecters;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet (name = "popupDelivery", value = "/popupDelivery")
+public class popupDelivery extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher("/popupDelivery.jsp").forward(request, response);
+
+    }
 }
