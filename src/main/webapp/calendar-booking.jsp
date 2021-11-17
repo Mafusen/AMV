@@ -119,23 +119,25 @@
 
 
 </main>
+<%-- Start date skal vær minst idag, og max om 3 måneder--%>
 <script>
-    var today = new Date().toISOString().split('T')[0];
+    let today = new Date().toISOString().split('T')[0];
+    let date3m = new Date();
+    date3m.setMonth(date3m.getMonth() + 3);
+    date3m = date3m.toISOString().split('T')[0];
     document.getElementsByName("start")[0].setAttribute('min', today);
+    document.getElementsByName("start")[0].setAttribute('max', date3m);
+    document.getElementsByName("end")[0].setAttribute('max', date3m);
 </script>
+
+<%-- EndDate kan ikke vær mindre enn startDate--%>
 <script>
-    var endDate = new Date();
-    var dd = endDate.getDate();
-    var mm = endDate.getMonth()+4; //January is 0 so need to add 1 to make it 1!
-    var yyyy = endDate.getFullYear();
-    if(dd<10){
-        dd='0'+dd
-    }
-    if(mm<10){
-        mm='0'+mm
-    }
-    endDate = yyyy+'-'+mm+ '-'+dd;
-    document.getElementById("end").setAttribute("min", endDate);
+    let fDate = document.querySelector('#start');
+    let tDate = document.querySelector('#end');
+
+    fDate.addEventListener('change', function() {
+        tDate.min = this.value;
+    });
 </script>
 </body>
 
