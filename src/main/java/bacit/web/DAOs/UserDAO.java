@@ -136,5 +136,58 @@ public class UserDAO
         }
     }
 
+    public int verifyPassword(int userID, String password) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "select USER_ID from USER where USER_ID = ? and Password = sha2(?, 256);";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, userID);
+        statement.setString(2, password);
+        ResultSet rs = statement.executeQuery();
+
+        int ID = 0;
+        while(rs.next()){
+            ID = rs.getInt("USER_ID");
+        }
+
+        return ID;
+    }
+
+    public void changePassword(int userID, String password) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "update USER set Password = SHA2(?, 256) where USER_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setString(1,  password);
+        statement.setInt(2, userID);
+        statement.executeQuery();
+
+    }
+
+    public void editUser(UserModel model){
+
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  update query
+            String query = "update USER set Phone = ?, Password = sha2(?, 256),  IsActive = ? where Username = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getPhone());
+            statement.setString(2, model.getPassword());
+            statement.setBoolean(3, true);
+            statement.setString(4, model.getUserName());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+    }
+
 
 }
