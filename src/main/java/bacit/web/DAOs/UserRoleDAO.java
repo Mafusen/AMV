@@ -35,4 +35,27 @@ public class UserRoleDAO {
         }
     }
 
+    public void deleteRole(RoleModel model){
+
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  insertion query
+            String query = "delete from USER_ROLE where Username = ? and Rolename = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getUserName());
+            statement.setString(2, model.getRoleName());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+    }
+
 }
