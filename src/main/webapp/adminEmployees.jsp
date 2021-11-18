@@ -35,6 +35,7 @@
         List<UserModel> users = (ArrayList<UserModel>) request.getAttribute("users");
 
         for(UserModel user : users){
+            if(user.isActive()){
     %>
 
     <tr>
@@ -47,8 +48,16 @@
                 </button>
             </a>
         </td>
+        <td>
+            <a href = "<%=request.getContextPath()%>/admin/slettBruker?userID=<%=user.getUserID()%>">
+                <button name = submit type = submit value = submit >
+                    Slett bruker
+                </button>
+            </a>
+        </td>
     </tr>
     <%
+            }
         }
     %>
 </table>

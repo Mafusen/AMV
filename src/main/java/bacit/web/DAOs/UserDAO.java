@@ -217,5 +217,16 @@ public class UserDAO
         }
     }
 
+    public void deleteUser(int userID) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+        String query = "update USER set IsActive = 0 where USER_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, userID);
+        statement.executeQuery();
+
+    }
+
 
 }

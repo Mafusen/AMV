@@ -44,7 +44,14 @@
         <td>
             <a href = "<%=request.getContextPath()%>/admin/redigerVerktoy?toolID=<%=product.getKey().getToolID()%>">
                 <button name = submit type = submit value = submit >
-                    Rediger verktøy
+                    Rediger
+                </button>
+            </a>
+        </td>
+        <td>
+            <a href = "<%=request.getContextPath()%>/admin/slettVerktoy?toolID=<%=product.getKey().getToolID()%>">
+                <button name = submit type = submit>
+                    Slett
                 </button>
             </a>
         </td>

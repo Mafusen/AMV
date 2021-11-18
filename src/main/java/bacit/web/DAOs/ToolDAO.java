@@ -182,4 +182,15 @@ public class ToolDAO {
 
     }
 
+    public void deleteTool(int toolID) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+        String query = "update TOOL set IsActive = 0 where TOOL_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, toolID);
+        statement.executeQuery();
+
+    }
+
 }
