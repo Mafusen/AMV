@@ -16,11 +16,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/newUser.css">
-  <title>Registrer bruker</title>
+  <title>Rediger Bruker</title>
 </head>
 <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
-<title>Registrer Bruker</title>
 
 <body>
 

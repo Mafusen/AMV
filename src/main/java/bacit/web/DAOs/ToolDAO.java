@@ -156,6 +156,30 @@ public class ToolDAO {
         return tool;
     }
 
+    public void editTool(ToolModel tool){
 
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  update query
+            String query = "update TOOL set Tool_Name = ?, Tool_Info = ?, Price = ? where TOOL_ID = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, tool.getToolName());
+            statement.setString(2, tool.getToolInfo());
+            statement.setInt(3, tool.getPrice());
+            statement.setInt(4, tool.getToolID());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+
+    }
 
 }

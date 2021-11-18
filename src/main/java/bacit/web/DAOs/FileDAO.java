@@ -71,4 +71,14 @@ public class FileDAO {
         return model;
 
     }
+
+    public void deleteFile(int fileID) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "delete from FILE where FILE_ID = ?";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, fileID);
+        statement.executeQuery();
+
+    }
 }
