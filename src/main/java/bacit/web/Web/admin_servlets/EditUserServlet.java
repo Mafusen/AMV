@@ -15,96 +15,75 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "admin/redigerBruker", value = "/admin/redigerBruker")
+@WebServlet(name = "admin/gjorEndring", value = "/admin/gjorEndring")
 public class EditUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String idString = request.getParameter("userID");
+        int userID = Integer.parseInt(idString);
+
         // Collect form data
-        String userName = request.getParameter("userName");
         String newPassWord = request.getParameter("passWord");
         String newPhone = request.getParameter("phone");
         boolean administrator = request.getParameter("admin") != null;
         boolean unionMember = request.getParameter("unionMember") != null;
-        boolean lift = request.getParameter("lift") != null;
-        String endDate = null;
-        boolean notAdministrator = request.getParameter("notAdmin") != null;
-        boolean notUnionMember = request.getParameter("notUnionMember") != null;
-        boolean notLift = request.getParameter("notLift") != null;
+        boolean lift = request.getParameter("lift") !=null;
+        String endDate = request.getParameter("endDate");
 
-        if(request.getParameter("endDate") != null) {
-            endDate = request.getParameter("endDate");
-        }
-
-        // Insert new data in UserModel object
-        UserModel uModel = new UserModel();
-
-        uModel.setUserName(userName);
-        uModel.setPassWord(newPassWord);
-        uModel.setPhone(newPhone);
-        uModel.setActive(true);
-
-        // Call DAO layer and save the user object to DB
         UserDAO uDao = new UserDAO();
-        uDao.editUser(uModel);
+        UserModel user = uDao.userByID(userID);
+        user.setPhone(newPhone);
+        uDao.editUser(user);
 
-        // Create list of possible roles
-        List<RoleModel> roles = new ArrayList<>();
-
-        RoleModel defaultRole = new RoleModel(userName, "user");
-        roles.add(defaultRole);
-
-        if(administrator){
-            RoleModel role = new RoleModel(userName, "administrator");
-            roles.add(role);
+        if(!newPassWord.isEmpty()){
+            try {
+                uDao.changePassword(userID, newPassWord);
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
-        if(unionMember){
-            RoleModel role = new RoleModel(userName, "union-member");
-            roles.add(role);
+        UserRoleDAO urDao = new UserRoleDAO();
+        List<String> roles = new ArrayList<>();
+        try {
+            roles = urDao.getRoles(user.getUserName());
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
-        // Call DAO layer and save role object(s) to DB
-        UserRoleDAO rDao = new UserRoleDAO();
-        for(RoleModel role : roles){
-            rDao.registerRole(role);
+        List<RoleModel> newRoles = new ArrayList<>();
+
+        if(!roles.contains("administrator") && administrator){
+            RoleModel role = new RoleModel(user.getUserName(), "administrator");
+            newRoles.add(role);
+        }if(roles.contains("administrator") && !administrator){
+            try {
+                urDao.deleteRole(user.getUserName(), "administrator");
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }if (!roles.contains("union-member") && unionMember){
+            RoleModel role = new RoleModel (user.getUserName(), "union-member");
+            newRoles.add(role);
+        }if (roles.contains("union-member") && ! unionMember){
+            try {
+                urDao.deleteRole(user.getUserName(), "union-member");
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
-
-
-//          DELETE ROLES
-        List<RoleModel> deleteRoles = new ArrayList<>();
-
-        if (notAdministrator){
-            RoleModel Role = new RoleModel(userName, "administrator");
-            deleteRoles.add(Role);
+        for (RoleModel newRole : newRoles){
+            urDao.registerRole(newRole);
         }
 
-        if (notUnionMember){
-            RoleModel Role = new RoleModel(userName, "union-member");
-            deleteRoles.add(Role);
-        }
-
-        // Call DAO layer and save delete role object(s) to DB
-        UserRoleDAO rdDao = new UserRoleDAO();
-        for (RoleModel Role : deleteRoles){
-            //rdDao.deleteRole(Role);
-        }
-
-
-
-
-        // Get userID for created user
-        UserModel user = uDao.getUser(userName);
-        int userID = user.getUserID();
-
-        int courseID = 1;
-
-        // Get endDate ready for DB insert
         Date date = null;
         if(endDate != null) {
             String dateReformat = endDate.replace(".", "-");
@@ -113,24 +92,36 @@ public class EditUserServlet extends HttpServlet {
             }
         }
 
-        // Create list of possible roles
-        List<CertificateModel> certificates = new ArrayList<>();
-
-        if(lift){
-            CertificateModel certificate = new CertificateModel(userID, courseID, date);
-            certificates.add(certificate);
-        }
-
-        // Call DAO layer and save certificate object(s) to DB
         CertificateDAO cDao = new CertificateDAO();
-        for (CertificateModel certificate : certificates){
-            cDao.registerCertificate(certificate);
+        List<Integer> certificates = new ArrayList<>();
+        try {
+            certificates = cDao.userCertificates(userID);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
-        // DELETE CERTIFICATE
-        if (notLift){
-            CertificateModel certificate = new CertificateModel(userID, courseID, date);
-            //cDao.deleteCertificate(certificate);
+        try {
+            if (certificates.contains(1) && lift && date!=cDao.expiryDate(1, userID)){
+                CertificateModel certificate = cDao.getCertificate(1, userID);
+                certificate.setDate(date);
+                cDao.updateDate(certificate);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if(!certificates.contains(1) && lift){
+            CertificateModel model = new CertificateModel(userID, 1, date);
+            cDao.registerCertificate(model);
+        }
+
+
+        if(certificates.contains(1) && !lift){
+            try {
+                cDao.deleteCertificate(1, userID);
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         response.sendRedirect(request.getContextPath() + "/admin/Users");

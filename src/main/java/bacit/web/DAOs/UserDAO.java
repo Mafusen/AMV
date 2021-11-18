@@ -77,6 +77,36 @@ public class UserDAO
 
     }
 
+    public UserModel userByID(int userID){
+
+        UserModel model = null;
+
+        try {
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            String query = "select * from USER where USER_ID = ?";
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, userID);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                model = new UserModel();
+                model.setUserID(rs.getInt("USER_ID"));
+                model.setFirstName(rs.getString("Fname"));
+                model.setLastName(rs.getString("Lname"));
+                model.setPhone(rs.getString("Phone"));
+                model.setUserName(rs.getString("Username"));
+                model.setPassWord(rs.getString("Password"));
+            }
+        }
+        catch(SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+
+        return model;
+
+    }
+
     public List<UserModel> getAllUsers() throws SQLException {
 
         List<UserModel> users = new ArrayList<>();
@@ -172,14 +202,12 @@ public class UserDAO
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
             // Write  update query
-            String query = "update USER set Phone = ?, Password = sha2(?, 256),  IsActive = ? where Username = ?";
+            String query = "update USER set Phone = ? where USER_ID = ?";
 
             // Set parameters with PreparedStatement
             PreparedStatement statement = db.prepareStatement(query);
             statement.setString(1, model.getPhone());
-            statement.setString(2, model.getPassword());
-            statement.setBoolean(3, true);
-            statement.setString(4, model.getUserName());
+            statement.setInt(2, model.getUserID());
 
             // Execute the statement
             statement.executeQuery();

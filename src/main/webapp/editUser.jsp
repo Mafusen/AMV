@@ -1,4 +1,8 @@
-<%--
+<%@ page import="bacit.web.Models.UserModel" %>
+<%@ page import="java.util.List" %>
+<%@ page import="bacit.web.DAOs.CertificateDAO" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
   Date: 17/11/2021
@@ -24,75 +28,81 @@
 <br><br><br><br>
 <%@include file="jspHelpers/navbarAdmin.jsp"%>
 <br><br><br><br>
-<h1>Rediger bruker:</h1>
+
+
+    <%
+      UserModel user = (UserModel) request.getAttribute("user");
+      int userID = user.getUserID();
+
+      List<String> roles = (List<String>) request.getAttribute("roles");
+      boolean administrator = false;
+      boolean unionMember = false;
+      if(roles.contains("administrator")){
+        administrator = true;
+      }if(roles.contains("union-member")){
+        unionMember = true;
+      }
+
+      List<Integer> certificates = (List<Integer>) request.getAttribute("certificates");
+      boolean lift = certificates.contains(1);
+      CertificateDAO cDao = new CertificateDAO();
+      Date expires = null;
+      try {
+        expires = cDao.expiryDate(1, userID);
+      } catch (SQLException | ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+    %>
+<h1>Rediger bruker: <%=user.getUserName()%></h1>
 
 <main class="container">
-  <form action="<%=request.getContextPath()%>/admin/redigerBruker" method="post">
 
+  <form action="<%=request.getContextPath()%>/admin/gjorEndring?userID=<%=userID%>" method="post">
     <div class="column">
+
       <div class="inputtext">
-        <label for="userName">Brukernavn: </label>
+        <label for="phone">Telefonnummer: </label>
       </div>
       <div>
-        <input class="input" type="text" name="userName" id="userName" required placeholder="Norol">
+        <input class="input" type="text" name="phone" id="phone" value = "<%=user.getPhone()%>" required placeholder="99966999">
       </div>
 
       <div class="inputtext">
-        <label for="phone">Nytt Tlf: </label>
+        <label for="passWord">Nytt Passord (hvis ønsket): </label>
       </div>
       <div>
-        <input class="input" type="text" name="phone" id="phone" required placeholder="99966999">
+        <input class="input" type="text" name="passWord" id="passWord" placeholder="Passord123">
       </div>
 
-      <div class="inputtext">
-        <label for="passWord">Nytt Passord: </label>
-      </div>
-      <div>
-        <input class="input" type="text" name="passWord" id="passWord" required placeholder="Passord1">
-      </div>
     </div>
 
     <div class="column">
       <br> <br> <br>
       <div class="role">
-        <label for="unionMember"> Er Unionsmedlem </label>
-        <input type="checkbox" name="unionMember" id="unionMember" value="unionMember_value">
+        <label for="unionMember"> Unionsmedlem </label>
+        <input type="checkbox" name="unionMember" id="unionMember" value="unionMember_value"
+          <% if(unionMember){ %> checked <% } %>>
       </div>
 
       <div class="role">
-        <label for="notUnionMember"> Er ikke unionsmedlem </label>
-        <input type="checkbox" name="notUnionMember" id="notUnionMember" value="notUnionMember_value">
+        <label for="admin"> Administrator </label>
+        <input type="checkbox" name="admin" id="admin" value="admin_value"
+          <% if(administrator){ %> checked <% } %>>
       </div>
 
       <div class="role">
-        <label for="admin">Gi Admin tilgang </label>
-        <input type="checkbox" name="admin" id="admin" value="admin_value">
-      </div>
-
-      <div class="role">
-        <label for="notAdmin"> Slett Admin tilgang </label>
-        <input type="checkbox" name="notAdmin" id="notAdmin" value="notAdmin_value">
-      </div>
-
-      <div class="role">
-        <label for="notLift"> Slett Personløftersertifikatet </label>
-        <input type="checkbox" name="notLift" id="notLift" value ="notLift_value">
-      </div>
-
-      <div class="role">
-        <label for="lift"> Legg til Personløftersertifikat </label>
-        <input type="checkbox" name="lift" id="lift" value ="lift_value">
+        <label for="lift"> Personløftersertifikat </label>
+        <input type="checkbox" name="lift" id="lift" value ="lift_value"
+        <% if(lift){ %> checked <% } %>>
       </div>
 
       <div class="role">
         <label for="endDate"> Sertifikatet går ut: </label>
+        <input type="date" name="endDate" id="endDate" value="<%=expires%>">
       </div>
-      <div>
-        <input type="date" name="endDate" id="endDate">
-      </div>
-      <br> </br> <br> </br>
+
+      <br><br>
       <div class="userForm">
-        <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
 
         <a href = "admin/Users">
           <button class="submit" type="submit" >Lagre endringer</button>

@@ -16,29 +16,9 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar">
-    <a class="logo" href = "<%=request.getContextPath()%>/frontpageServlet">
-        <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
-    </a>
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
-        <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
-    </ul>
-</nav>
+<%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
-<nav2 class="navbar2">
-
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Users">Ansatte</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Verktoy</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/report">Rapport</a></li>
-    </ul>
-
-</nav2>
+<%@include file="jspHelpers/navbarAdmin.jsp"%>
 
 <div class="main">
     <br><br><h1>Side med ansatte</h1>
@@ -47,11 +27,7 @@
             <button name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
-    <div>
-        <a href = "<%=request.getContextPath()%>/admin/redigerBruker">
-            <button name = submit type = submit value = submit >Rediger bruker</button>
-        </a>
-    </div>
+
 </div>
 
 <table>
@@ -64,6 +40,13 @@
     <tr>
         <td>BrukerID: <%=user.getUserID()%></td>
         <td>Brukernavn: <%=user.getUserName()%></td>
+        <td>
+            <a href = "<%=request.getContextPath()%>/admin/redigerBruker?userID=<%=user.getUserID()%>">
+                <button name = submit type = submit value = submit >
+                    Rediger bruker
+                </button>
+            </a>
+        </td>
     </tr>
     <%
         }
