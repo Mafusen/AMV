@@ -40,7 +40,7 @@ public class ChangePasswordServlet extends HttpServlet {
         String oldPassDB = user.getPassword();
 
         //hvis gammel og ny passord og nypassord og confirm passord er like bytt passord.
-        if (oldPassUser == oldPassBD && newPassword == confirmPassword) {
+        if (oldPassUser == oldPassDB && newPassword == confirmPassword) {
             // Insert new data in UserModel object
             UserModel uModel = new UserModel();
             uModel.setUserName(username);
@@ -53,7 +53,7 @@ public class ChangePasswordServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/admin/Users");
 
 
-        } else if (oldPass != oldPass) {
+        } else if (oldPassUser != oldPassDB) {
             //Send til error som sier gammel passord git er feil!
             response.sendRedirect(request.getContextPath() + "/error404");
 

@@ -1,13 +1,11 @@
-<%@ page import="bacit.web.Models.BookingModel" %>
 <%@ page import="bacit.web.Models.ToolModel" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="bacit.web.Models.BookingModel" %>
 <%@ page import="java.util.LinkedHashMap" %>
-<%--
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
-  Date: 15/10/2021
-  Time: 13:12
+  Date: 15/11/2021
+  Time: 20:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
