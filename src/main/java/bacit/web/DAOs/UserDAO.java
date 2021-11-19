@@ -138,6 +138,32 @@ public class UserDAO
 
     }
 
+    public List<UserModel> activeUsers(String search) throws SQLException, ClassNotFoundException {
+
+        List<UserModel> users = new ArrayList<>();
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "select * from USER where IsActive = 1;";
+        PreparedStatement statement = db.prepareStatement(query);
+        ResultSet rs = statement.executeQuery();
+
+        while (rs.next()) {
+            UserModel user = new UserModel(
+                    rs.getInt("USER_ID"),
+                    rs.getString("Fname"),
+                    rs.getString("Lname"),
+                    rs.getString("Phone"),
+                    rs.getString("Username"),
+                    rs.getString("Password"),
+                    true);
+            if(user.getUserName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                users.add(user);
+            }
+        }
+
+        return users;
+    }
+
 
     public void registerUser(UserModel model){
 
@@ -221,7 +247,7 @@ public class UserDAO
 
         Connection db = DBUtils.getINSTANCE().getConnection(out);
 
-        String query = "update USER set IsActive = 0 where USER_ID = ?;";
+        String query = "update USER set IsActive = 0, Password = sha2('UlfSandnes132g15Elite11mot11iballringen', 256) where USER_ID = ?;";
         PreparedStatement statement = db.prepareStatement(query);
         statement.setInt(1, userID);
         statement.executeQuery();

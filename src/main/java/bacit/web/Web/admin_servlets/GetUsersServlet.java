@@ -19,11 +19,15 @@ public class GetUsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         UserDAO uDao = new UserDAO();
-
+        String search = request.getParameter("search");
+        if (search == null){
+            search = "empty";
+        }
         List<UserModel> users = new ArrayList<>();
+
         try {
-            users = uDao.getAllUsers();
-        } catch (SQLException e) {
+            users = uDao.activeUsers(search);
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

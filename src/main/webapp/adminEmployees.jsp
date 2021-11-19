@@ -22,6 +22,14 @@
 
 <div class="main">
     <br><br><h1>Side med ansatte</h1>
+    <form action = "<%=request.getContextPath()%>/admin/Users" method = "get">
+        <div class="search">
+            <label>
+                <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
+                <button type = submit>SØK</button>
+            </label>
+        </div>
+    </form>
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newUser">
             <button name = submit type = submit value = submit >Legg til ny bruker</button>
