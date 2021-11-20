@@ -60,7 +60,7 @@ public class BookingDAO {
 
             String query = "SELECT USER.Fname, USER.Lname, USER.Phone, BOOKING.StartDate, BOOKING.EndDate FROM BOOKING " +
                     "inner JOIN USER ON BOOKING.USER_ID=USER.USER_ID where TOOL_ID = ? and " +
-                    "EndDate >= curdate() ORDER BY EndDate ASC";
+                    "EndDate >= curdate() ORDER BY StartDate";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, toolID);
             ResultSet rs = statement.executeQuery();
@@ -92,7 +92,7 @@ public class BookingDAO {
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
             String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.IsDelivered, BOOKING.TotalPrice, TOOL.Tool_Name FROM BOOKING " +
-                    "inner JOIN TOOL ON BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ?;";
+                    "inner JOIN TOOL ON BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ? order by StartDate;";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);
             ResultSet rs = statement.executeQuery();
@@ -128,7 +128,7 @@ public class BookingDAO {
             String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.IsDelivered, BOOKING.TotalPrice, " +
                     "TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price FROM BOOKING inner JOIN TOOL ON " +
                     "BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ? and BOOKING.StartDate >= curdate() and " +
-                    "BOOKING.EndDate <= curdate()+(BOOKING.EndDate-BOOKING.StartDate) and BOOKING.IsDelivered = 0; ";
+                    "BOOKING.EndDate <= curdate()+(BOOKING.EndDate-BOOKING.StartDate) and BOOKING.IsDelivered = 0 order by StartDate; ";
 
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);
@@ -168,7 +168,7 @@ public class BookingDAO {
             String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, " +
                     "BOOKING.IsDelivered, BOOKING.TotalPrice, TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price FROM BOOKING " +
                     "inner JOIN TOOL ON BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ? " +
-                    "and BOOKING.StartDate > curdate();";
+                    "and BOOKING.StartDate > curdate() order by StartDate";
 
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);

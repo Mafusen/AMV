@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class ToolDAO {
 
@@ -24,7 +26,7 @@ public class ToolDAO {
 
             String query = "SELECT TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price, TOOL.IsActive, FILE.FILE_ID, " +
                     "FILE.File_Name, FILE.File_Content, FILE.ContentType FROM FILE inner JOIN TOOL " +
-                    "ON FILE.TOOL_ID=TOOL.TOOL_ID where isActive = 1;";
+                    "ON FILE.TOOL_ID=TOOL.TOOL_ID where isActive = 1 order by Tool_Name;";
             PreparedStatement statement = db.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
 
