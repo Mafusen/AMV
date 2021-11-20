@@ -85,7 +85,7 @@ public class BookingDAO {
 
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> getUserBookings(int userID){
+    public LinkedHashMap<ToolModel, BookingModel> getUserBookings(int userID, String search){
 
         LinkedHashMap<ToolModel, BookingModel> bookings = new LinkedHashMap<>();
 
@@ -109,7 +109,9 @@ public class BookingDAO {
                 booking.setIsDelivered(rs.getBoolean("IsDelivered"));
                 booking.setTotalPrice(rs.getInt("TotalPrice"));
 
-                bookings.put(tool, booking);
+                if(tool.getToolName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                    bookings.put(tool, booking);
+                }
             }
         }
         catch(SQLException | ClassNotFoundException exception){
@@ -119,7 +121,7 @@ public class BookingDAO {
         return bookings;
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> activeUserBookings(int userID){
+    public LinkedHashMap<ToolModel, BookingModel> activeUserBookings(int userID, String search){
 
         LinkedHashMap<ToolModel, BookingModel> bookings = new LinkedHashMap<>();
 
@@ -149,7 +151,9 @@ public class BookingDAO {
                 booking.setIsDelivered(rs.getBoolean("IsDelivered"));
                 booking.setTotalPrice(rs.getInt("TotalPrice"));
 
-                bookings.put(tool, booking);
+                if(tool.getToolName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                    bookings.put(tool, booking);
+                }
             }
         }
         catch(SQLException | ClassNotFoundException exception){
@@ -159,7 +163,7 @@ public class BookingDAO {
         return bookings;
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> getFutureBookings(int userID){
+    public LinkedHashMap<ToolModel, BookingModel> getFutureBookings(int userID, String search){
 
         LinkedHashMap<ToolModel, BookingModel> bookings = new LinkedHashMap<>();
 
@@ -189,7 +193,9 @@ public class BookingDAO {
                 booking.setIsDelivered(rs.getBoolean("IsDelivered"));
                 booking.setTotalPrice(rs.getInt("TotalPrice"));
 
-                bookings.put(tool, booking);
+                if(tool.getToolName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                    bookings.put(tool, booking);
+                }
             }
         }
         catch(SQLException | ClassNotFoundException exception){

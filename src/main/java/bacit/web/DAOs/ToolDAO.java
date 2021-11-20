@@ -17,7 +17,7 @@ public class ToolDAO {
 
     PrintWriter out;
 
-    public LinkedHashMap<ToolModel, FileModel> getProducts(){
+    public LinkedHashMap<ToolModel, FileModel> getProducts(String search){
 
         LinkedHashMap<ToolModel, FileModel> products = new LinkedHashMap<>();
 
@@ -41,8 +41,10 @@ public class ToolDAO {
 
                 FileModel file = new FileModel();
                 file.setFileID(rs.getInt("FILE_ID"));
+                if(tool.getToolName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                    products.put(tool, file);
+                }
 
-                products.put(tool, file);
             }
 
         } catch (SQLException | ClassNotFoundException e) {

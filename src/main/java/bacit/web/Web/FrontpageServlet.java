@@ -26,12 +26,17 @@ public class FrontpageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String search = request.getParameter("search");
+        if (search == null){
+            search = "empty";
+        }
+
         String username = request.getRemoteUser();
         UserDAO uDao = new UserDAO();
         int userID = uDao.getUser(username).getUserID();
 
-        LinkedHashMap<ToolModel, FileModel> products = getProducts();
-        LinkedHashMap<ToolModel, BookingModel> bookings = getActiveBookings(userID);
+        LinkedHashMap<ToolModel, FileModel> products = getProducts(search);
+        LinkedHashMap<ToolModel, BookingModel> bookings = getActiveBookings(userID, null);
 
         request.setAttribute("bookings", bookings);
         request.setAttribute("products", products);
@@ -39,18 +44,18 @@ public class FrontpageServlet extends HttpServlet {
 
     }
 
-    public LinkedHashMap<ToolModel, FileModel> getProducts () {
+    public LinkedHashMap<ToolModel, FileModel> getProducts (String search) {
 
         ToolDAO tDao = new ToolDAO();
 
-        return tDao.getProducts();
+        return tDao.getProducts(search);
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> getActiveBookings(int userID){
+    public LinkedHashMap<ToolModel, BookingModel> getActiveBookings(int userID, String search){
 
         BookingDAO bDao = new BookingDAO();
 
-        return bDao.activeUserBookings(userID);
+        return bDao.activeUserBookings(userID, search);
 
     }
 

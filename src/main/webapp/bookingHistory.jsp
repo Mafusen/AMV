@@ -21,7 +21,7 @@
 <%@include file="jspHelpers/navbarBookings.jsp"%>
 <div class="main">
     <br><br><h1>Min Leiehistorikk</h1>
-    <form action = "bookingHistoryServlet" method = "get">
+    <form action = "<%=request.getContextPath()%>/bookingHistoryServlet" method = "get">
         <label>
             <input type = "text" placeholder="produktnavn..." name = "search">
         </label>

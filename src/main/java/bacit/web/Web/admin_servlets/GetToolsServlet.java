@@ -20,18 +20,23 @@ public class GetToolsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        LinkedHashMap<ToolModel, FileModel> products = getProducts();
+        String search = request.getParameter("search");
+        if (search == null){
+            search = "empty";
+        }
+
+        LinkedHashMap<ToolModel, FileModel> products = getProducts(search);
 
         request.setAttribute("products", products);
         request.getRequestDispatcher("/adminTools.jsp").forward(request, response);
 
     }
 
-    public LinkedHashMap<ToolModel, FileModel> getProducts (){
+    public LinkedHashMap<ToolModel, FileModel> getProducts (String search){
 
         ToolDAO tDao = new ToolDAO();
 
-        return tDao.getProducts();
+        return tDao.getProducts(search);
     }
 
 }

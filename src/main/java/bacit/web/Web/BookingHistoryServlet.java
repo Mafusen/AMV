@@ -24,23 +24,28 @@ public class BookingHistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String search = request.getParameter("search");
+        if (search == null){
+            search = "empty";
+        }
+
         String username = request.getRemoteUser();
 
         UserDAO dao = new UserDAO();
         UserModel user = dao.getUser(username);
         int userID = user.getUserID();
 
-        LinkedHashMap<ToolModel, BookingModel> bookings = listBookings(userID);
+        LinkedHashMap<ToolModel, BookingModel> bookings = listBookings(userID, search);
 
         request.setAttribute("bookings", bookings);
         request.getRequestDispatcher("/bookingHistory.jsp").forward(request, response);
 
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> listBookings(int userID) {
+    public LinkedHashMap<ToolModel, BookingModel> listBookings(int userID, String search) {
 
         BookingDAO bDao = new BookingDAO();
 
-        return bDao.getUserBookings(userID);
+        return bDao.getUserBookings(userID, search);
     }
 }

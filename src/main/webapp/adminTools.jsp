@@ -23,6 +23,14 @@
 
 <div class="main">
     <br><br><h1>Side med verktoy</h1>
+    <form action = "<%=request.getContextPath()%>/admin/Tools" method = "get">
+        <div class="search">
+            <label>
+                <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
+                <button type = submit>SØK</button>
+            </label>
+        </div>
+    </form>
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newTool">
         <button name = submit type = submit value = submit >Legg til nytt verktøy</button>

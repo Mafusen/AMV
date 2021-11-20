@@ -19,11 +19,13 @@
 <%@include file="jspHelpers/navbarMain.jsp"%>
 
 <div class="main">
-    <div class="search">
-        <label>
-            <input type="text" placeholder="Søk etter produkt..">
-        </label>
-    </div>
+    <form action = "<%=request.getContextPath()%>/frontpageServlet" method = "get">
+        <div class="search">
+            <label>
+                <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
+            </label>
+        </div>
+    </form>
 
     <button type="button" class="collapsible"><strong>Aktive Bookinger</strong></button>
     <div class="content">
