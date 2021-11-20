@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet (name = "frontpageServlet", value = "/frontpageServlet")
 public class FrontpageServlet extends HttpServlet {
@@ -50,6 +52,4 @@ public class FrontpageServlet extends HttpServlet {
         return bDao.activeUserBookings(userID);
 
     }
-
-
 }

@@ -6,10 +6,7 @@ import bacit.web.Models.UserModel;
 import bacit.web.Utilities.DBUtils;
 
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -253,21 +250,42 @@ public class BookingDAO {
             statement.setInt(6, model.getToolID());
 
             // Execute the statement
-            ResultSet rs = statement.executeQuery();
+            statement.executeQuery();
 
         } catch (SQLException | ClassNotFoundException exception) {
             exception.printStackTrace();
         }
     }
 
-    public void deliverBooking(BookingModel model) {
+    public void updateTotalPrice(int bookingID, int toolPrice) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+        String query = "select DATEDIFF(curdate(), StartDate) from BOOKING where BOOKING_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, bookingID);
+        ResultSet rs = statement.executeQuery();
+
+        String diffString = rs.getString("DATEDIFF(curdate(), StartDate)");
+        int dateDiff = Integer.parseInt(diffString);
+        int totalPrice = dateDiff * toolPrice;
+
+        String query2 = "update BOOKING set TotalPrice = ? where BOOKING_ID = ?;";
+        PreparedStatement statement2 = db.prepareStatement(query2);
+        statement2.setInt(1, totalPrice);
+        statement2.setInt(2, bookingID);
+        ResultSet rs2 = statement.executeQuery();
+
+    }
+
+    public void deliverBooking(BookingModel model, ToolModel tool) {
 
         try {
 
             Connection db = DBUtils.getINSTANCE().getConnection(out);
 
             // Write  insertion query
-            String query = "UPDATE BOOKING set IsDelivered = 1, Cmnt = ? where BOOKING_ID = ?";
+            String query = "UPDATE BOOKING set IsDelivered = 1, Cmnt = ?, EndDate = curdate() where BOOKING_ID = ?";
 
             // Set parameters with PreparedStatement
             PreparedStatement statement = db.prepareStatement(query);
@@ -275,11 +293,13 @@ public class BookingDAO {
             statement.setInt(2, model.getBookingID());
 
             // Execute the statement
-            ResultSet rs = statement.executeQuery();
+            statement.executeQuery();
 
+            updateTotalPrice(model.getBookingID(), tool.getPrice());
         } catch (SQLException | ClassNotFoundException exception) {
             exception.printStackTrace();
         }
+
     }
 
     public boolean checkFuture (int bookingID) throws SQLException, ClassNotFoundException {
