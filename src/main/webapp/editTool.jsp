@@ -28,13 +28,13 @@
     FileModel file = (FileModel) request.getAttribute("file");
 %>
 
-<h1>Rediger bruker: <%=tool.getToolName()%></h1>
+<h1>Rediger verktøy: <%=tool.getToolName()%></h1>
 
 <main class="container">
 
-    <form action="<%=request.getContextPath()%>/admin/endreVerktoy?toolID=<%=tool.getToolID()%>" method="post" enctype="multipart/form-data">
-        <div class="column">
 
+        <div class="column">
+            <form action="<%=request.getContextPath()%>/admin/endreVerktoy?toolID=<%=tool.getToolID()%>" method="post" enctype="multipart/form-data">
             <div class="inputtext">
                 <label for="name">Verktøynavn: </label>
             </div>
@@ -66,15 +66,20 @@
                 <br>
             </div>
 
-        </div>
-
-        <div class="column">
+            <div class="column">
                 <a href = "admin/Tools">
                     <button class="submit" type="submit" >Lagre endringer</button>
                 </a>
+            </div>
+            </form>
+            <div class="column">
+                <a href = "<%=request.getContextPath()%>/admin/slettVerktoy?toolID=<%=tool.getToolID()%>">
+                    <button name = submit type = submit>
+                        Slett verktøy
+                    </button>
+                </a>
+            </div>
         </div>
-
-    </form>
 
 </main>
 

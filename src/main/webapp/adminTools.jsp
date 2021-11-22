@@ -28,7 +28,7 @@
         <div class="search">
             <label>
                 <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
-                <button type = submit>SØK</button>
+
             </label>
         </div>
     </form>
@@ -38,6 +38,7 @@
         </a>
 </div>
 </div>
+<br>
 
 <table>
     <%
@@ -45,7 +46,7 @@
 
         for(Map.Entry<ToolModel, FileModel> product : products.entrySet()){
     %>
-    <a class="products" href="passProduct?toolID= + <%=product.getKey().getToolID()%>">
+    <a class="products" href="<%=request.getContextPath()%>/admin/redigerVerktoy?toolID=<%=product.getKey().getToolID()%>">
         <img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
         <div class="product">
             <div class="productname"><%=product.getKey().getToolName()%></div>
@@ -53,23 +54,6 @@
             <div class="productinfo"> <%=product.getKey().getToolInfo()%></div>
         </div>
     </a>
-    <tr>
-
-        <td>
-            <a href = "<%=request.getContextPath()%>/admin/redigerVerktoy?toolID=<%=product.getKey().getToolID()%>">
-                <button name = submit type = submit value = submit >
-                    Rediger
-                </button>
-            </a>
-        </td>
-        <td>
-            <a href = "<%=request.getContextPath()%>/admin/slettVerktoy?toolID=<%=product.getKey().getToolID()%>">
-                <button name = submit type = submit>
-                    Slett
-                </button>
-            </a>
-        </td>
-    </tr>
     <%
         }
     %>

@@ -6,9 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Calendar" %>
-<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -42,19 +39,6 @@
       <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
     </label>
   </form>
-  <a>
-    <%=
-    displayDate()
-    %>
-  </a>
-
-  <%!
-    public String displayDate(){
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-      Date date = Calendar.getInstance().getTime();
-      return dateFormat.format(date);
-    }
-  %>
 </div>
 </body>
 </html>

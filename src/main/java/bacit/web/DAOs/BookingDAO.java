@@ -91,7 +91,7 @@ public class BookingDAO {
 
         try {
             Connection db = DBUtils.getINSTANCE().getConnection(out);
-            String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.IsDelivered, BOOKING.TotalPrice, TOOL.Tool_Name FROM BOOKING " +
+            String query = "SELECT BOOKING.BOOKING_ID, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.IsDelivered, BOOKING.TotalPrice, TOOL.Tool_Name, TOOL.TOOL_ID FROM BOOKING " +
                     "inner JOIN TOOL ON BOOKING.TOOL_ID = TOOL.TOOL_ID where BOOKING.USER_ID = ? order by StartDate;";
             PreparedStatement statement = db.prepareStatement(query);
             statement.setInt(1, userID);
@@ -100,6 +100,7 @@ public class BookingDAO {
             while (rs.next()) {
                 ToolModel tool = new ToolModel();
                 tool.setToolName(rs.getString("Tool_Name"));
+                tool.setToolID(rs.getInt("TOOL_ID"));
 
                 BookingModel booking = new BookingModel();
                 booking.setBookingID(rs.getInt("BOOKING_ID"));
@@ -121,7 +122,7 @@ public class BookingDAO {
         return bookings;
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> activeUserBookings(int userID, String search){
+    public LinkedHashMap<ToolModel, BookingModel> activeUserBookings(int userID){
 
         LinkedHashMap<ToolModel, BookingModel> bookings = new LinkedHashMap<>();
 
@@ -151,9 +152,9 @@ public class BookingDAO {
                 booking.setIsDelivered(rs.getBoolean("IsDelivered"));
                 booking.setTotalPrice(rs.getInt("TotalPrice"));
 
-                if(tool.getToolName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
-                    bookings.put(tool, booking);
-                }
+
+                bookings.put(tool, booking);
+
             }
         }
         catch(SQLException | ClassNotFoundException exception){

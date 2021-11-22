@@ -36,7 +36,7 @@ public class FrontpageServlet extends HttpServlet {
         int userID = uDao.getUser(username).getUserID();
 
         LinkedHashMap<ToolModel, FileModel> products = getProducts(search);
-        LinkedHashMap<ToolModel, BookingModel> bookings = getActiveBookings(userID, null);
+        LinkedHashMap<ToolModel, BookingModel> bookings = getActiveBookings(userID);
 
         request.setAttribute("bookings", bookings);
         request.setAttribute("products", products);
@@ -51,11 +51,11 @@ public class FrontpageServlet extends HttpServlet {
         return tDao.getProducts(search);
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> getActiveBookings(int userID, String search){
+    public LinkedHashMap<ToolModel, BookingModel> getActiveBookings(int userID){
 
         BookingDAO bDao = new BookingDAO();
 
-        return bDao.activeUserBookings(userID, search);
+        return bDao.activeUserBookings(userID);
 
     }
 

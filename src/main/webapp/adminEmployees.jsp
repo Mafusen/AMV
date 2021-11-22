@@ -26,7 +26,7 @@
     <form action = "<%=request.getContextPath()%>/admin/Users" method = "get">
         <div class="search">
             <label>
-                <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
+                <input type="text" name = "search" id = "search" placeholder="Søk etter ansatt..">
                 <button type = submit>SØK</button>
             </label>
         </div>
@@ -36,7 +36,7 @@
             <button name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
-
+<br>
 </div>
 
 <table id="users">

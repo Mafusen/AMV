@@ -21,29 +21,24 @@ public class ActiveBookingsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String search = request.getParameter("search");
-        if (search == null){
-            search = "empty";
-        }
-
         String username = request.getRemoteUser();
 
         UserDAO dao = new UserDAO();
         UserModel user = dao.getUser(username);
         int userID = user.getUserID();
 
-        LinkedHashMap<ToolModel, BookingModel> bookings = listBookings(userID, search);
+        LinkedHashMap<ToolModel, BookingModel> bookings = listBookings(userID);
 
         request.setAttribute("bookings", bookings);
         request.getRequestDispatcher("/bookingsActive.jsp").forward(request, response);
 
     }
 
-    public LinkedHashMap<ToolModel, BookingModel> listBookings(int userID, String search) {
+    public LinkedHashMap<ToolModel, BookingModel> listBookings(int userID) {
 
         BookingDAO bDao = new BookingDAO();
 
-        return bDao.activeUserBookings(userID, search);
+        return bDao.activeUserBookings(userID);
     }
 
 }

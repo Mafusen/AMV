@@ -16,7 +16,7 @@
 
 <%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
-<%@include file="jspHelpers/navbarAdmin.jsp"%>
+<%@include file="jspHelpers/navbarBookings.jsp"%>
 <br><br><br><br>
 <body>
 <%

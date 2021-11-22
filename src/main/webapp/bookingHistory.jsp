@@ -35,8 +35,9 @@
 <%
     LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
     FileDAO fDao = new FileDAO();
-    int fileID = 0;
+
     for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
+        int fileID = 0;
         try {
             fileID = fDao.getFileForTool(booking.getKey().getToolID()).getFileID();
         } catch (SQLException | ClassNotFoundException e) {
