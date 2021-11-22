@@ -15,6 +15,8 @@
 <html>
 <head>
   <link rel="stylesheet" href = "<%=request.getContextPath()%>/styles/login.css" type = "text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
   <title>AMV Innlogging</title>
   <style>
   </style>
@@ -37,6 +39,7 @@
       <br>
     </label>
     <label for="Password"></label><input type="Password" name="j_password" id="Password" placeholder="">
+    <i class="bi bi-eye-slash" id="togglePassword"></i>
     <br><br>
     <label>
       <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
@@ -56,5 +59,16 @@
     }
   %>
 </div>
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#Password');
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+  });
+</script>
 </body>
 </html>

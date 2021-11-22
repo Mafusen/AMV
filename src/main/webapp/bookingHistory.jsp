@@ -22,7 +22,7 @@
 <br><br><br><br>
 <%@include file="jspHelpers/navbarBookings.jsp"%>
 <div class="main">
-    <br><br><h1>Min Leiehistorikk</h1>
+    <h1>Min Leiehistorikk</h1>
     <form action = "bookingHistoryServlet" method = "get">
         <label>
             <input type = "text" placeholder="produktnavn..." name = "search">
