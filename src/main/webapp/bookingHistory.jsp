@@ -2,6 +2,8 @@
 <%@ page import="bacit.web.Models.ToolModel" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.LinkedHashMap" %>
+<%@ page import="bacit.web.DAOs.FileDAO" %>
+<%@ page import="java.sql.SQLException" %>
 <%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
@@ -13,6 +15,7 @@
 <html>
 <head>
     <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
+    <link href = "styles/bookingHistory.css" rel="stylesheet" type = "text/css">
     <title>Title</title>
 </head>
 <body>
@@ -25,23 +28,32 @@
         <label>
             <input type = "text" placeholder="produktnavn..." name = "search">
         </label>
-        <button type = "submit">SØK</button>
+        <button class = "button1" type = "submit">SØK</button>
     </form>
 
-    <table>
+    <table id = "bookings">
 <%
     LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
-
+    FileDAO fDao = new FileDAO();
+    int fileID = 0;
     for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
+        try {
+            fileID = fDao.getFileForTool(booking.getKey().getToolID()).getFileID();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 %>
-        <tr>
-            <td>BILDE GÅR HER</td>
-            <td>Produkt: <%=booking.getKey().getToolName()%></td>
-            <td>Leieperiode: <%=booking.getValue().getStartDate() + " ---> " + booking.getValue().getEndDate()%></td>
-            <td>Kommentar: <%=booking.getValue().getComment()%></td>
-            <td><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Booking</button></form></td>
-        </tr>
-        <br><br>
+
+        <a class="bookings" href="<%=request.getContextPath()%>/getBookingServlet?bookingID=<%=booking.getValue().getBookingID()%>">
+            <img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=fileID%>" alt = "<%=booking.getKey().getToolName()%>">
+            <div class="booking">
+                <div class="productname"><%=booking.getKey().getToolName()%></div>
+                <div class="bookingdates">Fra: <%=booking.getValue().getStartDate()%>  <br> Til: <%=booking.getValue().getEndDate()%></div>
+                <div class="bookingcmnt"><span class="bookingtext">Kommentar:  </span><%=booking.getValue().getComment()%></div>
+                <div class="bookingprice"><span class="bookingtext">Pris: </span><%=booking.getValue().getTotalPrice()%></div>
+            </div>
+        </a>
+
     <%
         }
 %>

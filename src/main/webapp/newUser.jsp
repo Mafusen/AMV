@@ -109,12 +109,12 @@
             <div>
                 <input type="date" name="endDate" id="endDate">
             </div>
-            <br> </br> <br> </br>
+            <br><br>
             <div class="userForm">
                 <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
 
                 <a href = "admin/Users">
-                    <button class="submit" type="submit" >Registrer ny bruker</button>
+                    <button class="submit" type="submit">Registrer ny bruker</button>
                 </a>
             </div>
         </div>

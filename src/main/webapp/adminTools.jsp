@@ -14,7 +14,8 @@
 <html>
 <head>
     <link href = "<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type = "text/css">
-    <title>Title</title>
+    <link href="<%=request.getContextPath()%>/styles/adminTools.css" rel="stylesheet">
+    <title>AMV - Verktøyoversikt</title>
 </head>
 <body>
 <%@include file="jspHelpers/navbarMain.jsp"%>
@@ -22,7 +23,7 @@
 <%@include file="jspHelpers/navbarAdmin.jsp"%>
 
 <div class="main">
-    <br><br><h1>Side med verktoy</h1>
+    <br><h1>Verktøyoversikt</h1>
     <form action = "<%=request.getContextPath()%>/admin/Tools" method = "get">
         <div class="search">
             <label>
@@ -44,11 +45,16 @@
 
         for(Map.Entry<ToolModel, FileModel> product : products.entrySet()){
     %>
-
+    <a class="products" href="passProduct?toolID= + <%=product.getKey().getToolID()%>">
+        <img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
+        <div class="product">
+            <div class="productname"><%=product.getKey().getToolName()%></div>
+            <div class="producttitles">Info:</div>
+            <div class="productinfo"> <%=product.getKey().getToolInfo()%></div>
+        </div>
+    </a>
     <tr>
-        <td><img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt="<%=product.getKey().getToolName()%>" style="height: 250px" width="auto"></td>
-        <td>Verktøy: <%=product.getKey().getToolName()%></td>
-        <td>Informasjon <%=product.getKey().getToolInfo()%></td>
+
         <td>
             <a href = "<%=request.getContextPath()%>/admin/redigerVerktoy?toolID=<%=product.getKey().getToolID()%>">
                 <button name = submit type = submit value = submit >
