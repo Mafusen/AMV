@@ -51,16 +51,16 @@
       <div>
         <input class="input" type="password" name="confirmPassword" id="confirmPassword" required>
       </div>
+
+      <div class="userForm">
+        <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
+
+        <a href = "minSide/byttPassord">
+          <button class="submit" type="submit" >Lagre</button>
+        </a>
+      </div>
+
     </div>
-    <div class="userForm">
-      <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
-
-      <a href = "minSide/byttPassord">
-      <button class="submit" type="submit" >Lagre</button>
-      </a>
-
-    </div>
-
   </form>
 
 </main>

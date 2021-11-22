@@ -42,13 +42,21 @@
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
+                    String info;
+                    if(booking.getKey().getToolInfo() != null){
+                        info = booking.getKey().getToolInfo();
+                    }else{
+                        info = " ";
+                    }
             %>
             <a class="products" href="passBooking?bookingID=<%=booking.getValue().getBookingID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=fileID%>" alt = "<%=booking.getKey().getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=booking.getKey().getToolName()%></div>
-                    <div class="productinfo"><%=booking.getKey().getToolInfo()%></div>
-                    <div class="productinfo"></div>
+                    <div class="producttitles">Info:</div>
+                    <div class="productinfo"><%=info%></div>
+                    <div class="producttitles">Pris per dag:</div>
+                    <div class="productprice"><%=booking.getKey().getPrice()%> kr</div>
                 </div>
             </a>
             <%
@@ -67,14 +75,21 @@
                 LinkedHashMap<ToolModel, FileModel> products = (LinkedHashMap<ToolModel, FileModel>) request.getAttribute("products");
 
                 for (Map.Entry<ToolModel, FileModel> product : products.entrySet()) {
-
+                    String info;
+                    if(product.getKey().getToolInfo() != null){
+                        info = product.getKey().getToolInfo();
+                    }else{
+                        info = " ";
+                    }
             %>
             <a class="products" href="passProduct?toolID=<%=product.getKey().getToolID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getKey().getToolName()%></div>
-                    <div class="productinfo">Info: <%=product.getKey().getToolInfo()%></div>
-                    <div class="productprice">Pris per dag: <%=product.getKey().getPrice()%></div>
+                    <div class="producttitles">Info:</div>
+                    <div class="productinfo"> <%=info%></div>
+                    <div class="producttitles">Pris per dag:</div>
+                    <div class="productprice"> <%=product.getKey().getPrice()%> kr</div>
                 </div>
             </a>
             <%

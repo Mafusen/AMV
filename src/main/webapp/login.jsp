@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href = "<%=request.getContextPath()%>/styles/login.css" type = "text/css">
+  <link rel="stylesheet" href = "styles/login.css" type = "text/css">
   <title>AMV Innlogging</title>
   <style>
   </style>
