@@ -45,8 +45,8 @@
 </nav2>
 
 <div class="main">
-    <br>
-    <h1>Legg til ny bruker:</h1>
+<br>
+<h1>Legg til ny bruker:</h1>
 </div>
 
 <div class="container">

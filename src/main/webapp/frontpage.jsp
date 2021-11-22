@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <meta name="AMV - Produktside" content="width=device-width, initial-scale=1">
+    <meta name="AMV - Forside" content="width=device-width, initial-scale=1">
     <link href="styles/productPage.css" rel="stylesheet">
     <link href="styles/navbar.css" rel="stylesheet">
     <title>AMV - Velferden</title>
@@ -42,7 +42,6 @@
 
             <%
                 LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
-
                 for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
                     FileDAO fDao = new FileDAO();
                     int fileID = 0;
@@ -74,9 +73,7 @@
 
             <%
                 LinkedHashMap<ToolModel, FileModel> products = (LinkedHashMap<ToolModel, FileModel>) request.getAttribute("products");
-
                 for (Map.Entry<ToolModel, FileModel> product : products.entrySet()) {
-
             %>
             <a class="products" href="passProduct?toolID= + <%=product.getKey().getToolID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
@@ -115,7 +112,6 @@
     <script>
         var coll = document.getElementsByClassName("collapsibleinfo");
         var i;
-
         for (i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
