@@ -33,7 +33,7 @@
     </form>
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newUser">
-            <button name = submit type = submit value = submit >Legg til ny bruker</button>
+            <button class = "button1" name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
 <br>

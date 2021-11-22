@@ -34,7 +34,7 @@
     </form>
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newTool">
-        <button name = submit type = submit value = submit >Legg til nytt verktøy</button>
+        <button class="button1" name = submit type = submit value = submit >Legg til nytt verktøy</button>
         </a>
 </div>
 </div>
