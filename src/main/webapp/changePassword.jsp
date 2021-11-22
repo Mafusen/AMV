@@ -23,8 +23,6 @@
 <%@include file="jspHelpers/navbarMain.jsp"%>
 
 <br><br><br><br>
-<%@include file="jspHelpers/navbarAdmin.jsp"%>
-<br><br><br><br>
 <h1>Rediger bruker:</h1>
 
 <main class="container">
