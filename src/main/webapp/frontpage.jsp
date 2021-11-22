@@ -78,12 +78,14 @@
                 for (Map.Entry<ToolModel, FileModel> product : products.entrySet()) {
 
             %>
-            <a class="products" href="passProduct?toolID=<%=product.getKey().getToolID()%>">
+            <a class="products" href="passProduct?toolID= + <%=product.getKey().getToolID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getKey().getToolName()%></div>
-                    <div class="productinfo">Info: <%=product.getKey().getToolInfo()%></div>
-                    <div class="productprice">Pris per dag: <%=product.getKey().getPrice()%></div>
+                    <div class="producttitles">Info:</div>
+                    <div class="productinfo"> <%=product.getKey().getToolInfo()%></div>
+                    <div class="producttitles">Pris per dag:</div>
+                    <div class="productprice"> <%=product.getKey().getPrice()%></div>
                 </div>
             </a>
             <%

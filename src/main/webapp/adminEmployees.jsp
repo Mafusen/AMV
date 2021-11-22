@@ -13,6 +13,7 @@
 <html>
 <head>
     <link href = "<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type = "text/css">
+    <link href="<%=request.getContextPath()%>/styles/adminEmployees.css" rel="stylesheet" type="text/css">
     <title>Title</title>
 </head>
 <body>
@@ -41,24 +42,31 @@
 </nav2>
 
 <div class="main">
-    <br><br><h1>Side med ansatte</h1>
+    <br><h1>Oversikt over brukere</h1>
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newUser">
-            <button name = submit type = submit value = submit >Legg til ny bruker</button>
+            <button class="button1" name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
 </div>
 
-<table>
+<table id="users">
+    <tr>
+        <th>Bruker-ID</th>
+        <th>Brukernavn</th>
+        <th>Etternavn</th>
+        <th>Fornavn</th>
+    </tr>
     <%
         List<UserModel> users = (ArrayList<UserModel>) request.getAttribute("users");
-
         for(UserModel user : users){
     %>
-
     <tr>
-        <td>BrukerID: <%=user.getUserID()%></td>
-        <td>Brukernavn: <%=user.getUserName()%></td>
+
+        <td><%=user.getUserID()%></td>
+        <td><%=user.getUserName()%></td>
+        <td><%=user.getLastName()%></td>
+        <td><%=user.getFirstName()%></td>
     </tr>
     <%
         }

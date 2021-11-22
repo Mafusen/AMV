@@ -1,9 +1,14 @@
+.main {
+    padding-top: 50px;
+    margin-left: 50px;
+}
+
 .toolform {
     padding-left: 50px;
 }
 
 .newtooltitle{
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 10px;
     padding-left: 50px;
 }

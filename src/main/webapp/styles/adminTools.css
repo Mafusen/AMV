@@ -1,96 +1,6 @@
-.notcollapsible {
-    background-color: #ffb300;
-    color: #11165a;
-    cursor: auto;
-    padding: 18px;
-    width: 90%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 16px;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-.collapsible {
-    background-color: #ffb300;
-    color: #11165a;
-    cursor: pointer;
-    padding: 18px;
-    width: 90%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 16px;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-.collapsible:hover {
-    background-color: #e79d00;
-}
-.collapsible:after {
-    content: "▼";
-    font-size: 16px;
-    color: #11165a;
-    float: right;
-    margin-left: 5px;
-}
-
-.active:after {
-    transform: rotate(180deg);
-}
-
-/*.collapsibleinfo{
-    background-color: #ffb300;
-    color: #11165a;
-    cursor: pointer;
-    padding: 18px;
-    width: 50px;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 12px;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 5px;
-!*    margin-bottom: 20px;*!
-    z-index: 9999;
-}*/
-
-.collapsibleinfo {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-}
-
-.collapsiblecontent {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-.collapsibleinfo:hover {
-    background-color: #e79d00;
-}
-
-
 .main {
-    padding-top: 75px;
+    padding-top: 50px;
+    margin-left: 50px;
 }
 
 .content {
@@ -104,13 +14,22 @@
     flex-wrap: wrap;
 }
 
-.activecontainer {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 40px 40px;
-    /*    justify-content: center;*/
+.button1 {
+    height: 50px;
+    width: 200px;
+    background-color: #009821;
+    border-radius: 8px;
+    color: #ffffff;
+    float: bottom;
+    border-width: 0px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.button1:hover {
+    background-color: #00861e; /* Green */
+    color: white;
 }
 
 .container {
@@ -124,14 +43,15 @@
 
 .products {
     display: flex;
-    width: 48%;
+    max-width: 500px;
     float: left;
     flex-direction: row;
     gap: 20px 20px;
-    min-width: 400px;
+    min-width: 500px;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 5px 7px 15px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
     min-height: 200px;
+    margin-left: 50px;
 }
 .products:hover {
     box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.4), 7px 9px 17px 0 rgba(0, 0, 0, 0.4);
@@ -143,6 +63,8 @@
     width: 30%;
     min-width: 200px;
     min-height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     height: auto;
     border-radius: 15px;
 }
@@ -210,5 +132,4 @@ input[type=text], select, text {
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-
 }
