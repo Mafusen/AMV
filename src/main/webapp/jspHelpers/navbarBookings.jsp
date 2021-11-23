@@ -10,7 +10,7 @@
 
     <ul class="nav-links">
 
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">LeieHistorikk</a></li>
+        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Historikk</a></li>
         <li class="nav-item"><a href="<%=request.getContextPath()%>/aktiveBookinger">Aktive Bookinger</a></li>
         <li class="nav-item"><a href="<%=request.getContextPath()%>/fremtidigeBookinger">Fremtidige Bookinger</a></li>
     </ul>

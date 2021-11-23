@@ -23,8 +23,6 @@
 <%@include file="jspHelpers/navbarMain.jsp"%>
 
 <br><br><br><br>
-<%@include file="jspHelpers/navbarAdmin.jsp"%>
-<br><br><br><br>
 <h1>Rediger bruker:</h1>
 
 <main class="container">
@@ -51,16 +49,16 @@
       <div>
         <input class="input" type="password" name="confirmPassword" id="confirmPassword" required>
       </div>
+
+      <div class="userForm">
+        <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
+
+        <a href = "minSide/byttPassord">
+          <button class="submit" type="submit" >Lagre</button>
+        </a>
+      </div>
+
     </div>
-    <div class="userForm">
-      <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
-
-      <a href = "minSide/byttPassord">
-      <button class="submit" type="submit" >Lagre</button>
-      </a>
-
-    </div>
-
   </form>
 
 </main>
