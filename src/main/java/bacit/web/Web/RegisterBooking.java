@@ -51,9 +51,11 @@ public class RegisterBooking extends HttpServlet {
         BookingDAO dao = new BookingDAO();
         dao.registerBooking(booking);
 
-        // Prepare information message for user about operation result
-        response.sendRedirect("frontpageServlet");
+        //inserts booked dates to the BookedDates table
+        //dao.bookedDates(booking);
 
+        // Prepare information message for user about operation result
+            response.sendRedirect("popupBooking");
     }
 
 }

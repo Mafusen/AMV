@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet (name = "popupBooking", value = "/popupBooking")
-public class popupBookingFailed extends HttpServlet {
+@WebServlet (name = "popupFailed", value = "/popupFailed")
+public class popupFailed extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/popupBookingFailed.jsp").forward(request, response);
+        request.getRequestDispatcher("/popupFailed.jsp").forward(request, response);
 
     }
 }

@@ -234,6 +234,32 @@ public class BookingDAO {
 
     }
 
+    /* insert booked dates of a tool into bdates
+    public void bookedDates(BookingModel model) {
+
+        try {
+
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  insertion query
+            String query = "INSERT INTO bDates (bDate, TOOL_ID) SELECT Calendar.date, TOOL.Tool_ID FROM Calendar, TOOL WHERE Calendar.date >= date ? and Calendar.date <= date ? and TOOL_ID = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getStartDate());
+            statement.setString(2, model.getEndDate());
+            statement.setInt(3, model.getToolID());
+
+            // Execute the statement
+            ResultSet rs = statement.executeQuery();
+
+        } catch (SQLException | ClassNotFoundException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+     */
+
     public void registerBooking(BookingModel model) {
 
         try {
@@ -259,6 +285,7 @@ public class BookingDAO {
             exception.printStackTrace();
         }
     }
+
 
     public void deliverBooking(BookingModel model) {
 
