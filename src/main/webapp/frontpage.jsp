@@ -82,7 +82,7 @@
                     }
 
             %>
-            <a class="products" href="passProduct?toolID= + <%=product.getKey().getToolID()%>">
+            <a class="products" href="passProduct?toolID=<%=product.getKey().getToolID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getKey().getToolName()%></div>
