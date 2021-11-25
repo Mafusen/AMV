@@ -13,6 +13,7 @@ nav {
     margin: 0;
     top: 0;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+    z-index: 2;
 }
 
 .navbar {
@@ -20,7 +21,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+
 }
 
 nav2 {
@@ -29,6 +30,8 @@ nav2 {
     display: inline-block;
     margin: 0;
     top: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+    z-index: 1;
 }
 
 .navbar2 {
