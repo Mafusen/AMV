@@ -34,18 +34,17 @@
 
     <table id = "bookings">
 
-<%
-    LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
-    FileDAO fDao = new FileDAO();
-
-    for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
-        int fileID = 0;
-        try {
-            fileID = fDao.getFileForTool(booking.getKey().getToolID()).getFileID();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-%>
+        <%
+            LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
+            FileDAO fDao = new FileDAO();
+            for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
+                int fileID = 0;
+                try {
+                    fileID = fDao.getFileForTool(booking.getKey().getToolID()).getFileID();
+                } catch (SQLException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+        %>
 
         <a class="bookings" href="<%=request.getContextPath()%>/getBookingServlet?bookingID=<%=booking.getValue().getBookingID()%>">
             <img src="<%=request.getContextPath()%>/fileDownloadServlet?FILE_ID=<%=fileID%>" alt = "<%=booking.getKey().getToolName()%>">
@@ -58,9 +57,9 @@
             </div>
         </a>
 
-    <%
-        }
-%>
+        <%
+            }
+        %>
     </table>
 </div>
 

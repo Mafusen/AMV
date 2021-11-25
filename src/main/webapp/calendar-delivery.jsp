@@ -60,24 +60,6 @@
     </div>
 
 </main>
-<script>
-  var today = new Date().toISOString().split('T')[0];
-  document.getElementsByName("startDate")[0].setAttribute('min', today);
-</script>
-<script>
-  var endDate = new Date();
-  var dd = endDate.getDate();
-  var mm = endDate.getMonth()+4; //January is 0 so need to add 1 to make it 1!
-  var yyyy = endDate.getFullYear();
-  if(dd<10){
-    dd='0'+dd
-  }
-  if(mm<10){
-    mm='0'+mm
-  }
-  endDate = yyyy+'-'+mm+ '-'+dd;
-  document.getElementById("endDate").setAttribute("min", endDate);
-</script>
 </body>
 
 </html>

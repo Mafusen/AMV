@@ -15,7 +15,7 @@ public class ReportDAO {
 
     PrintWriter out;
 
-    public List<ReportModel> reportData(){
+    public List<ReportModel> reportData(String fDate, String eDate){
 
 
         Connection db;
@@ -25,10 +25,12 @@ public class ReportDAO {
             db = DBUtils.getINSTANCE().getConnection(out);
             String query =
                     "SELECT BOOKING.Booking_ID, TOOL.Tool_Name, USER.Fname, USER.Lname, BOOKING.StartDate, " +
-                    "BOOKING.EndDate, BOOKING.Cmnt, BOOKING.TotalPrice FROM BOOKING inner JOIN USER ON " +
-                    "BOOKING.USER_ID=USER.USER_ID JOIN TOOL ON BOOKING.TOOL_ID=TOOL.TOOL_ID";
+                            "BOOKING.EndDate, BOOKING.Cmnt, BOOKING.TotalPrice FROM BOOKING inner JOIN USER ON " +
+                            "BOOKING.USER_ID=USER.USER_ID JOIN TOOL ON BOOKING.TOOL_ID=TOOL.TOOL_ID where StartDate = ? and EndDate = ?";
 
             PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, fDate);
+            statement.setString(2, eDate);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()){

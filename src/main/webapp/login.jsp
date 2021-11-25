@@ -1,17 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: bjornarsomme
-  Date: 10/11/2021
-  Time: 17:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href = "styles/login.css" type = "text/css">
+  <link rel="stylesheet" href = "<%=request.getContextPath()%>/styles/login.css" type = "text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
   <title>AMV Innlogging</title>
   <style>
   </style>
@@ -34,11 +32,36 @@
       <br>
     </label>
     <label for="Password"></label><input type="Password" name="j_password" id="Password" placeholder="">
+    <i class="bi bi-eye-slash" id="togglePassword"></i>
     <br><br>
     <label>
       <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
     </label>
   </form>
+  <a>
+    <%=
+    displayDate()
+    %>
+  </a>
+
+  <%!
+    public String displayDate(){
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+      Date date = Calendar.getInstance().getTime();
+      return dateFormat.format(date);
+    }
+  %>
 </div>
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#Password');
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+  });
+</script>
 </body>
 </html>

@@ -1,3 +1,21 @@
+.error {
+    color: #ba3939;
+    background: #ffe0e0;
+    border: 1px solid #a33a3a;
+    position: relative;
+    padding: 5px;
+    width: 305px;
+
+}
+
+div.close {
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    color: #888;
+    cursor: pointer;
+}
+
 body
 {
     margin: 0;
@@ -5,6 +23,12 @@ body
     background-color: #edb431;
     font-family: 'Arial', serif;
 }
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
 .login{
     width: 382px;
     overflow: hidden;
