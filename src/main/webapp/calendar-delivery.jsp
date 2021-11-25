@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="styles/navbar.css" rel="stylesheet" type="text/css">
   <link href="styles/calendar.css" type="text/css" rel="stylesheet">
-  <title>Produkt Side</title>
+  <title>Lever verktøy</title>
 </head>
 
 <body>

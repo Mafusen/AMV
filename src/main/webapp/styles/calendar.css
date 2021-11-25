@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     margin-left: 5%;
 }
 
@@ -139,6 +139,7 @@ table {
     table-layout: fixed;
     border-collapse: collapse;
     font-size: 18px;
+    width: 90%;
 }
 th {
     text-align: center;
