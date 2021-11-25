@@ -52,7 +52,6 @@ body {
     display: flex;
     text-align: center;
     flex-direction: column;
-    align-self: flex-end;
 }
 .left-column-deliver {
     display: flex;
@@ -85,6 +84,7 @@ body {
     font-weight: 300;
     color: #11165a;
     line-height: 24px;
+    max-width: 500px;
 }
 
 
