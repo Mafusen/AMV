@@ -3,6 +3,13 @@ body {
     width: 100%;
     font-family: 'Roboto', sans-serif;
 }
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    margin-top: 100px;
+}
 
 .columns {
     width: 90%;
@@ -30,8 +37,8 @@ body {
     height: 200px;
     margin: 5%;
     flex: auto;
-}
 
+}
 
 .right-column {
     display: flex;
@@ -40,6 +47,17 @@ body {
     align-items: baseline;
     margin: 5%;
     width: 50%;
+}
+.right-column-deliver {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-self: flex-end;
+}
+.left-column-deliver {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
 }
 
 
@@ -153,4 +171,8 @@ tr {
 
 td {
     padding: 10px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
 }
