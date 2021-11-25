@@ -9,32 +9,23 @@
 <html>
 
 <head>
-    <meta name="AMV - Produktside" content="width=device-width, initial-scale=1">
+    <meta name="AMV - Forside" content="width=device-width, initial-scale=1">
     <link href="styles/productPage.css" rel="stylesheet">
     <link href="styles/navbar.css" rel="stylesheet">
     <title>AMV - Velferden</title>
 </head>
 
 <body>
-<nav class="navbar">
-    <a class="logo" href = "<%=request.getContextPath()%>/frontpageServlet">
-        <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng" alt="AMV">
-    </a>
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
-        <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
-    </ul>
-</nav>
+<%@include file="jspHelpers/navbarMain.jsp"%>
 
 <div class="main">
-    <div class="search">
-        <label>
-            <input type="text" placeholder="Søk etter produkt..">
-        </label>
-    </div>
+    <form action = "<%=request.getContextPath()%>/frontpageServlet" method = "get">
+        <div class="search">
+            <label>
+                <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
+            </label>
+        </div>
+    </form>
 
     <button type="button" class="collapsible"><strong>Aktive Bookinger</strong></button>
     <div class="content">
@@ -42,7 +33,6 @@
 
             <%
                 LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
-
                 for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
                     FileDAO fDao = new FileDAO();
                     int fileID = 0;
@@ -51,13 +41,21 @@
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
+                    String info;
+                    if(booking.getKey().getToolInfo() != null){
+                        info = booking.getKey().getToolInfo();
+                    }else{
+                        info = " ";
+                    }
             %>
             <a class="products" href="passBooking?bookingID=<%=booking.getValue().getBookingID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=fileID%>" alt = "<%=booking.getKey().getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=booking.getKey().getToolName()%></div>
-                    <div class="productinfo"><%=booking.getKey().getToolInfo()%></div>
-                    <div class="productinfo"></div>
+                    <div class="producttitles">Info:</div>
+                    <div class="productinfo"><%=info%></div>
+                    <div class="producttitles">Pris per dag:</div>
+                    <div class="productprice"><%=booking.getKey().getPrice()%> kr</div>
                 </div>
             </a>
             <%
@@ -74,16 +72,25 @@
 
             <%
                 LinkedHashMap<ToolModel, FileModel> products = (LinkedHashMap<ToolModel, FileModel>) request.getAttribute("products");
-
                 for (Map.Entry<ToolModel, FileModel> product : products.entrySet()) {
+
+                    String info;
+                    if(product.getKey().getToolInfo() != null){
+                        info = product.getKey().getToolInfo();
+                    }else{
+                        info = " ";
+                    }
 
             %>
             <a class="products" href="passProduct?toolID=<%=product.getKey().getToolID()%>">
                 <img src="fileDownloadServlet?FILE_ID=<%=product.getValue().getFileID()%>" alt = "<%=product.getKey().getToolName()%>">
                 <div class="product">
                     <div class="productname"><%=product.getKey().getToolName()%></div>
-                    <div class="productinfo">Info: <%=product.getKey().getToolInfo()%></div>
-                    <div class="productprice">Pris per dag: <%=product.getKey().getPrice()%></div>
+                    <div class="producttitles">Info:</div>
+                    <div class="productinfo"> <%=info%></div>
+                    <div class="producttitles">Pris per dag:</div>
+                    <div class="productprice"> <%=product.getKey().getPrice()%> kr</div>
+
                 </div>
             </a>
             <%
@@ -113,7 +120,6 @@
     <script>
         var coll = document.getElementsByClassName("collapsibleinfo");
         var i;
-
         for (i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");

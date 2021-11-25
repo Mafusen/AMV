@@ -14,39 +14,22 @@
     <link rel="stylesheet" href="styles/newUser.css">
     <title>Registrer bruker</title>
 </head>
-        <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
-        <link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
-        <title>Registrer Bruker</title>
+<link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
+<title>Registrer Bruker</title>
 
 <body>
 
-<nav class="navbar">
-    <a class="logo" href= "<%=request.getContextPath()%>/frontpageServlet">
-        <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
-    </a>
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
-        <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
-    </ul>
-</nav>
+<%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
-<nav2 class="navbar2">
 
-    <ul class="nav-links">
-
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Users">Ansatte</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Verktoy</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/report">Rapport</a></li>
-    </ul>
-
-</nav2>
+<%@include file="jspHelpers/navbarAdmin.jsp"%>>
 <br><br><br><br>
+
 <h1>Legg til ny bruker:</h1>
+</div>
 
-<main class="container">
+<div class="container">
     <form action="<%=request.getContextPath()%>/admin/registerUser" method="post">
 
         <div class="column">
@@ -104,23 +87,25 @@
             </div>
 
             <div class="role">
-                <label for="endDate"> Sertifikatet går ut: </label>
+                <label for="endDate" style="padding-top: 5px"> Sertifikatet går ut: </label>
             </div>
             <div>
                 <input type="date" name="endDate" id="endDate">
             </div>
-            <br> </br> <br> </br>
+            <br><br>
             <div class="userForm">
-                <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
+                <button class="button2" type="reset" value="Reset alle felter">Reset alle felter</button>
 
                 <a href = "admin/Users">
-                    <button class="submit" type="submit" >Registrer ny bruker</button>
+
+                    <button class="button1" type="submit" >Registrer ny bruker</button>
+
                 </a>
             </div>
         </div>
     </form>
 
-</main>
+</div>
 
 
 

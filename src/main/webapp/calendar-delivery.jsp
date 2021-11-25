@@ -1,57 +1,46 @@
+<%@ page import="bacit.web.Models.ToolModel" %>
+<%@ page import="bacit.web.Models.BookingModel" %>
+<%@ page import="bacit.web.Models.FileModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produkt Side</title>
 
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="styles/navbar.css" rel="stylesheet" type="text/css">
-    <link href="styles/calendar.css" type="text/css" rel="stylesheet">
-    <title>Produkt Side</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="styles/navbar.css" rel="stylesheet" type="text/css">
+  <link href="styles/calendar.css" type="text/css" rel="stylesheet">
+  <title>Produkt Side</title>
+</head>
 
 <body>
 
-<nav class="navbar">
-  <a class="logo" href="<%=request.getContextPath()%>/frontpageServlet">
-    <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
-  </a>
-  <ul class="nav-links">
-
-    <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
-    <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-    <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
-    <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
-  </ul>
-</nav>
+<%@include file="jspHelpers/navbarMain.jsp"%>
 
 <main class="container">
-  <form action = "deliverBooking" method = "get">
 
-    <!-- Left Column / Headphones Image -->
+    <%
+      BookingModel booking = (BookingModel) request.getAttribute("booking");
+      ToolModel tool = (ToolModel) request.getAttribute("tool");
+      FileModel file = (FileModel) request.getAttribute("file");
+    %>
+
     <div class="left-column">
-      <img src="lift2.jpg" alt="">
+      <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt="<%=tool.getToolName()%>">
     </div>
 
-
-    <!-- Right Column -->
     <div class="right-column">
 
-      <!-- Product Description -->
       <div class="product-description">
-        <h1>Lift</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo leo, aliquet maximus neque nec, cursus porttitor odio. Pellentesque semper dui et purus ultricies consectetur. Nulla rutrum lacinia urna vel sollicitudin.
-          Proin cursus scelerisque lacinia. Duis dolor odio, pretium ut elementum id, viverra non ante. Proin sit amet suscipit est. Aliquam luctus nec nunc eget facilisis.</p>
+        <h1><%=tool.getToolName()%></h1>
+        <p><%=tool.getToolInfo()%></p>
       </div>
 
       <div class="product-price">
-        <p>
-          100kr/dag
-        </p>
+        <p><%=tool.getPrice()%> kr</p>
       </div>
 
+      <form action = "deliverBooking" method = "get">
       <div class="comment">
         <div>
           <label for="kommentar">Kommentar</label>
@@ -59,12 +48,17 @@
         <input id="kommentar" name="kommentar" type="text" placeholder="Din kommentar..." size="35">
       </div>
 
+      <a>
+        <input type = "hidden" id = "bookingID" name = "bookingID" value = "<%=booking.getBookingID()%>">
+      </a>
+
       <div class="buttons">
         <button type="submit" class="btn btn-danger" id="divide">Lever</button>
       </div>
+      </form>
 
     </div>
-  </form>
+
 </main>
 <script>
   var today = new Date().toISOString().split('T')[0];

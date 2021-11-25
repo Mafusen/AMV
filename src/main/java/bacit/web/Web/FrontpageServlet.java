@@ -13,8 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet (name = "frontpageServlet", value = "/frontpageServlet")
 public class FrontpageServlet extends HttpServlet {
@@ -23,11 +26,16 @@ public class FrontpageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String search = request.getParameter("search");
+        if (search == null){
+            search = "empty";
+        }
+
         String username = request.getRemoteUser();
         UserDAO uDao = new UserDAO();
         int userID = uDao.getUser(username).getUserID();
 
-        LinkedHashMap<ToolModel, FileModel> products = getProducts();
+        LinkedHashMap<ToolModel, FileModel> products = getProducts(search);
         LinkedHashMap<ToolModel, BookingModel> bookings = getActiveBookings(userID);
 
         request.setAttribute("bookings", bookings);
@@ -36,11 +44,11 @@ public class FrontpageServlet extends HttpServlet {
 
     }
 
-    public LinkedHashMap<ToolModel, FileModel> getProducts () {
+    public LinkedHashMap<ToolModel, FileModel> getProducts (String search) {
 
         ToolDAO tDao = new ToolDAO();
 
-        return tDao.getProducts();
+        return tDao.getProducts(search);
     }
 
     public LinkedHashMap<ToolModel, BookingModel> getActiveBookings(int userID){
@@ -50,6 +58,5 @@ public class FrontpageServlet extends HttpServlet {
         return bDao.activeUserBookings(userID);
 
     }
-
 
 }

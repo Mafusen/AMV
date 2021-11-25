@@ -77,6 +77,36 @@ public class UserDAO
 
     }
 
+    public UserModel userByID(int userID){
+
+        UserModel model = null;
+
+        try {
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            String query = "select * from USER where USER_ID = ?";
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, userID);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                model = new UserModel();
+                model.setUserID(rs.getInt("USER_ID"));
+                model.setFirstName(rs.getString("Fname"));
+                model.setLastName(rs.getString("Lname"));
+                model.setPhone(rs.getString("Phone"));
+                model.setUserName(rs.getString("Username"));
+                model.setPassWord(rs.getString("Password"));
+            }
+        }
+        catch(SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+
+        return model;
+
+    }
+
     public List<UserModel> getAllUsers() throws SQLException {
 
         List<UserModel> users = new ArrayList<>();
@@ -108,6 +138,32 @@ public class UserDAO
 
     }
 
+    public List<UserModel> activeUsers(String search) throws SQLException, ClassNotFoundException {
+
+        List<UserModel> users = new ArrayList<>();
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "select * from USER where IsActive = 1;";
+        PreparedStatement statement = db.prepareStatement(query);
+        ResultSet rs = statement.executeQuery();
+
+        while (rs.next()) {
+            UserModel user = new UserModel(
+                    rs.getInt("USER_ID"),
+                    rs.getString("Fname"),
+                    rs.getString("Lname"),
+                    rs.getString("Phone"),
+                    rs.getString("Username"),
+                    rs.getString("Password"),
+                    true);
+            if(user.getUserName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                users.add(user);
+            }
+        }
+
+        return users;
+    }
+
 
     public void registerUser(UserModel model){
 
@@ -134,6 +190,68 @@ public class UserDAO
         }catch (SQLException | ClassNotFoundException exception){
             exception.printStackTrace();
         }
+    }
+
+    public int verifyPassword(int userID, String password) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "select USER_ID from USER where USER_ID = ? and Password = sha2(?, 256);";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, userID);
+        statement.setString(2, password);
+        ResultSet rs = statement.executeQuery();
+
+        int ID = 0;
+        while(rs.next()){
+            ID = rs.getInt("USER_ID");
+        }
+
+        return ID;
+    }
+
+    public void changePassword(int userID, String password) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+        String query = "update USER set Password = SHA2(?, 256) where USER_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setString(1,  password);
+        statement.setInt(2, userID);
+        statement.executeQuery();
+
+    }
+
+    public void editUser(UserModel model){
+
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  update query
+            String query = "update USER set Phone = ? where USER_ID = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, model.getPhone());
+            statement.setInt(2, model.getUserID());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    public void deleteUser(int userID) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+        String query = "update USER set IsActive = 0, Password = sha2('UlfSandnes132g15Elite11mot11iballringen', 256) where USER_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, userID);
+        statement.executeQuery();
+
     }
 
 

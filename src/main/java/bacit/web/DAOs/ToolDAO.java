@@ -9,13 +9,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class ToolDAO {
 
     PrintWriter out;
 
-    public LinkedHashMap<ToolModel, FileModel> getProducts(){
+    public LinkedHashMap<ToolModel, FileModel> getProducts(String search){
 
         LinkedHashMap<ToolModel, FileModel> products = new LinkedHashMap<>();
 
@@ -24,7 +26,7 @@ public class ToolDAO {
 
             String query = "SELECT TOOL.TOOL_ID, TOOL.Tool_Name, TOOL.Tool_Info, TOOL.Price, TOOL.IsActive, FILE.FILE_ID, " +
                     "FILE.File_Name, FILE.File_Content, FILE.ContentType FROM FILE inner JOIN TOOL " +
-                    "ON FILE.TOOL_ID=TOOL.TOOL_ID where isActive = 1;";
+                    "ON FILE.TOOL_ID=TOOL.TOOL_ID where isActive = 1 order by Tool_Name;";
             PreparedStatement statement = db.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
 
@@ -39,8 +41,10 @@ public class ToolDAO {
 
                 FileModel file = new FileModel();
                 file.setFileID(rs.getInt("FILE_ID"));
+                if(tool.getToolName().toLowerCase().contains(search.toLowerCase()) || search.equals("empty")) {
+                    products.put(tool, file);
+                }
 
-                products.put(tool, file);
             }
 
         } catch (SQLException | ClassNotFoundException e) {
@@ -156,6 +160,41 @@ public class ToolDAO {
         return tool;
     }
 
+    public void editTool(ToolModel tool){
 
+        try{
+
+            // Get connection to database
+            Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+            // Write  update query
+            String query = "update TOOL set Tool_Name = ?, Tool_Info = ?, Price = ? where TOOL_ID = ?";
+
+            // Set parameters with PreparedStatement
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setString(1, tool.getToolName());
+            statement.setString(2, tool.getToolInfo());
+            statement.setInt(3, tool.getPrice());
+            statement.setInt(4, tool.getToolID());
+
+            // Execute the statement
+            statement.executeQuery();
+
+        }catch (SQLException | ClassNotFoundException exception){
+            exception.printStackTrace();
+        }
+
+    }
+
+    public void deleteTool(int toolID) throws SQLException, ClassNotFoundException {
+
+        Connection db = DBUtils.getINSTANCE().getConnection(out);
+
+        String query = "update TOOL set IsActive = 0 where TOOL_ID = ?;";
+        PreparedStatement statement = db.prepareStatement(query);
+        statement.setInt(1, toolID);
+        statement.executeQuery();
+
+    }
 
 }

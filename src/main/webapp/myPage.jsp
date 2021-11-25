@@ -1,4 +1,4 @@
-<%--
+<%@ page import="bacit.web.Models.UserModel" %><%--
   Created by IntelliJ IDEA.
   User: bjornarsomme
   Date: 15/10/2021
@@ -13,18 +13,25 @@
 </head>
 <body>
 <h1>MIN SIDE</h1>
-<nav class="navbar">
-    <a class="logo" href = "<%=request.getContextPath()%>/frontpageServlet">
-        <img src="https://images.squarespace-cdn.com/content/5bcf4baf90f904e66e8eb8bf/1571139220977-8Y75FILX6E39M4ZH8REW/Logo-eng-web-blue.png?content-type=image%2Fpng">
-    </a>
-    <ul class="nav-links">
+<br><br><br><br><br><br><br><br><br><br><br>
+<%@include file="jspHelpers/navbarMain.jsp"%>
 
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/Tools">Admin</a></li>
-        <li class="nav-item"><a href="myPage.jsp">Min Side</a></li>
-        <li class="nav-item"><a href="<%=request.getContextPath()%>/bookingHistoryServlet">Bookinger</a></li>
-        <li class="nav-item"><a style="padding-right: 30px" href="<%=request.getContextPath()%>/logOut">Logg ut</a></li>
-    </ul>
-</nav>
+<%
+    UserModel user = (UserModel) request.getAttribute("user");
+%>
+
+<div>
+    <a><%=user.getUserName()%></a>
+    <a><%=user.getFirstName()%></a>
+    <a><%=user.getLastName()%></a>
+    <a><%=user.getPhone()%></a>
+    <div>
+    <a href = "<%=request.getContextPath()%>/minSide/redigerPassord">
+        <button type = submit>Rediger Passord</button>
+    </a>
+    </div>
+
+</div>
 
 </body>
 </html>

@@ -1,3 +1,0 @@
-INSERT INTO UNION_MEMBER(USER_ID)
-
-VALUES ('4'),('5'),('6');
