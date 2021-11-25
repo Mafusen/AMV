@@ -28,10 +28,12 @@
         <label>
             <input type = "text" placeholder="produktnavn..." name = "search">
         </label>
+
         <button class = "button1" type = "submit">SØK</button>
     </form>
 
     <table id = "bookings">
+
 <%
     LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
     FileDAO fDao = new FileDAO();
@@ -50,6 +52,7 @@
             <div class="booking">
                 <div class="productname"><%=booking.getKey().getToolName()%></div>
                 <div class="bookingdates">Fra: <%=booking.getValue().getStartDate()%>  <br> Til: <%=booking.getValue().getEndDate()%></div>
+
                 <div class="bookingcmnt"><span class="bookingtext">Kommentar:  </span><%=booking.getValue().getComment()%></div>
                 <div class="bookingprice"><span class="bookingtext">Pris: </span><%=booking.getValue().getTotalPrice()%></div>
             </div>

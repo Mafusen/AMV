@@ -14,19 +14,22 @@
     <link rel="stylesheet" href="styles/newUser.css">
     <title>Registrer bruker</title>
 </head>
-        <link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
-        <link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
-        <title>Registrer Bruker</title>
+<link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/styles/newUser.css" rel="stylesheet" type="text/css">
+<title>Registrer Bruker</title>
 
 <body>
 
 <%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
+
 <%@include file="jspHelpers/navbarAdmin.jsp"%>>
 <br><br><br><br>
-<h1>Legg til ny bruker:</h1>
 
-<main class="container">
+<h1>Legg til ny bruker:</h1>
+</div>
+
+<div class="container">
     <form action="<%=request.getContextPath()%>/admin/registerUser" method="post">
 
         <div class="column">
@@ -84,23 +87,25 @@
             </div>
 
             <div class="role">
-                <label for="endDate"> Sertifikatet går ut: </label>
+                <label for="endDate" style="padding-top: 5px"> Sertifikatet går ut: </label>
             </div>
             <div>
                 <input type="date" name="endDate" id="endDate">
             </div>
             <br><br>
             <div class="userForm">
-                <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
+                <button class="button2" type="reset" value="Reset alle felter">Reset alle felter</button>
 
                 <a href = "admin/Users">
-                    <button class="submit" type="submit">Registrer ny bruker</button>
+
+                    <button class="button1" type="submit" >Registrer ny bruker</button>
+
                 </a>
             </div>
         </div>
     </form>
 
-</main>
+</div>
 
 
 

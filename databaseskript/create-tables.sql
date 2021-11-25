@@ -52,6 +52,7 @@ create table if not exists CERTIFICATE(
 	FOREIGN KEY (COURSE_ID) REFERENCES COURSE(COURSE_ID)
 	);
 
+
 create table if not exists  FILE(
     FILE_ID      int UNIQUE auto_increment not NULL,
     File_Name    varchar(255)              not null,

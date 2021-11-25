@@ -22,7 +22,7 @@
 <%@include file="jspHelpers/navbarAdmin.jsp"%>
 
 <div class="main">
-    <br><br><h1>Side med ansatte</h1>
+    <br><br><h1>Oversikt over brukere</h1>
     <form action = "<%=request.getContextPath()%>/admin/Users" method = "get">
         <div class="search">
             <label>
@@ -48,11 +48,9 @@
     </tr>
     <%
         List<UserModel> users = (ArrayList<UserModel>) request.getAttribute("users");
-
         for(UserModel user : users){
             if(user.isActive()){
     %>
-
     <tr>
         <td><%=user.getUserID()%></td>
         <td><%=user.getUserName()%></td>
