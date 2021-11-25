@@ -12,9 +12,9 @@
         <div class="modal">
             <h2>Verktøy levert!</h2>
             <%--        Bytt action til hvor brukeren skal sendes til!                        --%>
-            <form method="post" action="frontPageServlet">
+            <a href="frontpageServlet">
                 <button class="btn">Ok</button>
-            </form>
+            </a>
         </div>
     </div>
 </main>
