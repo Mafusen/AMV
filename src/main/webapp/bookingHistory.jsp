@@ -1,60 +1,53 @@
-<%@ page import="bacit.web.Models.BookingModel" %>
 <%@ page import="bacit.web.Models.ToolModel" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="bacit.web.Models.BookingModel" %>
 <%@ page import="java.util.LinkedHashMap" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: bjornarsomme
-  Date: 15/10/2021
-  Time: 13:12
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="bacit.web.DAOs.FileDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
-    <link href = "styles/bookingHistory.css" rel="stylesheet" type = "text/css">
-    <title>Title</title>
+    <link href="styles/bookingHistory.css" rel="stylesheet" type="text/css">
+    <title>Booking Historikk</title>
 </head>
 <body>
 <%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
 <%@include file="jspHelpers/navbarBookings.jsp"%>
 <div class="main">
-    <h1>Min Leiehistorikk</h1>
-    <form action = "bookingHistoryServlet" method = "get">
+    <br><br><h1>Min Leiehistorikk</h1>
+    <form action = "<%=request.getContextPath()%>/aktiveBookinger" method = "get">
         <label>
             <input type = "text" placeholder="produktnavn..." name = "search">
         </label>
-        <button class="button1" type = "submit">SØK</button>
+        <button type = "submit">SØK</button>
     </form>
 
-    <table id="bookings">
-        <%--        <tr>
-                    <td>Bilde</td>
-                    <td>Produkt</td>
-                    <td>Leieperiode</td>
-                    <td>Kommentar</td>
-                </tr>--%>
+    <table>
         <%
             LinkedHashMap<ToolModel, BookingModel> bookings = (LinkedHashMap<ToolModel, BookingModel>) request.getAttribute("bookings");
 
             for(Map.Entry<ToolModel, BookingModel> booking : bookings.entrySet()){
+                FileDAO fDao = new FileDAO();
+                int fileID = 0;
+                try {
+                    fileID = fDao.getFileForTool(booking.getKey().getToolID()).getFileID();
+                } catch (SQLException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                String info;
+                if(booking.getKey().getToolInfo() != null){
+                    info = booking.getKey().getToolInfo();
+                }else {
+                    info = " ";
+                }
         %>
-        <%--        <tr>
-                    <td>BILDE GÅR HER</td>
-                    <td>Produkt: <%=booking.getKey().getToolName()%></td>
-                    <td>Leieperiode: <%=booking.getValue().getStartDate() + " ---> " + booking.getValue().getEndDate()%></td>
-                    <td>Kommentar: <%=booking.getValue().getComment()%></td>
-                    <td id="btn"><form action = "getBookingServlet"><button type = submit name = "bookingID" value = "<%=booking.getValue().getBookingID()%>">Se Produkt</button></form></td>
-                </tr>
-                <br><br>--%>
-        <a class="bookings" href="getBookingServlet">
-            <img src="pic.jpg">
+        <a class="bookings" href="passBooking?bookingID=<%=booking.getValue().getBookingID()%>">
+            <img src="fileDownloadServlet?FILE_ID=<%=fileID%>" alt = "<%=booking.getKey().getToolName()%>">
             <div class="booking">
                 <div class="productname"><%=booking.getKey().getToolName()%></div>
-                <div class="bookingdates">Til: <%=booking.getValue().getStartDate()%>  <br> Fra: <%=booking.getValue().getEndDate()%></div>
+                <div class="bookingdates">Fra: <%=booking.getValue().getEndDate()%> <br> Til: <%=booking.getValue().getStartDate()%></div>
                 <div class="bookingcmnt"><span class="bookingtext">Kommentar:  </span><%=booking.getValue().getComment()%></div>
                 <div class="bookingprice"><span class="bookingtext">Pris: </span><%=booking.getValue().getTotalPrice()%></div>
             </div>
