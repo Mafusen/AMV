@@ -24,9 +24,8 @@ public class ReportDAO {
         try {
             db = DBUtils.getINSTANCE().getConnection(out);
             String query =
-                    "SELECT BOOKING.Booking_ID, TOOL.Tool_Name, USER.Fname, USER.Lname, BOOKING.StartDate, " +
-                            "BOOKING.EndDate, BOOKING.Cmnt, BOOKING.TotalPrice FROM BOOKING inner JOIN USER ON " +
-                            "BOOKING.USER_ID=USER.USER_ID JOIN TOOL ON BOOKING.TOOL_ID=TOOL.TOOL_ID where StartDate = ? and EndDate = ?";
+                    "SELECT BOOKING.Booking_ID, TOOL.Tool_Name, USER.Fname, USER.Lname, BOOKING.StartDate, BOOKING.EndDate, BOOKING.Cmnt, BOOKING.TotalPrice FROM BOOKING inner JOIN USER ON\n" +
+                            "                            BOOKING.USER_ID=USER.USER_ID JOIN TOOL ON BOOKING.TOOL_ID=TOOL.TOOL_ID where BOOKING.StartDate between ? and ?";
 
             PreparedStatement statement = db.prepareStatement(query);
             statement.setString(1, fDate);

@@ -16,7 +16,7 @@
 <head>
     <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
     <link href = "styles/bookingHistory.css" rel="stylesheet" type = "text/css">
-    <title>Title</title>
+    <title>Booking Historikk</title>
 </head>
 <body>
 <%@include file="jspHelpers/navbarMain.jsp"%>

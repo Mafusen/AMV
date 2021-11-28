@@ -46,15 +46,15 @@
       <div class="inputtext">
         <label for="confirmPassword">Bekreft Passord: </label>
       </div>
-      <div>
+      <div id="confirmP">
         <input class="input" type="password" name="confirmPassword" id="confirmPassword" required>
       </div>
 
       <div class="userForm">
-        <button class="reset" type="reset" value="Reset alle felter">Reset alle felter</button>
+        <button class="button2" type="reset" value="Reset alle felter">Reset alle felter</button>
 
         <a href = "minSide/byttPassord">
-          <button class="submit" type="submit" >Lagre</button>
+          <button class="button1" type="submit" >Lagre</button>
         </a>
       </div>
 

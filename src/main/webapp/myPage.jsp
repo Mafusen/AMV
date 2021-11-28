@@ -1,37 +1,49 @@
-<%@ page import="bacit.web.Models.UserModel" %><%--
-  Created by IntelliJ IDEA.
-  User: bjornarsomme
-  Date: 15/10/2021
-  Time: 13:11
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bacit.web.Models.UserModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href = "styles/navbar.css" rel="stylesheet" type = "text/css">
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-<h1>MIN SIDE</h1>
-<br><br><br><br><br><br><br><br><br><br><br>
-<%@include file="jspHelpers/navbarMain.jsp"%>
+<link href="<%=request.getContextPath()%>/styles/navbar.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/styles/report.css" rel="stylesheet" type="text/css">
+<title>Min Side</title>
 
+<body>
+
+<%@include file="jspHelpers/navbarMain.jsp"%>
+<br><br>
 <%
     UserModel user = (UserModel) request.getAttribute("user");
 %>
-
-<div>
-    <a><%=user.getUserName()%></a>
-    <a><%=user.getFirstName()%></a>
-    <a><%=user.getLastName()%></a>
-    <a><%=user.getPhone()%></a>
-    <div>
-    <a href = "<%=request.getContextPath()%>/minSide/redigerPassord">
-        <button type = submit>Rediger Passord</button>
-    </a>
+<main class="container">
+    <div class="main">
+        <h1 id="kontoinfo">Konto Informasjon</h1>
+            <div>
+                <div id="usern">
+                    <span>Brukernavn: </span>
+                    <a><%=user.getUserName()%></a>
+                </div>
+                <div id="name">
+                    <span>Navn: </span>
+                    <a><%=user.getFirstName()%></a>
+                    <a><%=user.getLastName()%></a>
+                </div>
+                <div id="phone">
+                    <span>Mobil: </span>
+                    <a><%=user.getPhone()%></a>
+                </div>
+                <br>
+                <div class="btn">
+                    <a href = "<%=request.getContextPath()%>/minSide/redigerPassord">
+                        <button id="rp" type = submit>Rediger Passord</button>
+                    </a>
+                </div>
+            </div>
+        </form>
     </div>
 
-</div>
-
+</main>
 </body>
 </html>

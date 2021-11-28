@@ -15,27 +15,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produkt Side</title>
-
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link href="styles/calendar.css" type="text/css" rel="stylesheet">
-        <title>Rapport Side</title>
-        <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Rapport Side</title>
+    <style>
             #print {
                 text-align: center;
             }
             .button {
                 font: bold 11px Arial;
                 text-decoration: none;
-                background-color: #00FF00;
-                color: #333333;
-                padding: 4px 12px 4px 12px;
+                background-color: green;
+                color: white;
+                padding: 6px 12px 6px 12px;
                 border-top: 1px solid #CCCCCC;
                 border-right: 1px solid #333333;
                 border-bottom: 1px solid #333333;
                 border-left: 1px solid #CCCCCC;
             }
-        </style>
+            @media print {
+                /* All your print styles go here */
+                #print { display: none !important; }
+            }
+    </style>
+</head>
 
 <body>
 
