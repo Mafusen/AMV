@@ -7,10 +7,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="styles/navbar.css" rel="stylesheet" type="text/css">
   <link href="styles/calendar.css" type="text/css" rel="stylesheet">
-  <title>Produkt Side</title>
+  <title>Lever verktøy</title>
 </head>
 
 <body>
@@ -25,27 +24,35 @@
       FileModel file = (FileModel) request.getAttribute("file");
     %>
 
-    <div class="left-column">
-      <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt="<%=tool.getToolName()%>">
+
+    <div class="left-column-deliver">
+        <div class="left-column">
+            <img src="fileDownloadServlet?FILE_ID=<%=file.getFileID()%>" alt="<%=tool.getToolName()%>">
+        </div>
+      <div class="product">
+           <div class="product-name">
+             <p><%=tool.getToolName()%></p>
+           </div>
+           <div class="product-info">
+              Informasjon: <%=tool.getToolInfo()%>
+            </div>
+            <div class="product-price">
+              <p>
+                <%=tool.getPrice()%>kr/dag
+              </p>
+            </div>
+      </div>
     </div>
 
-    <div class="right-column">
 
-      <div class="product-description">
-        <h1><%=tool.getToolName()%></h1>
-        <p><%=tool.getToolInfo()%></p>
-      </div>
-
-      <div class="product-price">
-        <p><%=tool.getPrice()%> kr</p>
-      </div>
-
+    <div class="right-column-deliver">
       <form action = "deliverBooking" method = "get">
       <div class="comment">
         <div>
-          <label for="kommentar">Kommentar</label>
+          <label for="comment">Kommentar</label>
         </div>
-        <input id="kommentar" name="kommentar" type="text" placeholder="Din kommentar..." size="35">
+        <textarea id="comment" name="comment" rows="10" cols="60">
+        </textarea>
       </div>
 
       <a>
@@ -53,10 +60,9 @@
       </a>
 
       <div class="buttons">
-        <button type="submit" class="btn btn-danger" id="divide">Lever</button>
+        <button type="submit" class="btn-success">Lever</button>
       </div>
       </form>
-
     </div>
 
 </main>
