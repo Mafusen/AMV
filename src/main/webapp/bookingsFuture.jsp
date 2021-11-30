@@ -17,6 +17,7 @@
 <%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
 <%@include file="jspHelpers/navbarBookings.jsp"%>
+<br>
 <div class="main">
     <br><br><h1>Fremtidige Bookinger</h1>
     <form action = "bookingHistoryServlet" method = "get">

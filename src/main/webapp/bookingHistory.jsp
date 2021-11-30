@@ -22,6 +22,7 @@
 <%@include file="jspHelpers/navbarMain.jsp"%>
 <br><br><br><br>
 <%@include file="jspHelpers/navbarBookings.jsp"%>
+<br>
 <div class="main">
     <br><br><h1>Min Leiehistorikk</h1>
     <form action = "<%=request.getContextPath()%>/bookingHistoryServlet" method = "get">

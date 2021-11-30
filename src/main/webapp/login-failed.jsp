@@ -44,19 +44,7 @@
       <input type = "submit" name = "submit" id = "submit" value = "Logg Inn">
     </label>
   </form>
-  <a>
-    <%=
-    displayDate()
-    %>
-  </a>
 
-  <%!
-    public String displayDate(){
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-      Date date = Calendar.getInstance().getTime();
-      return dateFormat.format(date);
-    }
-  %>
 </div>
 <script>
   const togglePassword = document.querySelector('#togglePassword');

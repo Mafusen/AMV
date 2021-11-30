@@ -115,11 +115,9 @@
 <script>
     let fDate = document.querySelector('#start');
     let tDate = document.querySelector('#end');
-
     fDate.addEventListener('change', function() {
         tDate.min = this.value;
     });
-
     <%-- EndDate kan ikke vær mer enn 4 dager etter startDate --%>
     fDate.addEventListener('change', function() {
         var max = new Date(fDate.value);

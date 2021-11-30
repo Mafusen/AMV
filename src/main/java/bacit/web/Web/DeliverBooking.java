@@ -44,7 +44,7 @@ public class DeliverBooking extends HttpServlet {
 
         request.setAttribute("tool", tool);
         request.setAttribute("finalBooking", finalBooking);
-        request.getRequestDispatcher("/endedBooking.jsp").forward(request, response);
+        request.getRequestDispatcher("/popupDelivery.jsp").forward(request, response);
 
     }
 
