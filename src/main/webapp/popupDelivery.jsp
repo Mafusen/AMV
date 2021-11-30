@@ -3,7 +3,7 @@
 <head>
     <title>Levert</title>
     <link rel="stylesheet" href="styles/popup.css" type="text/css">
-    <link href="navbar.css" type="text/css" rel="stylesheet">
+    <link href="styles/navbar.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <%@include file="jspHelpers/navbarMain.jsp"%>
