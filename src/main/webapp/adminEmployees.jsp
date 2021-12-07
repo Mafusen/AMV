@@ -22,23 +22,24 @@
 <%@include file="jspHelpers/navbarAdmin.jsp"%>
 
 <div class="main">
-    <br><br><h1>Oversikt over brukere</h1>
+    <br><br>
+    <h1>Oversikt over brukere</h1>
+
     <form action = "<%=request.getContextPath()%>/admin/Users" method = "get">
         <div class="search">
             <label>
                 <input type="text" name = "search" id = "search" placeholder="Søk etter ansatt..">
-                <button type = submit>SØK</button>
             </label>
         </div>
     </form>
+
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newUser">
             <button class = "button1" name = submit type = submit value = submit >Legg til ny bruker</button>
         </a>
     </div>
-<br>
 </div>
-
+<br>
 <table id="users">
     <tr>
         <th>Bruker-ID</th>

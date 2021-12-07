@@ -35,5 +35,4 @@ public class GetUsersServlet extends HttpServlet {
         request.getRequestDispatcher("/adminEmployees.jsp").forward(request, response);
 
     }
-
 }

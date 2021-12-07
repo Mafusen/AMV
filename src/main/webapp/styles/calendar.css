@@ -59,11 +59,9 @@ body {
     margin-left: 100px;
 }
 
-
 .product {
     display: flex;
     align-items: flex-start;
-    border-bottom: 1px solid #E1E8EE;
     margin-bottom: 20px;
     flex-direction: column;
 }
@@ -87,8 +85,6 @@ body {
     max-width: 500px;
 }
 
-
-
 .product-price {
     display: flex;
     text-align: center;
@@ -98,10 +94,10 @@ body {
     margin-bottom: 100px;
 }
 
-
 .comment {
     float: left;
 }
+
 .comment textarea {
     max-width: 350px;
     border-radius: 10px;

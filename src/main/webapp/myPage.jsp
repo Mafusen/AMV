@@ -19,7 +19,7 @@
 %>
 <main class="container">
     <div class="main">
-        <h1 id="kontoinfo">Konto Informasjon</h1>
+        <h1 id="kontoinfo">Kontodetaljer</h1>
             <div>
                 <div id="usern">
                     <span>Brukernavn: </span>

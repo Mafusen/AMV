@@ -29,15 +29,17 @@
 <%@include file="jspHelpers/navbarAdmin.jsp"%>
 
 <div class="main">
-    <br><h1>Verktøyoversikt</h1>
+    <br><br>
+    <h1>Verktøyoversikt</h1>
+
     <form action = "<%=request.getContextPath()%>/admin/Tools" method = "get">
         <div class="search">
             <label>
                 <input type="text" name = "search" id = "search" placeholder="Søk etter produkt..">
-
             </label>
         </div>
     </form>
+
     <div>
         <a href = "<%=request.getContextPath()%>/admin/newTool">
         <button class="button1" name = submit type = submit value = submit >Legg til nytt verktøy</button>

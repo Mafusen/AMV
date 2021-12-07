@@ -48,3 +48,14 @@ body {
     background-color: #ffb300;
     color: #000000;
 }
+
+input[type=text], select, text {
+    width: 90%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
